@@ -1,0 +1,41 @@
+table {
+  width: 100%;
+}
+mat-grid-tile {
+  background: lightblue;
+}
+img {
+  max-height: 200px;
+  max-width: 200px;
+  margin-left: 8px;
+  margin-bottom: 8px;
+}
+body {
+  position: absolute;
+  padding: 0 0;
+  margin: 0 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+
+.basic-container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.version-info {
+  font-size: 8pt;
+  float: right;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
