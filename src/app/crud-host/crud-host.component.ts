@@ -1,5 +1,5 @@
 import {Component,  OnInit} from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 import {CategoryServiceService} from "../../service/category-service.service";
 import {Category} from "../model/Category";
 import {AddressService} from "../../service/address.service";
@@ -41,8 +41,12 @@ export class CrudHostComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       price: ['', Validators.required],
-      category: ['', Validators.required],
-      address: ['', Validators.required],
+      category: new FormGroup({
+        id: new FormControl()
+      }),
+      address: new FormGroup({
+        id: new FormControl()
+      }),
       addressRoom: ['', Validators.required],
       images: [[], Validators.required]
     });
@@ -60,7 +64,7 @@ export class CrudHostComponent implements OnInit {
 
   onSubmit() {
     // Nếu formCreate hợp lệ
-    debugger
+
     if (this.formCreate.valid) {
       this.saveRoomInfoService.saveRoom(this.formCreate.value).subscribe(
         data => {
@@ -83,7 +87,7 @@ export class CrudHostComponent implements OnInit {
         }
       )
     }
-  };
+  }
 
   // Mảng urls để lưu đường dẫn tạm thời của ảnh
   urls: string[] = [];

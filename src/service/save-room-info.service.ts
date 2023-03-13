@@ -11,7 +11,7 @@ export class SaveRoomInfoService {
 constructor(private http: HttpClient) {
   }
   saveRoom(room:Room):Observable<any>{
-
-    return this.http.post(this.baseUrl, room,);
+    console.log(room)
+    return this.http.post(this.baseUrl, room);
   }
 }
