@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-export interface Account{}
-=======
-import {Role} from "./Role";
 
+import {Role} from "./Role";
 export class Account{
   private _id:number
   private _name:string
@@ -82,4 +79,21 @@ export class Account{
     this._role = value;
   }
 }
->>>>>>> acc8011fe3954b9d60b10c06d9338aaa5d35947b
+
+// export class Account{
+//   id!: number;
+//   name!: string;
+//   password!: string;
+//   phone!: string;
+//    email!: string;
+//   avatar!: string;
+//
+//   constructor(id: number, name: string, password: string, phone: string, email: string, avatar: string) {
+//     this.id = id;
+//     this.name = name;
+//     this.password = password;
+//     this.phone = phone;
+//     this.email = email;
+//     this.avatar = avatar;
+//   }
+// }

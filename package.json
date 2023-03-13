@@ -11,20 +11,20 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^15.2.0",
+    "@angular/cdk": "^15.2.1",
     "@angular/common": "^15.2.0",
     "@angular/compiler": "^15.2.0",
     "@angular/core": "^15.2.0",
     "@angular/fire": "^7.5.0",
     "@angular/forms": "^15.2.0",
+    "@angular/material": "^15.2.1",
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
-<<<<<<< HEAD
     "chart.js": "^2.9.4",
-    "ng2-charts": "^4.1.1",
-=======
     "form-data-encoder": "^2.1.4",
->>>>>>> 6769fb990379e06e8b75941f702d3e888dd5b135
+    "ng2-charts": "^4.1.1",
+    "ngx-pagination": "^6.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
