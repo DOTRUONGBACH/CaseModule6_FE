@@ -3,42 +3,60 @@ import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
 import {ShowRoomForGuestService} from "../../service/show-room-for-guest.service";
 import {Room} from "../../model/Room";
+import {RoomForGuest} from "../../model/RoomForGuest";
 
 @Component({
   selector: 'app-show-room-for-guest',
   templateUrl: './show-room-for-guest.component.html',
   styleUrls: ['./show-room-for-guest.component.css']
 })
-export class ShowRoomForGuestComponent implements OnInit{
-  room:Room|undefined;
-  rooms:Room[]=[];
-rooms1:Room[]=[];
+export class ShowRoomForGuestComponent implements OnInit {
+  room: RoomForGuest | undefined;
+  rooms: any;
+  p: number = 1;
+  total: number = 0;
 
-  constructor(private showRoomService:ShowRoomForGuestService) {
+  categoryName!: string;
+  addressName!: string;
+  price1!: number;
+  price2!: number;
+  checkin!: string;
+  checkout!: string;
+
+
+
+  constructor(private showRoomService: ShowRoomForGuestService) {
   }
 
 
   ngOnInit(): void {
 
-    this.showRoomService.getAll().subscribe((data)=>{
-      this.rooms = data
-      this.getData({pageIndex: this.page, pageSize: this.size});
-    });
+    this.getRooms()
   }
-  page = 0;
-  size = 4;
-  // @ts-ignore
-  getData(obj) {
 
-    let index=0,
-      startingIndex=obj.pageIndex * obj.pageSize,
-      endingIndex=startingIndex + obj.pageSize;
-    console.log(this.rooms)
-    this.rooms1 = this.rooms.filter(() => {console.log(2)
-      index++;
-      return (index > startingIndex && index <= endingIndex) ? true : false;
-    });
+
+  getRooms() {
+    this.showRoomService.getAll(this.p).subscribe((response: any) => {
+      this.rooms = response;
+      this.total = this.rooms.length;
+      console.log(response)
+    })
   }
+  pageChangeEvent(event: number){
+    this.p = event;
+    this.getRooms();
+  }
+
+  findRoomByGuest() {
+    this.showRoomService.findRoomByGuest(this.categoryName, this.addressName, this.price1, this.price2, this.checkin, this.checkout).subscribe(data => {
+      alert("vào đây")
+      this.rooms = data
+      console.log(data)
+
+    })
+  }
+
+
 
 }
 
