@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { LoginComponent } from './account/login/login.component';
-import { RegisterComponent } from './account/register/register.component';
+import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {TopRentComponent} from './top-rent/top-rent.component';
 import {RouterOutlet} from "@angular/router";
-import {AuthInterceptor} from "./auth.interceptor";
-import { MyAccountComponent } from './account/my-account/my-account.component';
-import { ShowProfileComponent } from './account/show-profile/show-profile.component';
-import {CrudHostComponent} from "./crud-host/crud-host.component";
+import {HttpClientModule} from "@angular/common/http";
 
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {LoginComponent} from "./account/login/login.component";
+import {RegisterComponent} from "./account/register/register.component";
+import {ShowProfileComponent} from "./account/show-profile/show-profile.component";
+import {CrudHostComponent} from "./crud-host/crud-host.component";
+import {MyAccountComponent} from "./account/my-account/my-account.component";
+import {ShowTotalBill} from "./model/ShowTotalBill";
+import {ShowTotalBillComponent} from "./show-total-bill/show-total-bill.component";
 
 
 
@@ -24,7 +26,9 @@ import {CrudHostComponent} from "./crud-host/crud-host.component";
     MyAccountComponent,
     ShowProfileComponent,
     AppComponent,
-    CrudHostComponent
+    CrudHostComponent,
+    TopRentComponent,
+   ShowTotalBillComponent
   ],
   imports: [
     BrowserModule,
@@ -37,16 +41,16 @@ import {CrudHostComponent} from "./crud-host/crud-host.component";
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
+    FormsModule,
 
+    RouterOutlet,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
   ],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
