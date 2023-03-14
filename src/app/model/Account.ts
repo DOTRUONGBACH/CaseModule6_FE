@@ -1,3 +1,4 @@
+
 import {Role} from "./Role";
 
 export class Account{
@@ -79,3 +80,4 @@ export class Account{
     this._role = value;
   }
 }
+

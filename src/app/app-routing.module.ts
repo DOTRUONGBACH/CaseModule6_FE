@@ -5,12 +5,14 @@ import {LoginComponent} from "./account/login/login.component";
 import {RegisterComponent} from "./account/register/register.component";
 import {AppComponent} from "./app.component";
 import {MyAccountComponent} from "./account/my-account/my-account.component";
+import {CrudHostComponent} from "./crud-host/crud-host.component";
 
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path:'account',component:MyAccountComponent},
+  {path:'host',component:CrudHostComponent},
   {path:'',component:AppComponent}
 
 ]
