@@ -14,7 +14,7 @@ export class ShowTotalBillService {
 
 
   getShowTotalBill() :Observable<ShowTotalBillService[]>{
-    return this.http.get<ShowTotalBillService[]>("http://localhost:8080/showTotalBill");
+    return this.http.get<ShowTotalBillService[]>("http://localhost:8080/bill/showBill");
   }
 
 
