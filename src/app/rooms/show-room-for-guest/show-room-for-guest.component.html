@@ -21,28 +21,17 @@
                   <div class="tab-content">
                     <div class="tab-pane fade active show" id="ltn__form_tab_1_1">
                       <div class="car-dealer-form-inner">
-                        <form action="#" class="ltn__car-dealer-form-box row" [formGroup]="FindForm" (ngSubmit)="findRoomByGuest()" >
+                        <form action="#" class="ltn__car-dealer-form-box row">
                           <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-4 col-md-6">
-                            <div formGroupName="categoryName">
-                              <select class="nice-select" formControlName="id" *ngIf="categories">
-                                <option value="" selected>--Select a category--</option>
-                                <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-car col-lg-4 col-md-6">
-                            <div formGroupName="addressName">
-                              <select class="nice-select" formControlName="id" *ngIf="addresses">
-                                <option value="" selected>--Select a province/city--</option>
-                                <option *ngFor="let address of addresses" [value]="address.id">{{ address.name }}</option>
-                              </select>
-                            </div>
+                            <a>Choice Category</a>
+                            <input type="text" placeholder="Enter Category" name="categoryName"
+                                   [(ngModel)]="categoryName">
                           </div>
                           <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-car col-lg-4 col-md-6">
                             <div class="mb-3 mb-md-0">
-                              <div class="date" id="date1" data-target-input="nearest">
+                               <div class="date" id="date1" data-target-input="nearest">
                                 <a>CheckIn</a>
-                                <input type="date" class="form-control p-4 datetimepicker-input" name="checkin" formControlName="checkin"  placeholder="Depart Date" data-target="#date1" data-toggle="datetimepicker"/>
+                                <input type="date" class="form-control p-4 datetimepicker-input" name="checkin" [(ngModel)]="checkin" placeholder="Depart Date" data-target="#date1" data-toggle="datetimepicker"/>
                               </div>
                             </div>
                           </div>
@@ -50,23 +39,29 @@
                             <div class="mb-3 mb-md-0">
                               <div class="date" id="date2" data-target-input="nearest">
                                 <a>CheckOut</a>
-                                <input type="date" class="form-control p-4 datetimepicker-input" name="checkout" formControlName="checkout" placeholder="Return Date" data-target="#date2" data-toggle="datetimepicker"/>
+                                <input type="date" class="form-control p-4 datetimepicker-input" name="checkout" [(ngModel)]="checkout" placeholder="Return Date" data-target="#date2" data-toggle="datetimepicker"/>
                               </div>
                             </div>
                           </div>
-                          <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-cog col-lg-4 col-md-6">
+                          <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-car col-lg-4 col-md-6">
+                            <a>Choice Address</a>
+                            <input type="text" placeholder="Enter Address" name="addressName" [(ngModel)]="addressName">
+                          </div>
+                           <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-cog col-lg-4 col-md-6">
                             <div class="input-item input-item-name ltn__custom-icon">
-                              <input type="text" name="price1" placeholder="Min price " formControlName="price1">
+                              <a>Choice Min Price</a>
+                              <input type="text" name="price1" placeholder="Min price " [(ngModel)]="price1">
                             </div>
                           </div>
                           <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-cog col-lg-4 col-md-6">
                             <div class="input-item input-item-name ltn__custom-icon">
-                              <input type="text" name="price2" placeholder="Max price " formControlName="price2">
+                              <a>Choice Max Price</a>
+                              <input type="text" name="price2" placeholder="Max price " [(ngModel)]="price2">
                             </div>
                           </div>
                           <div class="car-price-filter-range col-lg-12">
                             <div class="btn-wrapper text-center">
-                              <button routerLink="showRoomForGuest" class="btn theme-btn-1 btn-effect-1 text-uppercase">
+                              <button (click)="findRoomByGuest()" class="btn theme-btn-1 btn-effect-1 text-uppercase">
                                 Search Inventory
                               </button>
                             </div>
