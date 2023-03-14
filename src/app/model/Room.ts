@@ -1,26 +1,17 @@
-import {Account} from "./Account";
-import {Category} from "./Category";
+
+
 import {Address} from "./Address";
+import {Category} from "./Category";
+import {Account} from "./Account";
 
-export class Room {
-  id!: number;
-  name!: string;
-  price!: number;
-  description!: string;
-  addressRoom!: string;
-  account!: Account;
-  category!: Category;
+export interface Room{
+  name?: String ;
+  price?:number;
+  description?: String;
+  addressRoom?: String;
+  account?: Account;
+  category?: Category;
+  status?:boolean;
+  address?: Address;
 
-  address!: Address;
-
-  constructor(id: number, name: string, price: number, description: string, addressRoom: string, account: Account, category: Category, address: Address) {
-    this.id = id;
-    this.name = name;
-    this.price = price;
-    this.description = description;
-    this.addressRoom = addressRoom;
-    this.account = account;
-    this.category = category;
-    this.address = address;
-  }
 }

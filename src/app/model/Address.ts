@@ -1,4 +1,6 @@
-export class Address{
-  id!: number;
-  name!: string;
+
+export interface Address{
+  id: number;
+  name: String;
+
 }
