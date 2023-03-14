@@ -1,28 +1,24 @@
-
 import {Role} from "./Role";
 
-export class Account{
+export class AccountToken{
   private _id:number
   private _name:string
-  private _password:string
-  private _phone: string
   private _email:string
+  private _phone:string
   private _avatar:string
+  private _token:string
+  private _roles:Role[]
 
 
-  private _role:Role[]
-
-  constructor(id: number, name: string, password: string, phone: string, email: string, avatar: string, role: Role[]) {
+  constructor(id: number, name: string, email: string, phone: string, avatar: string, token: string, roles: Role[]) {
     this._id = id;
     this._name = name;
-    this._password = password;
-    this._phone = phone;
     this._email = email;
+    this._phone = phone;
     this._avatar = avatar;
-    this._role = role;
-
+    this._token = token;
+    this._roles = roles;
   }
-
 
   get id(): number {
     return this._id;
@@ -40,12 +36,12 @@ export class Account{
     this._name = value;
   }
 
-  get password(): string {
-    return this._password;
+  get email(): string {
+    return this._email;
   }
 
-  set password(value: string) {
-    this._password = value;
+  set email(value: string) {
+    this._email = value;
   }
 
   get phone(): string {
@@ -56,14 +52,6 @@ export class Account{
     this._phone = value;
   }
 
-  get email(): string {
-    return this._email;
-  }
-
-  set email(value: string) {
-    this._email = value;
-  }
-
   get avatar(): string {
     return this._avatar;
   }
@@ -72,12 +60,19 @@ export class Account{
     this._avatar = value;
   }
 
-  get role(): Role[] {
-    return this._role;
+  get token(): string {
+    return this._token;
   }
 
-  set role(value: Role[]) {
-    this._role = value;
+  set token(value: string) {
+    this._token = value;
+  }
+
+  get roles(): Role[] {
+    return this._roles;
+  }
+
+  set roles(value: Role[]) {
+    this._roles = value;
   }
 }
-
