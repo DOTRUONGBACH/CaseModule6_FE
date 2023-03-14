@@ -9,11 +9,6 @@ import {HttpHeaders} from "@angular/common/http";
 import {SaveRoomInfoService} from "../../service/save-room-info.service";
 import {SaveRoomImagesService} from "../../service/save-room-images.service";
 
-
-
-
-
-
 @Component({
   selector: 'app-crud-host',
   templateUrl: './crud-host.component.html',

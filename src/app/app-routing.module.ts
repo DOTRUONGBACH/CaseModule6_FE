@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {RouterModule, Routes} from "@angular/router";
-import {TopRentComponent} from "./top-rent/top-rent.component";
-import {AppComponent} from "./app.component";
-import {MyAccountComponent} from "./account/my-account/my-account.component";
-import {CrudHostComponent} from "./crud-host/crud-host.component";
 import {LoginComponent} from "./account/login/login.component";
 import {RegisterComponent} from "./account/register/register.component";
-import {ShowTotalBill} from "./model/ShowTotalBill";
+import {MyAccountComponent} from "./account/my-account/my-account.component";
+import {CrudHostComponent} from "./crud-host/crud-host.component";
+import {AppComponent} from "./app.component";
+import {TopRentComponent} from "./top-rent/top-rent.component";
 import {ShowTotalBillComponent} from "./show-total-bill/show-total-bill.component";
+import {ShowRoomForGuestComponent} from "./rooms/show-room-for-guest/show-room-for-guest.component";
+import {RouterModule, Routes} from "@angular/router";
 
 
 const routes: Routes = [
@@ -18,7 +18,8 @@ const routes: Routes = [
   {path:'host',component:CrudHostComponent},
   {path:'',component:AppComponent},
   {path:'topRent', component: TopRentComponent},
-  {path:'showBill', component: ShowTotalBillComponent}
+  {path:'showBill', component: ShowTotalBillComponent},
+  {path:'showForGuest', component: ShowRoomForGuestComponent}
 
 ]
 
@@ -29,5 +30,4 @@ const routes: Routes = [
     RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule { }

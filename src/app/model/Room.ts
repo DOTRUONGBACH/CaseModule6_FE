@@ -1,6 +1,8 @@
-import {Account} from "./Account";
+
+
 import {Address} from "./Address";
 import {Category} from "./Category";
+import {Account} from "./Account";
 
 export interface Room{
   name?: String ;
@@ -9,6 +11,7 @@ export interface Room{
   addressRoom?: String;
   account?: Account;
   category?: Category;
-  status?:Boolean;
+  status?:boolean;
   address?: Address;
+
 }
