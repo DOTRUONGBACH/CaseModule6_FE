@@ -1,0 +1,15 @@
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.success {
+  background-color: green;
+}
+
+.danger {
+  background-color: red;
+}
+
+

@@ -1,7 +1,7 @@
 import {Component, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
-import {ShowRoomForGuestService} from "../../service/show-room-for-guest.service";
+import {ShowRoomForGuestService} from "../../../service/show-room-for-guest.service";
 import {Room} from "../../model/Room";
 import {RoomForGuest} from "../../model/RoomForGuest";
 
@@ -36,10 +36,11 @@ export class ShowRoomForGuestComponent implements OnInit {
 
 
   getRooms() {
-    this.showRoomService.getAll(this.p).subscribe((response: any) => {
+    this.showRoomService.getAll().subscribe((response: any) => {
+      console.log(response)
       this.rooms = response;
       this.total = this.rooms.length;
-      console.log(response)
+
     })
   }
   pageChangeEvent(event: number){

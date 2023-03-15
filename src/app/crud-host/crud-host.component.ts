@@ -1,4 +1,4 @@
-import {Component,  OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 import {CategoryServiceService} from "../../service/category-service.service";
 import {Category} from "../model/Category";
@@ -8,6 +8,8 @@ import {CrudHostService} from "../../service/crud-host-service.service";
 import {HttpHeaders} from "@angular/common/http";
 import {SaveRoomInfoService} from "../../service/save-room-info.service";
 import {SaveRoomImagesService} from "../../service/save-room-images.service";
+import {ShowRoomForGuestComponent} from "../rooms/show-room-for-guest/show-room-for-guest.component";
+import {ShowRoomForGuestService} from "../../service/show-room-for-guest.service";
 
 @Component({
   selector: 'app-crud-host',
@@ -19,16 +21,20 @@ export class CrudHostComponent implements OnInit {
   addresses?: Address[];
   formCreate!: FormGroup;
   images: File[] = [];
+  rooms: any;
+  p: number = 1;
+  total: number = 0;
 
   constructor(
     private crudService: CrudHostService,
     private formBuilder: FormBuilder,
     private addressService: AddressService,
     private categoryService: CategoryServiceService,
-    private saveRoomInfoService:SaveRoomInfoService,
-    private saveRoomImagesService: SaveRoomImagesService
-
-  ) {}
+    private saveRoomInfoService: SaveRoomInfoService,
+    private saveRoomImagesService: SaveRoomImagesService,
+    private showRoomService: ShowRoomForGuestService
+  ) {
+  }
 
   ngOnInit(): void {
     // Tạo formGroup
@@ -55,6 +61,7 @@ export class CrudHostComponent implements OnInit {
     this.addressService.getAddress().subscribe(data => {
       this.addresses = data;
     });
+    this.getRoom()
   }
 
   onSubmit() {
@@ -68,7 +75,7 @@ export class CrudHostComponent implements OnInit {
             formData.append('files', this.images[i], this.images[i].name);
           }
           // Lưu ảnh bằng API thứ hai
-          this.saveRoomImagesService.saveImg(formData,data).subscribe(
+          this.saveRoomImagesService.saveImg(formData, data).subscribe(
             response => {
               console.log('Room and images saved successfully');
             },
@@ -106,5 +113,24 @@ export class CrudHostComponent implements OnInit {
         }
       }
     }
+  }
+
+  getRoom() {
+    this.showRoomService.getAll().subscribe((response: any) => {
+      this.rooms =response;
+      console.log(this.rooms)
+      this.total = this.rooms.length;
+
+    })
+  }
+
+  pageChangeEvent(event: number){
+    this.p = event;
+    this.getRoom();
+  }
+
+
+  edit(){
+
   }
 }

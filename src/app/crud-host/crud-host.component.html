@@ -20,7 +20,7 @@
           <div class="col">
             <div class="site-logo-wrap">
               <div class="site-logo">
-                <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+                <a href="index.html"><img src="assets/img/logo.png" alt="Logo"></a>
               </div>
               <div class="get-support clearfix d-none">
                 <div class="get-support-icon">
@@ -653,106 +653,42 @@
                     </div>
                     <div class="tab-pane fade" id="ltn_tab_1_5">
                       <div class="ltn__myaccount-tab-content-inner">
-                        <div class="ltn__my-properties-table table-responsive">
+                        <div class="ltn__my-properties-table table-responsive" >
                           <table class="table">
                             <thead>
                             <tr>
                               <th scope="col">My Properties</th>
                               <th scope="col"></th>
-                              <th scope="col">Date Added</th>
-                              <th scope="col">Actions</th>
-                              <th scope="col">Delete</th>
+                              <th scope="col" >Status</th>
+                              <th scope="col" >Actions</th>
+                              <th scope="col" >Delete</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
+                            <tbody >
+                            <tr *ngFor="let r of rooms| paginate: { itemsPerPage: 3, currentPage: p, totalItems: total }">
                               <td class="ltn__my-properties-img">
-                                <a href="product-details.html"><img src="img/product-3/2.jpg" alt="#"></a>
+                                <a href="product-details.html"><img src="{{r.img}}" alt="#"></a>
                               </td>
                               <td>
                                 <div class="ltn__my-properties-info">
-                                  <h6 class="mb-10"><a href="product-details.html">sdfasdfdsfsdafs</a></h6>
-                                  <small><i class="icon-placeholder"></i> Brooklyn, New York, United States</small>
-                                  <div class="product-ratting">
-                                    <ul>
-                                      <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                      <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                      <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                      <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                                      <li><a href="#"><i class="far fa-star"></i></a></li>
-                                      <li class="review-total"><a href="#"> ( 95 Reviews )</a></li>
-                                    </ul>
-                                  </div>
+                                  <h6 class="mb-10"><a href="product-details.html">{{r.name}}</a></h6>
+                                  <small><i class="icon-placeholder"></i> {{r.addressRoom}}</small>
+
                                 </div>
-                              </td>
-                              <td>Feb 22, 2022</td>
-                              <td><a href="#">Edit</a></td>
-                              <td><a href="#"><i class="fa-solid fa-trash-can"></i></a></td>
-                            </tr>
-                            <tr>
-                              <td class="ltn__my-properties-img">
-                                <a href="product-details.html"><img src="img/product-3/3.jpg" alt="#"></a>
                               </td>
                               <td>
-                                <div class="ltn__my-properties-info">
-                                  <h6 class="mb-10"><a href="product-details.html">sdfasdfdsfsdafs</a></h6>
-                                  <small><i class="icon-placeholder"></i> Brooklyn, New York, United States</small>
-                                  <div class="product-ratting">
-                                    <ul>
-                                      <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                      <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                      <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                      <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                                      <li><a href="#"><i class="far fa-star"></i></a></li>
-                                      <li class="review-total"><a href="#"> ( 95 Reviews )</a></li>
-                                    </ul>
-                                  </div>
-                                </div>
+                                <div style="float: right; margin-right: 25px;" class="circle" [ngClass]="{'success': r.status, 'danger': !r.status}"></div>
                               </td>
-                              <td>Feb 22, 2022</td>
-                              <td><a href="#">Edit</a></td>
-                              <td><a href="#"><i class="fa-solid fa-trash-can"></i></a></td>
+                              <td><a style="float: right; margin-right: 25px;" data-toggle="modal" data-target="#modalRegisterForm" >Edit</a></td>
+                              <td><a href="#"><i class="fa-solid fa-trash-can" style="float: right; margin-right: 25px;"></i></a></td>
                             </tr>
-                            <tr>
-                              <td class="ltn__my-properties-img">
-                                <a href="product-details.html"><img src="/assets/img/product-3/7.jpg" alt="#"></a>
-                              </td>
-                              <td>
-                                <div class="ltn__my-properties-info">
-                                  <h6 class="mb-10"><a href="product-details.html">sdfasdfdsfsdafs</a></h6>
-                                  <small><i class="icon-placeholder"></i> Brooklyn, New York, United States</small>
-                                  <div class="product-ratting">
-                                    <ul>
-                                      <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                      <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                      <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                      <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                                      <li><a href="#"><i class="far fa-star"></i></a></li>
-                                      <li class="review-total"><a href="#"> ( 95 Reviews )</a></li>
-                                    </ul>
-                                  </div>
-                                </div>
-                              </td>
-                              <td>Feb 22, 2022</td>
-                              <td><a href="#">Edit</a></td>
-                              <td><a href="#"><i class="fa-solid fa-trash-can"></i></a></td>
-                            </tr>
+
                             </tbody>
                           </table>
+                          <pagination-controls (pageChange)="pageChangeEvent($event)" class="ltn__pagination-area text-center">
+                            </pagination-controls>
                         </div>
-                        <div class="ltn__pagination-area text-center">
-                          <div class="ltn__pagination">
-                            <ul>
-                              <li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
-                              <li><a href="#">1</a></li>
-                              <li class="active"><a href="#">2</a></li>
-                              <li><a href="#">3</a></li>
-                              <li><a href="#">...</a></li>
-                              <li><a href="#">10</a></li>
-                              <li><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
-                            </ul>
-                          </div>
-                        </div>
+
                       </div>
                     </div>
                     <div class="tab-pane fade" id="ltn_tab_1_6">
@@ -1234,8 +1170,48 @@
     </div>
   </div>
   <!-- CALL TO ACTION END -->
+<!--  modal edit-->
+  <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            <i class="fas fa-user prefix grey-text"></i>
+            <input type="text" id="orangeForm-name" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+          </div>
+          <div class="md-form mb-5">
+            <i class="fas fa-envelope prefix grey-text"></i>
+            <input type="email" id="orangeForm-email" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
+          </div>
 
+          <div class="md-form mb-4">
+            <i class="fas fa-lock prefix grey-text"></i>
+            <input type="password" id="orangeForm-pass" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
+          </div>
 
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button class="btn btn-deep-orange">Sign up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Launch
+      Modal Register Form</a>
+  </div>
+<!--  end modal edit-->
 </div>
 <!-- Body main wrapper end -->
 
