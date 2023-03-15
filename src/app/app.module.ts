@@ -16,6 +16,8 @@ import {ShowTotalBillComponent} from "./show-total-bill/show-total-bill.componen
 import {RouterModule, RouterOutlet} from "@angular/router";
 import {NgxPaginationModule} from "ngx-pagination";
 
+import { ShowCommentComponent } from './room-detail/show-comment/show-comment.component';
+import { HomeDetailComponent } from './room-detail/home-detail/home-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import {NgxPaginationModule} from "ngx-pagination";
     CrudHostComponent,
     TopRentComponent,
    ShowTotalBillComponent,
-
+   ShowCommentComponent,
+   HomeDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,8 @@ import {NgxPaginationModule} from "ngx-pagination";
     HttpClientModule,
     ReactiveFormsModule,
     RouterOutlet,
+
+
     ReactiveFormsModule,
     AppRoutingModule,
     RouterModule,

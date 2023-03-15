@@ -9,7 +9,7 @@ import {TopRentComponent} from "./top-rent/top-rent.component";
 import {ShowTotalBillComponent} from "./show-total-bill/show-total-bill.component";
 import {ShowRoomForGuestComponent} from "./rooms/show-room-for-guest/show-room-for-guest.component";
 import {RouterModule, Routes} from "@angular/router";
-
+import {ShowCommentComponent} from "./room-detail/show-comment/show-comment.component";
 
 
 const routes: Routes = [
@@ -21,6 +21,7 @@ const routes: Routes = [
   {path:'topRent', component: TopRentComponent},
   {path:'showBill', component: ShowTotalBillComponent},
   {path:'showForGuest', component: ShowRoomForGuestComponent},
+  {path:'showComment', component: ShowCommentComponent}
 
 ]
 

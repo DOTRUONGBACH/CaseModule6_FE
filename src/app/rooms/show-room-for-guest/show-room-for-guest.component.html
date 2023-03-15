@@ -37,7 +37,7 @@
                                       formControlName="checkin" placeholder="Depart Date" data-target="#date1"
                                        data-toggle="datetimepicker"/>
                               </div>
-                              <p *ngIf="formSearch?.get('checkin')?.hasError('required')" style="color: red">* Required</p>
+                              <p *ngIf="formSearch?.get('checkin')?.hasError('required')&& formSearch?.get('checkin')?.touched" style="color: red">* Required</p>
 <!--                              <p *ngIf="formSearch?.get('checkin')?.touched" style="color: red">* không được để trống</p>-->
                             </div>
                           </div>
@@ -49,7 +49,7 @@
                                        formControlName="checkout" placeholder="Return Date" data-target="#date2"
                                        data-toggle="datetimepicker"/>
                               </div>
-                              <p *ngIf="formSearch?.get('checkout')?.hasError('required')" style="color: red">* Required</p>
+                              <p *ngIf="formSearch?.get('checkout')?.hasError('required') && formSearch?.get('checkout')?.touched" style="color: red">* Required</p>
 
                             </div>
                           </div>
@@ -60,7 +60,7 @@
 
                               <option   *ngFor="let address of addresses" [value]="address.name">{{ address.name }}</option>
                             </select>
-                            <p *ngIf="formSearch?.get('addressName')?.get('name')?.hasError('required')" style="color: red">* Required</p>
+                            <p *ngIf="formSearch?.get('addressName')?.get('name')?.hasError('required') && formSearch?.get('addressName')?.touched" style="color: red">* Required</p>
                           </div>
 
                           <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-cog col-lg-4 col-md-6">
