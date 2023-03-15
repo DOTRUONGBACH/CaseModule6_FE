@@ -11,6 +11,7 @@ import {ShowRoomForGuestComponent} from "./rooms/show-room-for-guest/show-room-f
 import {RouterModule, Routes} from "@angular/router";
 
 
+
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
@@ -19,7 +20,7 @@ const routes: Routes = [
   {path:'',component:AppComponent},
   {path:'topRent', component: TopRentComponent},
   {path:'showBill', component: ShowTotalBillComponent},
-  {path:'showForGuest', component: ShowRoomForGuestComponent}
+  {path:'showForGuest', component: ShowRoomForGuestComponent},
 
 ]
 
