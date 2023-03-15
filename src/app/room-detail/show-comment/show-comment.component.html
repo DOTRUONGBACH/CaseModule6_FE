@@ -1,0 +1,29 @@
+<!-- comment-area -->
+<div class="ltn__comment-area mb-30">
+  <div class="ltn__comment-inner">
+    <ul>
+      <li *ngFor="let showComment of showComments">
+        <div class="ltn__comment-item clearfix">
+          <div class="ltn__commenter-img">
+            <img src="{{showComment.avatar}}" alt="Image" height="100">
+          </div>
+          <div class="ltn__commenter-comment">
+            <h6><a href="#">{{showComment.name}}</a></h6>
+            <div class="product-ratting">
+              <ul>
+                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
+                <li><a href="#"><i class="far fa-star"></i></a></li>
+              </ul>
+            </div>
+            <p>{{showComment.content}}</p>
+<!--            <span class="ltn__comment-reply-btn">September 3, 2020</span>-->
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</div>
