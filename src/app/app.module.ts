@@ -20,6 +20,8 @@ import { ShowCommentComponent } from './room-detail/show-comment/show-comment.co
 import { HomeDetailComponent } from './room-detail/home-detail/home-detail.component';
 import { HistoryBillComponent } from './history-bill/history-bill.component';
 import { FindBillByIdComponent } from './find-bill-by-id/find-bill-by-id.component';
+import { MapComponent } from './map/map.component';
+import {AgmCoreModule} from "@agm/core";
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { FindBillByIdComponent } from './find-bill-by-id/find-bill-by-id.compone
    ShowCommentComponent,
    HomeDetailComponent,
    HistoryBillComponent,
-   FindBillByIdComponent
+   FindBillByIdComponent,
+   MapComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +60,10 @@ import { FindBillByIdComponent } from './find-bill-by-id/find-bill-by-id.compone
     ReactiveFormsModule,
     AppRoutingModule,
     NgxPaginationModule,
+    AgmCoreModule.forRoot({
+      apiKey:"AIzaSyA4lGH6dvz5kfwplaM2ESfPeN5lpJ9PBYY",
+      libraries:["places", "geometry"]
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

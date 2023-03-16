@@ -12,6 +12,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {ShowCommentComponent} from "./room-detail/show-comment/show-comment.component";
 import {HistoryBillComponent} from "./history-bill/history-bill.component";
 import {FindBillByIdComponent} from "./find-bill-by-id/find-bill-by-id.component";
+import {MapComponent} from "./map/map.component";
 
 
 const routes: Routes = [
@@ -25,8 +26,8 @@ const routes: Routes = [
   {path:'showForGuest', component: ShowRoomForGuestComponent},
   {path:'showComment', component: ShowCommentComponent},
   {path:'history', component: HistoryBillComponent},
-  {path:'findbillbyid/:id', component: FindBillByIdComponent}
-
+  {path:'findbillbyid/:id', component: FindBillByIdComponent},
+  {path:'map', component: MapComponent}
 ]
 
 @NgModule({
