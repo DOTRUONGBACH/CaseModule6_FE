@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CrudHostComponent } from './crud-host/crud-host.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {ShowRoomForGuestComponent} from "./rooms/show-room-for-guest/show-room-for-guest.component";
 import {LoginComponent} from "./account/login/login.component";
 import {RegisterComponent} from "./account/register/register.component";
@@ -18,6 +18,8 @@ import {NgxPaginationModule} from "ngx-pagination";
 
 import { ShowCommentComponent } from './room-detail/show-comment/show-comment.component';
 import { HomeDetailComponent } from './room-detail/home-detail/home-detail.component';
+import { HistoryBillComponent } from './history-bill/history-bill.component';
+import { FindBillByIdComponent } from './find-bill-by-id/find-bill-by-id.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { HomeDetailComponent } from './room-detail/home-detail/home-detail.compo
     TopRentComponent,
    ShowTotalBillComponent,
    ShowCommentComponent,
-   HomeDetailComponent
+   HomeDetailComponent,
+   HistoryBillComponent,
+   FindBillByIdComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,7 @@ import { HomeDetailComponent } from './room-detail/home-detail/home-detail.compo
     FormsModule,
     HttpClientModule,
     FormsModule,
-    HttpClientModule,
+
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,

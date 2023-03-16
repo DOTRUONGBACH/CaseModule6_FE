@@ -10,6 +10,8 @@ import {ShowTotalBillComponent} from "./show-total-bill/show-total-bill.componen
 import {ShowRoomForGuestComponent} from "./rooms/show-room-for-guest/show-room-for-guest.component";
 import {RouterModule, Routes} from "@angular/router";
 import {ShowCommentComponent} from "./room-detail/show-comment/show-comment.component";
+import {HistoryBillComponent} from "./history-bill/history-bill.component";
+import {FindBillByIdComponent} from "./find-bill-by-id/find-bill-by-id.component";
 
 
 const routes: Routes = [
@@ -21,7 +23,9 @@ const routes: Routes = [
   {path:'topRent', component: TopRentComponent},
   {path:'showBill', component: ShowTotalBillComponent},
   {path:'showForGuest', component: ShowRoomForGuestComponent},
-  {path:'showComment', component: ShowCommentComponent}
+  {path:'showComment', component: ShowCommentComponent},
+  {path:'history', component: HistoryBillComponent},
+  {path:'findbillbyid/:id', component: FindBillByIdComponent}
 
 ]
 
