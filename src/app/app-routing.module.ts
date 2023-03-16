@@ -13,6 +13,8 @@ import {ShowCommentComponent} from "./room-detail/show-comment/show-comment.comp
 import {HistoryBillComponent} from "./history-bill/history-bill.component";
 import {FindBillByIdComponent} from "./find-bill-by-id/find-bill-by-id.component";
 
+import {HomeDetailComponent} from "./room-detail/home-detail/home-detail.component";
+
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -25,7 +27,11 @@ const routes: Routes = [
   {path:'showForGuest', component: ShowRoomForGuestComponent},
   {path:'showComment', component: ShowCommentComponent},
   {path:'history', component: HistoryBillComponent},
-  {path:'findbillbyid/:id', component: FindBillByIdComponent}
+  {path:'findbillbyid/:id', component: FindBillByIdComponent},
+  {path:'showComment', component: ShowCommentComponent},
+  {path:'showRoomDetail/:idRoom', component: HomeDetailComponent}
+
+
 
 ]
 
