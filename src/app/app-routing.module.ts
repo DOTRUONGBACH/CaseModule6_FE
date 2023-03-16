@@ -11,6 +11,8 @@ import {ShowRoomForGuestComponent} from "./rooms/show-room-for-guest/show-room-f
 import {RouterModule, Routes} from "@angular/router";
 import {ShowCommentComponent} from "./room-detail/show-comment/show-comment.component";
 
+import {HomeDetailComponent} from "./room-detail/home-detail/home-detail.component";
+
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -21,7 +23,11 @@ const routes: Routes = [
   {path:'topRent', component: TopRentComponent},
   {path:'showBill', component: ShowTotalBillComponent},
   {path:'showForGuest', component: ShowRoomForGuestComponent},
-  {path:'showComment', component: ShowCommentComponent}
+
+  {path:'showComment', component: ShowCommentComponent},
+  {path:'showRoomDetail/:idRoom', component: HomeDetailComponent}
+
+
 
 ]
 

@@ -14,8 +14,8 @@ export class ShowCommentService {
   }
 
 
-  getShowComment() :Observable<ShowComment[]>{
-    return this.http.get<ShowComment[]>("http://localhost:8080/comments/showComment");
+  getShowComment(id: string | null) :Observable<ShowComment[]>{
+    return this.http.get<ShowComment[]>(`http://localhost:8080/comments/showComment/${id}`);
   }
 
 
