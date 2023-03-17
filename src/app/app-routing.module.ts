@@ -14,6 +14,7 @@ import {HistoryBillComponent} from "./history-bill/history-bill.component";
 import {FindBillByIdComponent} from "./find-bill-by-id/find-bill-by-id.component";
 
 import {HomeDetailComponent} from "./room-detail/home-detail/home-detail.component";
+import {ShowScheduleComponent} from "./show-schedule/show-schedule.component";
 
 
 const routes: Routes = [
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path:'history', component: HistoryBillComponent},
   {path:'findbillbyid/:id', component: FindBillByIdComponent},
   {path:'showComment', component: ShowCommentComponent},
-  {path:'showRoomDetail/:idRoom', component: HomeDetailComponent}
+  {path:'showRoomDetail/:idRoom', component: HomeDetailComponent},
+  {path:'schedule/:idRoom', component: ShowScheduleComponent}
 
 
 

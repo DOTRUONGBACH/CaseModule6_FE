@@ -661,7 +661,8 @@
                               <th scope="col"></th>
                               <th scope="col" >Status</th>
                               <th scope="col" >Actions</th>
-                              <th scope="col" >Delete</th>
+                              <th scope="col" >Change status</th>
+                              <th scope="col" >Schedule</th>
                             </tr>
                             </thead>
                             <tbody >
@@ -687,6 +688,10 @@
                                  <span class="slider round"></span>
                                </label>
 
+                              </td>
+
+                              <td>
+                                <button routerLink="/schedule/{{r.id}}">📅</button>
                               </td>
                             </tr>
 
@@ -811,9 +816,11 @@
                             <div class="col-md-12">
                               <div class="input-item input-item-textarea ltn__custom-icon">
                                 <input type="text" name="ltn__name" placeholder="Name" formControlName="name">
+                                <p *ngIf="formCreate?.get('name')?.hasError('required')&& formCreate?.get('name')?.touched" style="color: red">* Required</p>
                               </div>
                               <div class="input-item input-item-textarea ltn__custom-icon">
                                 <textarea name="ltn__message" placeholder="Description" formControlName="description"></textarea>
+                                <p *ngIf="formCreate?.get('description')?.hasError('required')&& formCreate?.get('description')?.touched" style="color: red">* Required</p>
                               </div>
                             </div>
                           </div>
@@ -857,6 +864,7 @@
                                   <div class="col-md-12">
                                     <div class="input-item input-item-textarea ltn__custom-icon">
                                       <input type="text" name="ltn__name" placeholder="Address" formControlName="addressRoom">
+                                      <p *ngIf="formCreate?.get('addressRoom')?.hasError('required')&& formCreate?.get('addressRoom')?.touched" style="color: red">* Required</p>
                                     </div>
                                   </div>
                                 </div>

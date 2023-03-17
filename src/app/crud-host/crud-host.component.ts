@@ -9,6 +9,7 @@ import {SaveRoomInfoService} from "../../service/save-room-info.service";
 import {SaveRoomImagesService} from "../../service/save-room-images.service";
 import {ShowRoomForGuestService} from "../../service/show-room-for-guest.service";
 import {LoginService} from "../service/login/login.service";
+import {SheduleServiceService} from "../../service/shedule-service.service";
 
 
 
@@ -38,6 +39,7 @@ export class CrudHostComponent implements OnInit {
     private saveRoomImagesService: SaveRoomImagesService,
     private showRoomService: ShowRoomForGuestService,
     private getAccountId: LoginService,
+
   ) {
   }
 
@@ -190,6 +192,10 @@ export class CrudHostComponent implements OnInit {
       alert("ok")
     });
   }
+
+
+
+
 
 
 }
