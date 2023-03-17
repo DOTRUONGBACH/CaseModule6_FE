@@ -18,6 +18,12 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {ModalModule} from "ngx-bootstrap/modal";
 
 
+import { ShowCommentComponent } from './room-detail/show-comment/show-comment.component';
+import { HomeDetailComponent } from './room-detail/home-detail/home-detail.component';
+import { HistoryBillComponent } from './history-bill/history-bill.component';
+import { FindBillByIdComponent } from './find-bill-by-id/find-bill-by-id.component';
+import { ShowScheduleComponent } from './show-schedule/show-schedule.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +36,12 @@ import {ModalModule} from "ngx-bootstrap/modal";
     CrudHostComponent,
     TopRentComponent,
    ShowTotalBillComponent,
+   ShowTotalBillComponent,
+   ShowCommentComponent,
+   HomeDetailComponent,
+   HistoryBillComponent,
+   FindBillByIdComponent,
+   ShowScheduleComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +49,7 @@ import {ModalModule} from "ngx-bootstrap/modal";
     HttpClientModule,
     ReactiveFormsModule,
     RouterOutlet,
-    ModalModule.forRoot(),
+
 
     ReactiveFormsModule,
     AppRoutingModule,

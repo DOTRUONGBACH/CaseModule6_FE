@@ -3,7 +3,7 @@
     class="ltn__slide-one-active----- slick-slide-arrow-1----- slick-slide-dots-1----- arrow-white----- ltn__slide-animation-active">
     <!-- ltn__slide-item -->
     <div class="ltn__slide-item ltn__slide-item-2 ltn__slide-item-4 bg-image bg-overlay-theme-black-60"
-         data-bs-bg="img/slider/11.jpg">
+         data-bs-bg="assets/img/slider/11.jpg">
       <div class="ltn__slide-item-inner text-left">
         <div class="container">
           <div class="row">
@@ -21,47 +21,66 @@
                   <div class="tab-content">
                     <div class="tab-pane fade active show" id="ltn__form_tab_1_1">
                       <div class="car-dealer-form-inner">
-                        <form action="#" class="ltn__car-dealer-form-box row">
-                          <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-4 col-md-6">
-                            <a>Choice Category</a>
-                            <input type="text" placeholder="Enter Category" name="categoryName"
-                                   [(ngModel)]="categoryName">
+                        <form action="#" class="ltn__car-dealer-form-box row" (ngSubmit)="findRoomByGuest()" [formGroup]="formSearch">
+                          <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-4 col-md-6" formGroupName="categoryName" >
+                            <a >Choice Category</a>
+                            <select class="nice-select" formControlName="name" *ngIf="categories" >
+
+                              <option *ngFor="let category of categories" [value]="category.name" >{{ category.name }}</option>
+                            </select>
                           </div>
                           <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-car col-lg-4 col-md-6">
                             <div class="mb-3 mb-md-0">
-                               <div class="date" id="date1" data-target-input="nearest">
+                              <div class="date" id="date1" data-target-input="nearest" >
                                 <a>CheckIn</a>
-                                <input type="date" class="form-control p-4 datetimepicker-input" name="checkin" [(ngModel)]="checkin" placeholder="Depart Date" data-target="#date1" data-toggle="datetimepicker"/>
+                                <input type="date" class="form-control p-4 datetimepicker-input" name="checkin"
+                                      formControlName="checkin" placeholder="Depart Date" data-target="#date1"
+                                       data-toggle="datetimepicker"/>
                               </div>
+                              <p *ngIf="formSearch?.get('checkin')?.hasError('required')&& formSearch?.get('checkin')?.touched" style="color: red">* Required</p>
+<!--                              <p *ngIf="formSearch?.get('checkin')?.touched" style="color: red">* không được để trống</p>-->
                             </div>
                           </div>
                           <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-car col-lg-4 col-md-6">
                             <div class="mb-3 mb-md-0">
                               <div class="date" id="date2" data-target-input="nearest">
                                 <a>CheckOut</a>
-                                <input type="date" class="form-control p-4 datetimepicker-input" name="checkout" [(ngModel)]="checkout" placeholder="Return Date" data-target="#date2" data-toggle="datetimepicker"/>
+                                <input type="date" class="form-control p-4 datetimepicker-input" name="checkout"
+                                       formControlName="checkout" placeholder="Return Date" data-target="#date2"
+                                       data-toggle="datetimepicker"/>
                               </div>
+                              <p *ngIf="formSearch?.get('checkout')?.hasError('required') && formSearch?.get('checkout')?.touched" style="color: red">* Required</p>
+
                             </div>
                           </div>
-                          <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-car col-lg-4 col-md-6">
+                          <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-car col-lg-4 col-md-6" formGroupName="addressName">
                             <a>Choice Address</a>
-                            <input type="text" placeholder="Enter Address" name="addressName" [(ngModel)]="addressName">
+<!--                            <input type="text" placeholder="Enter Address" name="addressName" >-->
+                            <select class="nice-select" formControlName="name" *ngIf="addresses" >
+
+                              <option   *ngFor="let address of addresses" [value]="address.name">{{ address.name }}</option>
+                            </select>
+                            <p *ngIf="formSearch?.get('addressName')?.get('name')?.hasError('required') && formSearch?.get('addressName')?.touched" style="color: red">* Required</p>
                           </div>
-                           <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-cog col-lg-4 col-md-6">
+
+                          <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-cog col-lg-4 col-md-6">
                             <div class="input-item input-item-name ltn__custom-icon">
                               <a>Choice Min Price</a>
-                              <input type="text" name="price1" placeholder="Min price " [(ngModel)]="price1">
+                              <input type="text" name="price1" placeholder="Min price " formControlName="price1">
                             </div>
+
                           </div>
                           <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-cog col-lg-4 col-md-6">
                             <div class="input-item input-item-name ltn__custom-icon">
                               <a>Choice Max Price</a>
-                              <input type="text" name="price2" placeholder="Max price " [(ngModel)]="price2">
+                              <input type="text" name="price2" placeholder="Max price " formControlName="price2">
                             </div>
+                            <p *ngIf="formSearch?.get('price2')?.value < formSearch?.get('price1')?.value" style="color: red">* MaxPrice  must be greater than MinPrice</p>
                           </div>
                           <div class="car-price-filter-range col-lg-12">
+
                             <div class="btn-wrapper text-center">
-                              <button (click)="findRoomByGuest()" class="btn theme-btn-1 btn-effect-1 text-uppercase">
+                              <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">
                                 Search Inventory
                               </button>
                             </div>
@@ -69,7 +88,6 @@
                         </form>
                       </div>
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -81,7 +99,7 @@
   </div>
 </div>
 
-
+<app-top-rent></app-top-rent>
 <!-- PRODUCT DETAILS AREA START -->
 <div class="ltn__product-area ltn__product-gutter mb-100">
   <div class="container">
@@ -100,8 +118,7 @@
                      *ngFor="let r of rooms| paginate: { itemsPerPage: 3, currentPage: p, totalItems: total }">
                   <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                     <div class="product-img">
-                      <a href="product-details.html"><img src="{{r.img}} " width="350" height="200" ></a>
-
+                      <a href="product-details.html"><img src="{{r.img}} " width="350" height="200"></a>
                     </div>
                     <div class="product-info">
                       <div class="product-badge-price">
@@ -110,9 +127,8 @@
                             <li class="sale-badg"><a>{{r.category}} </a></li>
                           </ul>
                         </div>
-
                       </div>
-                      <h2 class="product-title"><a href="product-details.html">{{r.name}}</a></h2>
+                      <h2 class="product-title"><a  routerLink="/showRoomDetail/{{r.id}}">{{r.name}}</a></h2>
                       <div class="product-img-location">
                         <ul>
                           <li>
@@ -146,7 +162,7 @@
                     </div>
                     <div class="product-info-bottom">
                       <div class="product-price">
-                        <span>{{r.price}}<label>/Month</label></span>
+                        <span>{{r.price}}<label>/Ngày</label></span>
                       </div>
                     </div>
                   </div>
@@ -156,21 +172,11 @@
               </div>
             </div>
           </div>
+          <pagination-controls (pageChange)="pageChangeEvent($event)"
+                               class="ltn__pagination-area text-center"></pagination-controls>
         </div>
-        <pagination-controls (pageChange)="pageChangeEvent($event)" class="ltn__pagination-area text-center">
-
-          <div class="ltn__pagination">
-            <ul>
-              <li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
-              <li><a href="#">1</a></li>
-              <li class="active"><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">...</a></li>
-              <li><a href="#">10</a></li>
-              <li><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
-            </ul>
-          </div>
-        </pagination-controls>
+<!--        <pagination-controls (pageChange)="pageChangeEvent($event)"-->
+<!--                             class="ltn__pagination-area text-center"></pagination-controls>-->
       </div>
     </div>
   </div>
