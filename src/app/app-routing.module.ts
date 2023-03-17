@@ -1,5 +1,5 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {LoginComponent} from "./account/login/login.component";
 import {RegisterComponent} from "./account/register/register.component";
 import {MyAccountComponent} from "./account/my-account/my-account.component";
@@ -11,6 +11,12 @@ import {ShowRoomForGuestComponent} from "./rooms/show-room-for-guest/show-room-f
 import {RouterModule, Routes} from "@angular/router";
 import {ChangePasswordComponent} from "./account/change-password/change-password.component";
 import {ForgotPasswordComponent} from "./account/forgot-password/forgot-password.component";
+import {ShowCommentComponent} from "./room-detail/show-comment/show-comment.component";
+import {HistoryBillComponent} from "./history-bill/history-bill.component";
+import {FindBillByIdComponent} from "./find-bill-by-id/find-bill-by-id.component";
+
+import {HomeDetailComponent} from "./room-detail/home-detail/home-detail.component";
+import {ShowScheduleComponent} from "./show-schedule/show-schedule.component";
 
 
 const routes: Routes = [
@@ -23,7 +29,13 @@ const routes: Routes = [
   {path: 'showBill', component: ShowTotalBillComponent},
   {path: 'showForGuest', component: ShowRoomForGuestComponent},
   {path: 'forgotPassword', component: ForgotPasswordComponent},
-  {path: 'changePassword', component: ChangePasswordComponent}
+  {path: 'changePassword', component: ChangePasswordComponent},
+  {path:'showComment', component: ShowCommentComponent},
+  {path:'history', component: HistoryBillComponent},
+  {path:'findbillbyid/:id', component: FindBillByIdComponent},
+  {path:'showComment', component: ShowCommentComponent},
+  {path:'showRoomDetail/:idRoom', component: HomeDetailComponent},
+  {path:'schedule/:idRoom', component: ShowScheduleComponent}
 ]
 
 @NgModule({
@@ -33,5 +45,4 @@ const routes: Routes = [
     RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule { }

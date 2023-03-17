@@ -20,7 +20,11 @@ import { ChangePasswordComponent } from './account/change-password/change-passwo
 import {ToastModule} from "primeng/toast";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { ForgotPasswordComponent } from './account/forgot-password/forgot-password.component';
-
+import { ShowCommentComponent } from './room-detail/show-comment/show-comment.component';
+import { HomeDetailComponent } from './room-detail/home-detail/home-detail.component';
+import { HistoryBillComponent } from './history-bill/history-bill.component';
+import { FindBillByIdComponent } from './find-bill-by-id/find-bill-by-id.component';
+import { ShowScheduleComponent } from './show-schedule/show-schedule.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,11 @@ import { ForgotPasswordComponent } from './account/forgot-password/forgot-passwo
     CrudHostComponent,
     TopRentComponent,
    ShowTotalBillComponent,
+   ShowCommentComponent,
+   HomeDetailComponent,
+   HistoryBillComponent,
+   FindBillByIdComponent,
+   ShowScheduleComponent,
    ChangePasswordComponent,
    ForgotPasswordComponent,
 
