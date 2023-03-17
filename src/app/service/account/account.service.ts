@@ -17,15 +17,28 @@ export class AccountService {
   }
 
   findById(id : number): Observable<Account> {
-    return this.http.get<Account>('http://localhost:8080/account/' + id)
+    return this.http.get<Account>('http://localhost:8080/account/account/' + id)
   }
 
   create(account : Account): Observable<Account> {
-      return this.http.post<Account>('http://localhost:8080/login/profile/', account)
+      return this.http.put<Account>('http://localhost:8080/account/',account)
   }
+
   setToken(token: string){
     localStorage.setItem("token",token);
   }
+
+  change(accountId: number, currentPass: String, newPass: String, confirmPass: String): Observable<any> {
+    let ChangePassword = {
+      id: accountId,
+      currentPass: currentPass,
+      newPass: newPass,
+      confirmPass: confirmPass,
+
+    }
+    return this.http.post<any>('http://localhost:8080/account/changePassword/', ChangePassword)
+  }
+
 
   getToken(){
     return localStorage.getItem("token");
@@ -39,6 +52,14 @@ export class AccountService {
   }
   findAll(): Observable<Account[]> {
     return this.http.get<Account[]>('http://localhost:8080/account');
+  }
+  findByEmail(email: string):Observable<Account[]>{
+    return this.http.get<Account[]>('http://localhost:8080/account/'+email);
+  }
+
+
+  forgotPassword(email: string):Observable<any>{
+    return this.http.post<any>('http://localhost:8080/account/forgotPassword/', email);
   }
 }
 

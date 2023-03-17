@@ -462,6 +462,10 @@
           </div>
         </div>
       </div>
+      <p-toast></p-toast>
+      <p-toast position="top-left" key="tl"></p-toast>
+      <p-toast position="top-center" key="tc"></p-toast>
+      <p-toast position="bottom-center" key="bc"></p-toast>
       <div class="row">
         <div class="col-lg-6">
           <div class="account-login-inner">
@@ -469,14 +473,14 @@
               <div >
                 <input type="text" formControlName="name" placeholder="Name*" required>
               </div>
-              <p *ngIf="!loginForm.get('name')?.valid && loginForm.get('name')?.touched" style="color: red">Không được để trống</p>
+              <p *ngIf="!loginForm.get('name')?.valid && loginForm.get('name')?.touched" style="color: red">Name is required</p>
 
               <div>
                 <input type="password" formControlName="password" placeholder="Password*">
               </div>
-              <p *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched" style="color: red">Không được để trống</p>
+              <p *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched" style="color: red">Password is required</p>
               <div class="btn-wrapper mt-0">
-                <button class="theme-btn-1 btn btn-block" type="submit">SIGN IN</button>
+                <button class="theme-btn-1 btn btn-block" type="submit" [disabled]="loginForm.invalid" >SIGN IN</button>
               </div>
               <div class="go-to-btn mt-20">
                 <a  href="#" title="Forgot Password?" data-bs-toggle="modal" data-bs-target="#ltn_forget_password_modal"><small>FORGOTTEN YOUR PASSWORD?</small></a>
@@ -490,7 +494,7 @@
             <p>Add items to your wishlistget personalised recommendations <br>
               check out more quickly track your orders register</p>
             <div class="btn-wrapper">
-              <a routerLink="register" class="theme-btn-1 btn black-btn">CREATE ACCOUNT</a>
+              <a routerLink="/register" class="theme-btn-1 btn black-btn">CREATE ACCOUNT</a>
             </div>
           </div>
         </div>
@@ -667,33 +671,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            <div class="ltn__quick-view-modal-inner">
-              <div class="modal-product-item">
-                <div class="row">
-                  <div class="col-12">
-                    <div class="modal-product-info text-center">
-                      <h4>FORGET PASSWORD?</h4>
-                      <p class="added-cart"> Enter you register email.</p>
-                      <form action="#" class="ltn__form-box">
-                        <input type="text" name="email" placeholder="Type your register email*">
-                        <div class="btn-wrapper mt-0">
-                          <button class="theme-btn-1 btn btn-full-width-2" type="submit">Submit</button>
-                        </div>
-                      </form>
-                    </div>
-                    <!-- additional-info -->
-                    <div class="additional-info d-none">
-                      <p>We want to give you <b>10% discount</b> for your first order, <br>  Use discount code at checkout</p>
-                      <div class="payment-method">
-                        <img src="img/icons/payment.png" >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <app-forgot-password></app-forgot-password>
         </div>
       </div>
     </div>

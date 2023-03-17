@@ -15,6 +15,12 @@ import {TopRentComponent} from "./top-rent/top-rent.component";
 import {ShowTotalBillComponent} from "./show-total-bill/show-total-bill.component";
 import {RouterModule, RouterOutlet} from "@angular/router";
 import {NgxPaginationModule} from "ngx-pagination";
+import {AccordionModule} from 'primeng/accordion';
+import { ChangePasswordComponent } from './account/change-password/change-password.component';
+import {ToastModule} from "primeng/toast";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { ForgotPasswordComponent } from './account/forgot-password/forgot-password.component';
+
 
 @NgModule({
   declarations: [
@@ -27,28 +33,33 @@ import {NgxPaginationModule} from "ngx-pagination";
     AppComponent,
     CrudHostComponent,
     TopRentComponent,
-   ShowTotalBillComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    RouterOutlet,
+   ShowTotalBillComponent,
+   ChangePasswordComponent,
+   ForgotPasswordComponent,
 
-
-    ReactiveFormsModule,
-    AppRoutingModule,
-    RouterModule,
-    FormsModule,
-    HttpClientModule,
-    FormsModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    NgxPaginationModule,
   ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        RouterOutlet,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        RouterModule,
+        FormsModule,
+        HttpClientModule,
+        FormsModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        NgxPaginationModule,
+        AccordionModule,
+        ToastModule,
+      BrowserAnimationsModule
+
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
