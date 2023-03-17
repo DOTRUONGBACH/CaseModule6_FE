@@ -15,7 +15,7 @@ import {TopRentComponent} from "./top-rent/top-rent.component";
 import {ShowTotalBillComponent} from "./show-total-bill/show-total-bill.component";
 import {RouterModule, RouterOutlet} from "@angular/router";
 import {NgxPaginationModule} from "ngx-pagination";
-import {ModalModule} from "ngx-bootstrap/modal";
+
 
 
 import { ShowCommentComponent } from './room-detail/show-comment/show-comment.component';

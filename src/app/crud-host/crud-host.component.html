@@ -465,12 +465,13 @@
                 <div class="col-lg-4">
                   <div class="ltn__tab-menu-list mb-50">
                     <div class="nav">
-                      <a  data-bs-toggle="tab" href="#ltn_tab_1_1">Dashboard <i
+                      <a data-bs-toggle="tab" href="#ltn_tab_1_1">Dashboard <i
                         class="fas fa-home"></i></a>
                       <a data-bs-toggle="tab" href="#ltn_tab_1_2">Profiles <i class="fas fa-user"></i></a>
                       <a data-bs-toggle="tab" href="#ltn_tab_1_3">address <i class="fas fa-map-marker-alt"></i></a>
                       <a data-bs-toggle="tab" href="#ltn_tab_1_4">Account Details <i class="fas fa-user"></i></a>
-                      <a class="active show" data-bs-toggle="tab" href="#ltn_tab_1_5">My Properties <i class="fa-solid fa-list"></i></a>
+                      <a class="active show" data-bs-toggle="tab" href="#ltn_tab_1_5">My Properties <i
+                        class="fa-solid fa-list"></i></a>
                       <a data-bs-toggle="tab" href="#ltn_tab_1_6">Favorited Properties <i class="fa-solid fa-heart"></i></a>
                       <a data-bs-toggle="tab" href="#ltn_tab_1_7">Add Property <i
                         class="fa-solid fa-map-location-dot"></i></a>
@@ -483,7 +484,7 @@
                 </div>
                 <div class="col-lg-8">
                   <div class="tab-content">
-                    <div  id="ltn_tab_1_1">
+                    <div id="ltn_tab_1_1">
                       <div class="ltn__myaccount-tab-content-inner">
                         <p>Hello <strong>UserName</strong> (not <strong>UserName</strong>? <small><a href="login.html">Log
                           out</a></small> )</p>
@@ -651,22 +652,23 @@
                         </div>
                       </div>
                     </div>
-                    <div class="tab-pane fade active show" id="ltn_tab_1_5" >
+                    <div class="tab-pane fade active show" id="ltn_tab_1_5">
                       <div class="ltn__myaccount-tab-content-inner">
-                        <div class="ltn__my-properties-table table-responsive" >
+                        <div class="ltn__my-properties-table table-responsive">
                           <table class="table">
                             <thead>
                             <tr>
                               <th scope="col">My Properties</th>
                               <th scope="col"></th>
-                              <th scope="col" >Status</th>
-                              <th scope="col" >Actions</th>
-                              <th scope="col" >Change status</th>
-                              <th scope="col" >Schedule</th>
+                              <th scope="col">Status</th>
+                              <th scope="col">Actions</th>
+                              <th scope="col">Change status</th>
+                              <th scope="col">Schedule</th>
                             </tr>
                             </thead>
-                            <tbody >
-                            <tr *ngFor="let r of rooms| paginate: { itemsPerPage: 3, currentPage: p, totalItems: total }">
+                            <tbody>
+                            <tr
+                              *ngFor="let r of rooms| paginate: { itemsPerPage: 3, currentPage: p, totalItems: total }">
                               <td class="ltn__my-properties-img">
                                 <a href="product-details.html"><img src="{{r.img}}" alt="#"></a>
                               </td>
@@ -678,15 +680,20 @@
                                 </div>
                               </td>
                               <td>
-                                <div #circleDiv style="float: right; margin-right: 25px;" class="circle {{r.status ? 'success' : 'danger'}}"></div>
+                                <div #circleDiv style="float: right; margin-right: 25px;"
+                                     class="circle {{r.status ? 'success' : 'danger'}}"></div>
                               </td>
-                              <td><button style="float: right; margin-right: 25px;" data-toggle="modal" data-target="#modalRegisterForm" >Edit</button></td>
+                              <td>
+                                <button style="float: right; margin-right: 25px;" data-toggle="modal"
+                                        data-target="#modalRegisterForm">Edit
+                                </button>
+                              </td>
 
-                             <td>
-                               <label class="switch">
-                                 <input type="checkbox" [checked]="!r.status" (click)="toggleRoomStatus(r)">
-                                 <span class="slider round"></span>
-                               </label>
+                              <td>
+                                <label class="switch">
+                                  <input type="checkbox" [checked]="!r.status" (click)="toggleRoomStatus(r)">
+                                  <span class="slider round"></span>
+                                </label>
 
                               </td>
 
@@ -697,8 +704,9 @@
 
                             </tbody>
                           </table>
-                          <pagination-controls (pageChange)="pageChangeEvent($event)" class="ltn__pagination-area text-center">
-                            </pagination-controls>
+                          <pagination-controls (pageChange)="pageChangeEvent($event)"
+                                               class="ltn__pagination-area text-center">
+                          </pagination-controls>
                         </div>
 
                       </div>
@@ -808,7 +816,7 @@
                       </div>
                     </div>
                     <div class="tab-pane fade" id="ltn_tab_1_7">
-<!--                      form create-->
+                      <!--                      form create-->
                       <form [formGroup]="formCreate" (ngSubmit)="onSubmit()" class="btn form-check-inline">
                         <div class="ltn__myaccount-tab-content-inner">
                           <h6>Property Description</h6>
@@ -816,60 +824,70 @@
                             <div class="col-md-12">
                               <div class="input-item input-item-textarea ltn__custom-icon">
                                 <input type="text" name="ltn__name" placeholder="Name" formControlName="name">
-                                <p *ngIf="formCreate?.get('name')?.hasError('required')&& formCreate?.get('name')?.touched" style="color: red">* Required</p>
+                                <p
+                                  *ngIf="formCreate?.get('name')?.hasError('required')&& formCreate?.get('name')?.touched"
+                                  style="color: red">* Required</p>
                               </div>
                               <div class="input-item input-item-textarea ltn__custom-icon">
-                                <textarea name="ltn__message" placeholder="Description" formControlName="description"></textarea>
-                                <p *ngIf="formCreate?.get('description')?.hasError('required')&& formCreate?.get('description')?.touched" style="color: red">* Required</p>
+                                <textarea name="ltn__message" placeholder="Description"
+                                          formControlName="description"></textarea>
+                                <p
+                                  *ngIf="formCreate?.get('description')?.hasError('required')&& formCreate?.get('description')?.touched"
+                                  style="color: red">* Required</p>
                               </div>
                             </div>
                           </div>
                           <div class="row">
 
-                              <h6>Property Price</h6>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <div class="input-item  input-item-textarea ltn__custom-icon" style="width: 400px">
-                                    <input type="number" name="ltn__name"
-                                           placeholder="Price in VND per day (only numbers)" formControlName="price">
-                                  </div>
+                            <h6>Property Price</h6>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="input-item  input-item-textarea ltn__custom-icon" style="width: 400px">
+                                  <input type="number" name="ltn__name"
+                                         placeholder="Price in VND per day (only numbers)" formControlName="price">
                                 </div>
+                              </div>
 
                               <h6>Select Category</h6>
-                                <div class="col-lg-4 col-md-6">
-                                  <div class="input-item" style="width: 400px">
-                                    <div formGroupName="category">
+                              <div class="col-lg-4 col-md-6">
+                                <div class="input-item" style="width: 400px">
+                                  <div formGroupName="category">
                                     <select class="nice-select" formControlName="id" *ngIf="categories">
                                       <option value="" selected>--Select a category--</option>
-                                      <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+                                      <option *ngFor="let category of categories"
+                                              [value]="category.id">{{ category.name }}</option>
                                     </select>
-                                    </div>
                                   </div>
                                 </div>
                               </div>
+                            </div>
                             <h6>Select Location</h6>
                             <div class="row">
                               <div class="col-md-6">
                                 <div class="input-item input-item-textarea ltn__custom-icon" style="width: 400px">
                                   <div formGroupName="address">
-                                  <select class="nice-select" formControlName="id" *ngIf="addresses">
-                                    <option value="" selected>--Select a province/city--</option>
-                                    <option *ngFor="let address of addresses" [value]="address.id">{{ address.name }}</option>
-                                  </select>
+                                    <select class="nice-select" formControlName="id" *ngIf="addresses">
+                                      <option value="" selected>--Select a province/city--</option>
+                                      <option *ngFor="let address of addresses"
+                                              [value]="address.id">{{ address.name }}</option>
+                                    </select>
                                   </div>
                                 </div>
                               </div>
-                                <h6>Address Detail</h6>
-                                <div class="row">
-                                  <div class="col-md-12">
-                                    <div class="input-item input-item-textarea ltn__custom-icon">
-                                      <input type="text" name="ltn__name" placeholder="Address" formControlName="addressRoom">
-                                      <p *ngIf="formCreate?.get('addressRoom')?.hasError('required')&& formCreate?.get('addressRoom')?.touched" style="color: red">* Required</p>
-                                    </div>
+                              <h6>Address Detail</h6>
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <div class="input-item input-item-textarea ltn__custom-icon">
+                                    <input type="text" name="ltn__name" placeholder="Address"
+                                           formControlName="addressRoom">
+                                    <p
+                                      *ngIf="formCreate?.get('addressRoom')?.hasError('required')&& formCreate?.get('addressRoom')?.touched"
+                                      style="color: red">* Required</p>
                                   </div>
                                 </div>
-                                </div>
-                                <div class="row">
+                              </div>
+                            </div>
+                            <div class="row">
                               <div class="col-lg-12">
                                 <div class="property-details-google-map mb-60">
                                   <iframe
@@ -879,29 +897,31 @@
                                 </div>
                               </div>
 
-                            <h6>Listing Media</h6>
-                                  <div>
-                                  <img *ngFor="let url of urls" [src]="url" height=100 ><br>
-                                  </div>
-                            <input type="file" (change)="onselect($event)" multiple class="btn theme-btn-3 mb-10" formControlName="images"><br>
-                            <p>
-                              <small>* At least 1 image is required for a valid submission.Minimum size is
-                                500/500px.</small><br>
-                              <small>* PDF files upload supported as well.</small><br>
-                              <small>* Images might take longer to be processed.</small>
-                            </p>
+                              <h6>Listing Media</h6>
+                              <div>
+                                <img *ngFor="let url of urls" [src]="url" height=100><br>
+                              </div>
+                              <input type="file" (change)="onselect($event)" multiple class="btn theme-btn-3 mb-10"
+                                     formControlName="images"><br>
+                              <p>
+                                <small>* At least 1 image is required for a valid submission.Minimum size is
+                                  500/500px.</small><br>
+                                <small>* PDF files upload supported as well.</small><br>
+                                <small>* Images might take longer to be processed.</small>
+                              </p>
 
-                            <div class="alert alert-warning d-none" role="alert">
-                              Please note that the date and time you requested may not be available. We will contact you
-                              to confirm your actual appointment details.
-                            </div>
-                            <div class="btn-wrapper text-center--- mt-30">
-                              <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit" >Submit
-                                Property
-                              </button>
+                              <div class="alert alert-warning d-none" role="alert">
+                                Please note that the date and time you requested may not be available. We will contact
+                                you
+                                to confirm your actual appointment details.
+                              </div>
+                              <div class="btn-wrapper text-center--- mt-30">
+                                <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Submit
+                                  Property
+                                </button>
+                              </div>
                             </div>
                           </div>
-                        </div>
                         </div>
                       </form>
                     </div>
@@ -1185,7 +1205,7 @@
     </div>
   </div>
   <!-- CALL TO ACTION END -->
-<!--  modal edit-->
+  <!--  modal edit-->
   <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
        aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -1226,16 +1246,17 @@
     <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Launch
       Modal Register Form</a>
   </div>
-<!--  end modal edit-->
+  <!--  end modal edit-->
 </div>
 <!-- Body main wrapper end -->
 
 <!--modal xác nhận-->
-<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" >Modal title</h5>
+        <h5 class="modal-title">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" (click)="close()">&times;</span>
         </button>
@@ -1244,7 +1265,7 @@
         <h6>Tạo thành công</h6>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="close()" >OK</button>
+        <button type="button" class="btn btn-primary" (click)="close()">OK</button>
       </div>
     </div>
   </div>
@@ -1252,23 +1273,25 @@
 <!--modal xác nhận-->
 
 
-
 <!--modal xác nhận trạng thái-->
-<div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+<div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" >Modal title</h5>
+        <h5 class="modal-title">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" (click)="close2()">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <h6>Tạo thành công</h6>
+        <h6 style="color: #dd4b39">your room is occupied. Are you sure to change status</h6>
       </div>
-<div modal-footer><button type="button" class="btn btn-primary" (click)="Yes(currentRoom)" >Yes</button></div>
-        <button type="button" class="btn btn-primary" (click)="No()" >No</button>
+      <div modal-footer>
+        <button type="button" class="btn btn-primary" (click)="Yes(currentRoom)">Yes</button>
+        <button type="button" class="btn btn-primary" (click)="No()">No</button>
       </div>
+    </div>
   </div>
 </div>
 <!--modal xác nhận-->
