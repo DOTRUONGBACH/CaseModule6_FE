@@ -7,11 +7,11 @@ import {Room} from "../app/model/Room";
   providedIn: 'root'
 })
 export class SaveRoomInfoService {
-  private baseUrl = 'http://localhost:8080/post/room';
+  private baseUrl = 'http://localhost:8080/post/room/';
 constructor(private http: HttpClient) {
   }
-  saveRoom(room:Room):Observable<any>{
+  saveRoom(room:Room,accountId: number):Observable<any>{
     console.log(room)
-    return this.http.post(this.baseUrl, room);
+    return this.http.post(this.baseUrl + accountId, room);
   }
 }

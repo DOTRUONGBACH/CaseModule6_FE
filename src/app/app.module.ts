@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CrudHostComponent } from './crud-host/crud-host.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 import {ShowRoomForGuestComponent} from "./rooms/show-room-for-guest/show-room-for-guest.component";
 import {LoginComponent} from "./account/login/login.component";
 import {RegisterComponent} from "./account/register/register.component";
@@ -15,6 +15,8 @@ import {TopRentComponent} from "./top-rent/top-rent.component";
 import {ShowTotalBillComponent} from "./show-total-bill/show-total-bill.component";
 import {RouterModule, RouterOutlet} from "@angular/router";
 import {NgxPaginationModule} from "ngx-pagination";
+import {ModalModule} from "ngx-bootstrap/modal";
+
 
 import { ShowCommentComponent } from './room-detail/show-comment/show-comment.component';
 import { HomeDetailComponent } from './room-detail/home-detail/home-detail.component';
@@ -32,6 +34,7 @@ import { FindBillByIdComponent } from './find-bill-by-id/find-bill-by-id.compone
     AppComponent,
     CrudHostComponent,
     TopRentComponent,
+   ShowTotalBillComponent,
    ShowTotalBillComponent,
    ShowCommentComponent,
    HomeDetailComponent,
@@ -52,7 +55,7 @@ import { FindBillByIdComponent } from './find-bill-by-id/find-bill-by-id.compone
     FormsModule,
     HttpClientModule,
     FormsModule,
-
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
