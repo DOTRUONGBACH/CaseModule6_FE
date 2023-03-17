@@ -18,6 +18,8 @@ export class ShowRoomForGuestService {
     return this.httpClient.get<RoomForGuest[]>(this.url )
   }
   findRoomByGuest(categoryName:string, addressName:string, price1:number,price2:number,checkin: string, checkout: string ):Observable<RoomForGuest[]> {
-    return  this.httpClient.get<RoomForGuest[]>( `http://localhost:8080/rooms/find/${categoryName}/${addressName}/${price1}/${price2}/${checkin}/${checkout}`)
+    return  this.httpClient.get<RoomForGuest[]>(
+      `http://localhost:8080/rooms/find/?categoryName=` + categoryName +"&addressName=" +addressName +
+      "&price1="+ price1 + "&price2="+price2+ "&checkin="+checkin+ "&checkout="+checkout)
   }
 }
