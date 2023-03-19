@@ -99,15 +99,14 @@
   </div>
 </div>
 
-<app-top-rent></app-top-rent>
 <!-- PRODUCT DETAILS AREA START -->
 <div class="ltn__product-area ltn__product-gutter mb-100">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
         <div class="section-title-area ltn__section-title-2--- text-center">
-          <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">Properties</h6>
-          <h1 class="section-title">Featured Listings</h1>
+          <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color"></h6>
+          <h1 class="section-title"></h1>
         </div>
         <div class="tab-content">
           <div class="tab-pane fade active show" id="liton_product_grid">
@@ -115,7 +114,7 @@
               <div class="row">
                 <!-- ltn__product-item -->
                 <div class="col-lg-4 col-sm-6 col-12"
-                     *ngFor="let r of rooms| paginate: { itemsPerPage: 3, currentPage: p, totalItems: total }">
+                     *ngFor="let r of rooms| paginate: { itemsPerPage: 6, currentPage: p, totalItems: total }">
                   <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                     <div class="product-img">
                       <a href="product-details.html"><img src="{{r.img}} " width="350" height="200"></a>
@@ -136,52 +135,48 @@
                           </li>
                         </ul>
                       </div>
-                      <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
-                        <li>{{r.description}}</li>
-                      </ul>
-                      <div class="product-hover-action">
-                        <ul>
-                          <li>
-                            <a href="#" title="Quick View" data-bs-toggle="modal"
-                               data-bs-target="#quick_view_modal">
-                              <i class="flaticon-expand"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" title="Wishlist" data-bs-toggle="modal"
-                               data-bs-target="#liton_wishlist_modal">
-                              <i class="flaticon-heart-1"></i></a>
-                          </li>
-                          <li>
-                            <a href="product-details.html" title="Product Details">
-                              <i class="flaticon-add"></i>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
+<!--                      <ul class="ltn__list-item-2-&#45;&#45; ltn__list-item-2-before-&#45;&#45; ltn__plot-brief">-->
+<!--                        <li>{{r.description}}</li>-->
+<!--                      </ul>-->
+<!--                      <div class="product-hover-action">-->
+<!--                        <ul>-->
+<!--                          <li>-->
+<!--                            <a href="#" title="Quick View" data-bs-toggle="modal"-->
+<!--                               data-bs-target="#quick_view_modal">-->
+<!--                              <i class="flaticon-expand"></i>-->
+<!--                            </a>-->
+<!--                          </li>-->
+<!--                          <li>-->
+<!--                            <a href="#" title="Wishlist" data-bs-toggle="modal"-->
+<!--                               data-bs-target="#liton_wishlist_modal">-->
+<!--                              <i class="flaticon-heart-1"></i></a>-->
+<!--                          </li>-->
+<!--                          <li>-->
+<!--                            <a href="product-details.html" title="Product Details">-->
+<!--                              <i class="flaticon-add"></i>-->
+<!--                            </a>-->
+<!--                          </li>-->
+<!--                        </ul>-->
+<!--                      </div>-->
                     </div>
                     <div class="product-info-bottom">
                       <div class="product-price">
-                        <span>{{r.price}}<label>/Ngày</label></span>
+                        <span>{{r.price}} $<label>/Day</label></span>
                       </div>
                     </div>
                   </div>
                 </div>
-                <!-- ltn__product-item -->
-                <!--  -->
+
               </div>
             </div>
           </div>
           <pagination-controls (pageChange)="pageChangeEvent($event)"
                                class="ltn__pagination-area text-center"></pagination-controls>
         </div>
-<!--        <pagination-controls (pageChange)="pageChangeEvent($event)"-->
-<!--                             class="ltn__pagination-area text-center"></pagination-controls>-->
+
       </div>
     </div>
   </div>
 </div>
 <!-- PRODUCT DETAILS AREA END -->
-
-
 

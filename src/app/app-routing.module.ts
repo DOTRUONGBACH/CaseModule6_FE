@@ -14,6 +14,8 @@ import {HistoryBillComponent} from "./history-bill/history-bill.component";
 import {FindBillByIdComponent} from "./find-bill-by-id/find-bill-by-id.component";
 
 import {HomeDetailComponent} from "./room-detail/home-detail/home-detail.component";
+import {RentRoomComponent} from "./rent-room/rent-room.component";
+
 
 
 const routes: Routes = [
@@ -21,16 +23,16 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path:'account',component:MyAccountComponent},
   {path:'host',component:CrudHostComponent},
-  {path:'',component:AppComponent},
+  // {path:'',component:AppComponent},
   {path:'topRent', component: TopRentComponent},
   {path:'showBill', component: ShowTotalBillComponent},
-  {path:'showForGuest', component: ShowRoomForGuestComponent},
+  {path:'', component: ShowRoomForGuestComponent},
   {path:'showComment', component: ShowCommentComponent},
   {path:'history', component: HistoryBillComponent},
   {path:'findbillbyid/:id', component: FindBillByIdComponent},
   {path:'showComment', component: ShowCommentComponent},
-  {path:'showRoomDetail/:idRoom', component: HomeDetailComponent}
-
+  {path:'showRoomDetail/:idRoom', component: HomeDetailComponent},
+  {path:'rent', component: RentRoomComponent},
 
 
 ]

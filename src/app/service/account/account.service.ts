@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {Account} from "../../model/Account";
 import {Observable} from "rxjs";
 import {AccountToken} from "../../model/AccountToken";
+import {Room} from "../../model/Room";
+import {AccountP} from "../../model/AccountP";
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +20,9 @@ export class AccountService {
 
   findById(id : number): Observable<Account> {
     return this.http.get<Account>('http://localhost:8080/account/' + id)
+  }
+  findByIdP(id : number): Observable<AccountP> {
+    return this.http.get<AccountP>(`http://localhost:8080/account/p/${id}`)
   }
 
   create(account : Account): Observable<Account> {
@@ -39,6 +44,9 @@ export class AccountService {
   }
   findAll(): Observable<Account[]> {
     return this.http.get<Account[]>('http://localhost:8080/account');
+  }
+  findRoomById(id:number):Observable<Room>{
+    return this.http.get<Room>(`http://localhost:8080/rooms/p/findRoomById/${id}`)
   }
 }
 
