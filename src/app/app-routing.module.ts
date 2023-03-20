@@ -32,8 +32,7 @@ const routes: Routes = [
   {path:'findbillbyid/:id', component: FindBillByIdComponent},
   {path:'showComment', component: ShowCommentComponent},
   {path:'showRoomDetail/:idRoom', component: HomeDetailComponent},
-  {path:'rent', component: RentRoomComponent},
-
+  {path:'rent/:idRoom', component: RentRoomComponent},
 
 ]
 
