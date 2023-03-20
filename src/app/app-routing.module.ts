@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {LoginComponent} from "./account/login/login.component";
 import {RegisterComponent} from "./account/register/register.component";
 import {MyAccountComponent} from "./account/my-account/my-account.component";
@@ -9,33 +9,35 @@ import {TopRentComponent} from "./top-rent/top-rent.component";
 import {ShowTotalBillComponent} from "./show-total-bill/show-total-bill.component";
 import {ShowRoomForGuestComponent} from "./rooms/show-room-for-guest/show-room-for-guest.component";
 import {RouterModule, Routes} from "@angular/router";
-import {ChangePasswordComponent} from "./account/change-password/change-password.component";
-import {ForgotPasswordComponent} from "./account/forgot-password/forgot-password.component";
+
 import {ShowCommentComponent} from "./room-detail/show-comment/show-comment.component";
 import {HistoryBillComponent} from "./history-bill/history-bill.component";
 import {FindBillByIdComponent} from "./find-bill-by-id/find-bill-by-id.component";
-
 import {HomeDetailComponent} from "./room-detail/home-detail/home-detail.component";
 import {ShowScheduleComponent} from "./show-schedule/show-schedule.component";
-
-
+import {ChangePasswordComponent} from "./account/change-password/change-password.component";
+import {ForgotPasswordComponent} from "./account/forgot-password/forgot-password.component";
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'account', component: MyAccountComponent},
-  {path: 'host', component: CrudHostComponent},
-  {path: '', component: AppComponent},
-  {path: 'topRent', component: TopRentComponent},
-  {path: 'showBill', component: ShowTotalBillComponent},
-  {path: 'showForGuest', component: ShowRoomForGuestComponent},
-  {path: 'forgotPassword', component: ForgotPasswordComponent},
-  {path: 'changePassword', component: ChangePasswordComponent},
+  {path:'account',component:MyAccountComponent},
+  {path:'host',component:CrudHostComponent},
+  {path:'',component:AppComponent},
+  {path:'topRent', component: TopRentComponent},
+  {path:'showBill', component: ShowTotalBillComponent},
+  {path:'showForGuest', component: ShowRoomForGuestComponent},
   {path:'showComment', component: ShowCommentComponent},
   {path:'history', component: HistoryBillComponent},
   {path:'findbillbyid/:id', component: FindBillByIdComponent},
   {path:'showComment', component: ShowCommentComponent},
   {path:'showRoomDetail/:idRoom', component: HomeDetailComponent},
   {path:'schedule/:idRoom', component: ShowScheduleComponent},
+  {path: 'host', component: CrudHostComponent},
+  {path: 'topRent', component: TopRentComponent},
+  {path: 'showBill', component: ShowTotalBillComponent},
+  {path: 'showForGuest', component: ShowRoomForGuestComponent},
+  {path: 'forgotPassword', component: ForgotPasswordComponent},
+  {path: 'changePassword', component: ChangePasswordComponent}
 ]
 
 @NgModule({
@@ -45,4 +47,5 @@ const routes: Routes = [
     RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

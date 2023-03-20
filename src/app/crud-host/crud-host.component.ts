@@ -105,7 +105,7 @@ export class CrudHostComponent implements OnInit {
         },
         error => {
           console.log('Error saving room:', error);
-          alert("tạo thất bại")
+          alert("something wrong")
         }
       )
     }
@@ -189,7 +189,6 @@ export class CrudHostComponent implements OnInit {
         this.circleDiv?.nativeElement.classList.remove('success');
         this.circleDiv?.nativeElement.classList.add('danger');
       }
-      alert("ok")
     });
   }
 
