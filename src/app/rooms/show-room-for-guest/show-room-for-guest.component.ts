@@ -97,9 +97,10 @@ export class ShowRoomForGuestComponent implements OnInit {
     }
 
     let checkin = this.formSearch.get('checkin')?.value
+    this.showRoomService.checkinDate = checkin;
 
     let checkout = this.formSearch.get('checkout')?.value
-
+    this.showRoomService.checkoutDate = checkout;
     // @ts-ignore
 
     this.showRoomService.findRoomByGuest(categoryName, addressName, price1, price2, checkin, checkout).subscribe(

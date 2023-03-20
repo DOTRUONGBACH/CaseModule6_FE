@@ -8,6 +8,8 @@ import {RoomForGuest} from "../app/model/RoomForGuest";
   providedIn: 'root'
 })
 export class ShowRoomForGuestService {
+  checkinDate!: any;
+  checkoutDate!: any;
 
   constructor(private httpClient: HttpClient) {
   }
