@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loginService.login(this.loginForm.value).subscribe((data) => {
-      debugger
       this.showError()
       this.loginService.setAccountToken(data);
       this.loginService.setToken(data.token);
