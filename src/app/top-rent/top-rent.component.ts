@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TopRentService} from "../../service/TopRentService";
 import {TopRent} from "../model/TopRent";
+import {ShowRoomForGuestComponent} from "../rooms/show-room-for-guest/show-room-for-guest.component";
 
 
 @Component({
@@ -13,9 +14,13 @@ export class TopRentComponent implements OnInit{
   constructor(private topRentService:TopRentService) {
   }
 
+
+
+
   ngOnInit(): void {
     this.topRentService.getTopRent().subscribe(data=>{
       this.topRents = data;
+
     });
   }
 
