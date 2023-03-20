@@ -16,14 +16,6 @@ import {ShowTotalBillComponent} from "./show-total-bill/show-total-bill.componen
 import {RouterModule, RouterOutlet} from "@angular/router";
 import {NgxPaginationModule} from "ngx-pagination";
 
-
-
-import { ShowCommentComponent } from './room-detail/show-comment/show-comment.component';
-import { HomeDetailComponent } from './room-detail/home-detail/home-detail.component';
-import { HistoryBillComponent } from './history-bill/history-bill.component';
-import { FindBillByIdComponent } from './find-bill-by-id/find-bill-by-id.component';
-import { ShowScheduleComponent } from './show-schedule/show-schedule.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +28,10 @@ import { ShowScheduleComponent } from './show-schedule/show-schedule.component';
     CrudHostComponent,
     TopRentComponent,
    ShowTotalBillComponent,
+   ChangePasswordComponent,
+   ForgotPasswordComponent,
+
+   ShowTotalBillComponent,
    ShowTotalBillComponent,
    ShowCommentComponent,
    HomeDetailComponent,
@@ -43,26 +39,28 @@ import { ShowScheduleComponent } from './show-schedule/show-schedule.component';
    FindBillByIdComponent,
    ShowScheduleComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    RouterOutlet,
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        RouterOutlet,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        RouterModule,
+        FormsModule,
+        HttpClientModule,
+        FormsModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        NgxPaginationModule,
+        AccordionModule,
+        ToastModule,
+      BrowserAnimationsModule
 
-
-    ReactiveFormsModule,
-    AppRoutingModule,
-    RouterModule,
-    FormsModule,
-    HttpClientModule,
-    FormsModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    NgxPaginationModule,
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

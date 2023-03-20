@@ -9,12 +9,6 @@ import {TopRentComponent} from "./top-rent/top-rent.component";
 import {ShowTotalBillComponent} from "./show-total-bill/show-total-bill.component";
 import {ShowRoomForGuestComponent} from "./rooms/show-room-for-guest/show-room-for-guest.component";
 import {RouterModule, Routes} from "@angular/router";
-import {ShowCommentComponent} from "./room-detail/show-comment/show-comment.component";
-import {HistoryBillComponent} from "./history-bill/history-bill.component";
-import {FindBillByIdComponent} from "./find-bill-by-id/find-bill-by-id.component";
-
-import {HomeDetailComponent} from "./room-detail/home-detail/home-detail.component";
-import {ShowScheduleComponent} from "./show-schedule/show-schedule.component";
 
 
 const routes: Routes = [
@@ -31,8 +25,9 @@ const routes: Routes = [
   {path:'findbillbyid/:id', component: FindBillByIdComponent},
   {path:'showComment', component: ShowCommentComponent},
   {path:'showRoomDetail/:idRoom', component: HomeDetailComponent},
-  {path:'schedule/:idRoom', component: ShowScheduleComponent}
-
+  {path:'schedule/:idRoom', component: ShowScheduleComponent},
+  {path: 'forgotPassword', component: ForgotPasswordComponent},
+  {path: 'changePassword', component: ChangePasswordComponent}
 
 
 ]

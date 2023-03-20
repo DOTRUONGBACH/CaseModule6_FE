@@ -3,8 +3,9 @@
   your browser</a> to improve your experience and security.</p>
 <![endif]-->
 
-<!-- Add your site or application content here -->
 
+
+<!-- Add your site or application content here -->
 <!-- Body main wrapper start -->
 <div class="body-wrapper">
 
@@ -452,6 +453,33 @@
   <!-- BREADCRUMB AREA END -->
 
   <!-- LOGIN AREA START (Register) -->
+
+  <p-toast></p-toast>
+    <p-toast position="top-left" key="tl"></p-toast>
+    <p-toast position="top-center" key="ab"></p-toast>
+    <p-toast position="bottom-center" key="bc"></p-toast>
+
+<!--  <p-toast position="bottom-center" key="c" (onClose)="onReject()" [baseZIndex]="5000">-->
+<!--    <ng-template let-message pTemplate="message">-->
+<!--      <div class="flex flex-column" style="flex: 1">-->
+<!--        <div class="text-center">-->
+<!--          <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>-->
+<!--          <h4>{{message.summary}}</h4>-->
+<!--          <p>{{message.detail}}</p>-->
+<!--        </div>-->
+<!--        <div class="grid p-fluid">-->
+<!--          <div class="col-6">-->
+<!--            <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success">qqqq</button>-->
+<!--          </div>-->
+<!--          <div class="col-6">-->
+<!--            <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary">qqq1</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </ng-template>-->
+<!--  </p-toast>-->
+
+
   <div class="ltn__login-area pb-110">
     <div class="container">
       <div class="row">
@@ -461,12 +489,15 @@
           </div>
         </div>
       </div>
+
+<!--      <button type="button" pButton pRipple (click)="showError()" label="Error" class="p-button-danger mb-2">sssss</button>-->
+
       <div class="row">
         <div class="col-lg-6 offset-lg-3">
           <div class="account-login-inner">
             <form [formGroup]="registerForm" (ngSubmit)="register()">
               <div>
-                <input type="text" formControlName="name" placeholder="Name*" required>
+                <input type="text" formControlName="name" placeholder="Name*" required ngModel (change)="checkName(name.value)" #name>
               </div>
               <p *ngIf="!registerForm.get('name')?.valid && registerForm.get('name')?.touched" style="color: red">
                 Name is required</p>
@@ -491,7 +522,7 @@
               <p *ngIf="!registerForm.get('rePassword')?.valid && registerForm.get('rePassword')?.touched"
                  style="color: red">RePassword is required</p>
               <div>
-                <input type="text" formControlName="email" placeholder="Email*" email>
+                <input type="text" formControlName="email" placeholder="Email*" ngModel (change)="checkEmail(mail.value)" #mail>
               </div>
               <div><p *ngIf="!registerForm.get('email')?.valid && registerForm.get('email')?.touched"
                       style="color: red">
@@ -513,7 +544,7 @@
                 <input type="file" formControlName="avatar" placeholder="Avatar">
               </div>
               <div class="btn-wrapper">
-                <button [disabled]="registerForm.invalid" class="theme-btn-1 btn reverse-color btn-block" type="submit">
+                <button [disabled]="registerForm.invalid"  pButton pRipple (click)="showSuccess()" label="Success" class="theme-btn-1 btn reverse-color btn-block" type="submit">
                   CREATE ACCOUNT
                 </button>
               </div>
@@ -530,6 +561,7 @@
       </div>
     </div>
   </div>
+
   <!-- LOGIN AREA END -->
 
   <!-- CALL TO ACTION START (call-to-action-6) -->
@@ -699,5 +731,5 @@
 <!-- Main JS -->
 <script src="js/main.js"></script>
 
-
+<style></style>
 

@@ -26,6 +26,8 @@
     "jquery": "^3.6.4",
     "ngx-bootstrap": "^10.2.0",
     "ngx-pagination": "^6.0.3",
+    "primeicons": "^6.0.1",
+    "primeng": "^15.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
@@ -43,5 +45,10 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~4.9.4"
-  }
+  },
+  "styles": [
+    "node_modules/primeicons/primeicons.css",
+    "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+    "node_modules/primeng/resources/primeng.min.css"
+  ]
 }
