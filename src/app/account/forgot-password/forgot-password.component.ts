@@ -24,46 +24,6 @@ constructor(private accountService: AccountService, private http: HttpClient, pr
 
 
   ngOnInit(): void {
-  //   // // @ts-ignore
-  //   // this.account = JSON.parse(localStorage.getItem("accountToken"))
-  //   // this.id = this.account?.id
-  //   this.formForgot = new FormGroup({
-  //     email : new FormControl(""),
-  //     newPassword:new FormControl(""),
-  //     confirmPassword:new FormControl(""),
-  //   })
-  //   // // this.accountService.findById(this.id).subscribe(data => {
-  //   // //   console.log(data)
-  //   // //   this.account = data
-  //   // // })
-  // }
-  // forgot() {
-  //   this.email = this.formForgot.value.email
-  //   this.newPassword = this.formForgot.value.newPassword
-  //   this.confirmPassword = this.formForgot.value.confirmPassword
-  //   if (this.email != this.formForgot.value.email)
-  //     this.showError();
-  //   this.accountService.forgot(this.id, this.email, this.newPassword, this.confirmPassword).subscribe(data => {
-  //     console.log(data)
-  //     this.showSuccess();
-  //     this.router.navigate(['/login'])
-  //   })
-  // }
-  // checkEmail(email1: string):void{
-  //   this.accountService.findAll().subscribe((data)=>{
-  //     for (let e of data){
-  //       if (e.email === email1){
-  //         setTimeout(()=>{
-  //           this.showSuccess();
-  //         },50,1)
-  //       }else {
-  //         setTimeout(()=>{
-  //           this.showError();
-  //         },50,1)
-  //       }
-  //     }
-  //
-  //   })
     this.formForgot = new FormGroup({
       email: new FormControl(""),
     })

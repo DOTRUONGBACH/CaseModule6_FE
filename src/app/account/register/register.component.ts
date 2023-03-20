@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  url="./assets/e8a1356749352070a79b5c83d4c33935.jpg";
   registerForm = new FormGroup({
     name: new FormControl("", Validators.required),
     password: new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(8)]),

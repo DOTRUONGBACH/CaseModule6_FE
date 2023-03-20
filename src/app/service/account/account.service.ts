@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Account} from "../../model/Account";
 import {Observable} from "rxjs";
 import {AccountToken} from "../../model/AccountToken";
+import {ChangePassword} from "../../model/ChangePassword";
 
 @Injectable({
   providedIn: 'root'
@@ -28,17 +29,9 @@ export class AccountService {
     localStorage.setItem("token",token);
   }
 
-  change(accountId: number, currentPass: String, newPass: String, confirmPass: String): Observable<any> {
-    let ChangePassword = {
-      id: accountId,
-      currentPass: currentPass,
-      newPass: newPass,
-      confirmPass: confirmPass,
-
-    }
-    return this.http.post<any>('http://localhost:8080/account/changePassword/', ChangePassword)
+  change(changePassword:ChangePassword): Observable<any> {
+    return this.http.post<any>('http://localhost:8080/account/changePassword/', changePassword)
   }
-
 
   getToken(){
     return localStorage.getItem("token");
@@ -54,7 +47,7 @@ export class AccountService {
     return this.http.get<Account[]>('http://localhost:8080/account');
   }
   findByEmail(email: string):Observable<Account[]>{
-    return this.http.get<Account[]>('http://localhost:8080/account/'+email);
+    return this.http.get<Account[]>('http://localhost:8080/account/'+ email);
   }
 
 

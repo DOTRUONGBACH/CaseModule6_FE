@@ -4,18 +4,20 @@ import {AccountService} from "../../service/account/account.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-show-profile',
   templateUrl: './show-profile.component.html',
-  styleUrls: ['./show-profile.component.css']
+  styleUrls: ['./show-profile.component.css'],
+  providers:[MessageService]
 })
 export class ShowProfileComponent implements OnInit {
   id: any;
   account: Account | undefined;
   formEdit!: FormGroup;
 
-  constructor(private accountService: AccountService, private http: HttpClient, private route: ActivatedRoute, private router: Router) {
+  constructor(private accountService: AccountService, private http: HttpClient, private route: ActivatedRoute, private router: Router,private messageService: MessageService) {
   }
   ngOnInit(): void {
     // @ts-ignore
@@ -34,6 +36,7 @@ export class ShowProfileComponent implements OnInit {
       this.account = data
     })
     this.showEdit(this.account)
+
   }
   showEdit(account: Account | undefined) {
       this.formEdit.get('id')?.setValue(account?.id)
@@ -48,7 +51,18 @@ editProfile()
   let accountNew = this.formEdit.value
   console.log(accountNew)
   this.accountService.create(accountNew).subscribe(data => {
-    this.router.navigate(['/login'])
+    this.showSuccess();
   })
+  setTimeout(()=>{
+    this.router.navigate(["/login"]);
+  },2000,10)
 }
+
+
+  showSuccess() {
+    this.messageService.add({severity:'success', summary: 'Success', detail: 'Change Success! Please login',key:'ab'});
+  }
+  showError() {
+    this.messageService.add({severity: 'error', summary: 'Error', detail: 'Email already exists!',key:'ab'});
+  }
 }

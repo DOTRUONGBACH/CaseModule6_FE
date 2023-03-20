@@ -29,55 +29,42 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loginService.login(this.loginForm.value).subscribe((data) => {
-      debugger
-      this.showError()
       this.loginService.setAccountToken(data);
       this.loginService.setToken(data.token);
       this.newAcc = this.loginService.getAccountToken();
       if (this.newAcc.roles[0].name === "ROLE_ADMIN") {
-        alert("admin")
         this.router.navigate(["/admin"])
-      } else {
-
-        this.router.navigate(["/account"])
+      } else if (this.newAcc.name != null) {
         this.showSuccess2()
+        setTimeout(() => {
+          this.router.navigate(["/account"])
+        }, 2000, 10)
+      } else {
+        this.showError()
       }
-    },(error)=>{this.showError()})
+    })
   }
+  checkNameLogin(accountToken: AccountToken): void {
+    this.accountService.findAll().subscribe((data) => {
+      for (let a of data) {
+        if (a.name == this.loginForm.value.name) {
+          setTimeout(() => {
+            this.showSuccess2()
+          }, 50, 10)
+        } else {
+          setTimeout(() => {
+            this.showError();
+          }, 50, 10)
 
+        }
+      }
+    })
+  }
   showSuccess2() {
     this.messageService.add({severity: 'success', summary: 'Success', detail: 'Login successfully!', key: 'tc'});
   }
 
   showError() {
     this.messageService.add({severity: 'error', summary: 'Error', detail: 'Name does not exist', key: 'tc'});
-  }
-
-
-  checkNameLogin(accountToken: AccountToken): void {
-    {
-      {
-        if (accountToken != null) {
-            this.showSuccess2()
-        } else {
-            this.showError();
-        }
-        // this.accountService.findAll().subscribe((data)=>{
-        //   for (let a of data){
-        //     if (a.name == this.loginForm.value.name){
-        //       setTimeout(()=>{
-        //         this.showSuccess2()
-        //       },50,10)
-        //     }else {
-        //       setTimeout(()=>{
-        //         this.showError();
-        //       },50,10)
-        //
-        //     }
-        //   }
-        // })
-
-      }
-    }
   }
 }

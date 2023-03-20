@@ -1,38 +1,27 @@
+<p-toast></p-toast>
+<p-toast position="top-left" key="tl"></p-toast>
+<p-toast position="top-center" key="ab"></p-toast>
+<p-toast position="bottom-center" key="bc"></p-toast>
+<form id="contact-form" [formGroup]="formEdit" (submit)="editProfile()">
+  <div class="row">
+    <div class="col-md-6">
+      <input type="text" formControlName="id" placeholder="id" readonly>
 
-                          <div class="ltn__form-box contact-form-box box-shadow white-bg">
-                            <form id="contact-form" [formGroup]="formEdit" (submit)="editProfile()">
-                              <div class="row">
-                                <div class="col-md-6" >
-                                  <div class="form-control">
-                                    <input type="text" formControlName="id" placeholder="id" readonly>
-                                  </div>
-                                </div>
-                                <div class="col-md-6">
-                                  <div class="form-control">
-                                    <input type="text" formControlName="name" placeholder="name">
-                                  </div>
-                                </div>
-                                <div class="col-md-6">
-                                  <div class="form-control">
-                                    <input type="text" formControlName="phone" placeholder="phone">
-                                  </div>
-                                </div>
-                                <div class="col-md-6">
-                                  <div class="form-control">
-                                    <input type="email" formControlName="email" placeholder="Email" readonly>
-                                  </div>
-                                </div>
-                                <div class="col-md-6">
-                                  <div class="form-control">
-                                    <input type="file" formControlName="avatar" placeholder="Avatar" (change)="($event)" >
-                                  </div>
-                                </div>
-                              </div>
-                              <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
-                          </div>
-<script src="js/plugins.js"></script>
-<!-- Main JS -->
-<script src="js/main.js"></script>
-
+    </div>
+    <div class="col-md-6">
+      <input type="text" formControlName="name" placeholder="name">
+    </div>
+    <div class="col-md-6">
+      <input type="text" formControlName="phone" placeholder="phone">
+    </div>
+    <div class="col-md-6">
+      <input type="email" formControlName="email" placeholder="Email" readonly>
+    </div>
+    <div class="col-md-6">
+      <input type="file" formControlName="avatar" placeholder="Avatar" (change)="($event)">
+    </div>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary" style="background: #fd7e14">Submit</button>
+</form>
 

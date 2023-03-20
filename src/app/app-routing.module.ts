@@ -35,7 +35,7 @@ const routes: Routes = [
   {path:'findbillbyid/:id', component: FindBillByIdComponent},
   {path:'showComment', component: ShowCommentComponent},
   {path:'showRoomDetail/:idRoom', component: HomeDetailComponent},
-  {path:'schedule/:idRoom', component: ShowScheduleComponent}
+  {path:'schedule/:idRoom', component: ShowScheduleComponent},
 ]
 
 @NgModule({
