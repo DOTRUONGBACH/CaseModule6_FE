@@ -106,7 +106,7 @@ export class ShowRoomForGuestComponent implements OnInit {
     this.showRoomService.findRoomByGuest(categoryName, addressName, price1, price2, checkin, checkout).subscribe(
       (response: any) => {
         this.rooms = response;
-        console.log(this.rooms.length);
+
         this.total = this.rooms.length;
 
       }
