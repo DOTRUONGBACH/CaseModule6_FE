@@ -9,6 +9,8 @@ import {TopRentComponent} from "./top-rent/top-rent.component";
 import {ShowTotalBillComponent} from "./show-total-bill/show-total-bill.component";
 import {ShowRoomForGuestComponent} from "./rooms/show-room-for-guest/show-room-for-guest.component";
 import {RouterModule, Routes} from "@angular/router";
+import {ChangePasswordComponent} from "./account/change-password/change-password.component";
+import {ForgotPasswordComponent} from "./account/forgot-password/forgot-password.component";
 import {ShowCommentComponent} from "./room-detail/show-comment/show-comment.component";
 import {HistoryBillComponent} from "./history-bill/history-bill.component";
 import {FindBillByIdComponent} from "./find-bill-by-id/find-bill-by-id.component";
@@ -20,21 +22,20 @@ import {ShowScheduleComponent} from "./show-schedule/show-schedule.component";
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path:'account',component:MyAccountComponent},
-  {path:'host',component:CrudHostComponent},
-  {path:'',component:AppComponent},
-  {path:'topRent', component: TopRentComponent},
-  {path:'showBill', component: ShowTotalBillComponent},
-  {path:'showForGuest', component: ShowRoomForGuestComponent},
+  {path: 'account', component: MyAccountComponent},
+  {path: 'host', component: CrudHostComponent},
+  {path: '', component: AppComponent},
+  {path: 'topRent', component: TopRentComponent},
+  {path: 'showBill', component: ShowTotalBillComponent},
+  {path: 'showForGuest', component: ShowRoomForGuestComponent},
+  {path: 'forgotPassword', component: ForgotPasswordComponent},
+  {path: 'changePassword', component: ChangePasswordComponent},
   {path:'showComment', component: ShowCommentComponent},
   {path:'history', component: HistoryBillComponent},
   {path:'findbillbyid/:id', component: FindBillByIdComponent},
   {path:'showComment', component: ShowCommentComponent},
   {path:'showRoomDetail/:idRoom', component: HomeDetailComponent},
-  {path:'schedule/:idRoom', component: ShowScheduleComponent}
-
-
-
+  {path:'schedule/:idRoom', component: ShowScheduleComponent},
 ]
 
 @NgModule({
