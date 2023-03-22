@@ -30,6 +30,8 @@ import {NgFor} from "@angular/common";
 import {RentRoomComponent} from "./rent-room/rent-room.component";
 import {ShowRoomDetailService} from "../service/ShowRoomDetail";
 
+import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {CommonModule} from "@angular/common";
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,6 +75,8 @@ import {ShowRoomDetailService} from "../service/ShowRoomDetail";
     AccordionModule,
     ToastModule,
     BrowserAnimationsModule,
+    ConfirmDialogModule,
+    CommonModule,
   ],
 
 
