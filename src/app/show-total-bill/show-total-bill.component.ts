@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ShowTotalBillService} from "../../service/show-total-bill.service";
 
-// @ts-ignore
+
 import {Chart} from 'chart.js';
 
 @Component({
