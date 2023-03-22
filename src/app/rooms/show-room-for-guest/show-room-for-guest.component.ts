@@ -90,7 +90,7 @@ export class ShowRoomForGuestComponent implements OnInit {
   }
 
   showSuccess() {
-    this.mess.add({severity: 'success', summary: 'Success', detail: 'See the results below'});
+    this.mess.add({severity: 'success', summary: 'Success', detail: 'See the results below', key: 'tl'});
   }
 
   check: boolean = true
