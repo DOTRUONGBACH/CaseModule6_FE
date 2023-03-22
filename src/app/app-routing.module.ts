@@ -41,7 +41,7 @@ const routes: Routes = [
   {path: 'showBill', component: ShowTotalBillComponent},
   {path: 'showForGuest', component: ShowRoomForGuestComponent},
   {path: 'forgotPassword', component: ForgotPasswordComponent},
-  {path: 'changePassword', component: ChangePasswordComponent}
+  {path: 'changePassword', component: ChangePasswordComponent},
   {path:'showRoomDetail/:idRoom', component: HomeDetailComponent},
   {path:'rent/:idRoom', component: RentRoomComponent},
 

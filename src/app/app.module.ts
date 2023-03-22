@@ -25,10 +25,7 @@ import {HistoryBillComponent} from './history-bill/history-bill.component';
 import {FindBillByIdComponent} from './find-bill-by-id/find-bill-by-id.component';
 import {ShowScheduleComponent} from './show-schedule/show-schedule.component';
 
-import { ShowCommentComponent } from './room-detail/show-comment/show-comment.component';
-import { HomeDetailComponent } from './room-detail/home-detail/home-detail.component';
-import { HistoryBillComponent } from './history-bill/history-bill.component';
-import { FindBillByIdComponent } from './find-bill-by-id/find-bill-by-id.component';
+
 import {NgFor} from "@angular/common";
 import {RentRoomComponent} from "./rent-room/rent-room.component";
 import {ShowRoomDetailService} from "../service/ShowRoomDetail";
@@ -79,7 +76,7 @@ import {ShowRoomDetailService} from "../service/ShowRoomDetail";
   ],
 
 
-  providers: [],
+
   providers: [ShowRoomDetailService],
   bootstrap: [AppComponent]
 })
