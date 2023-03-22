@@ -5,9 +5,6 @@
       <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">Properties</h6>
       <h1 class="section-title">Schedule</h1>
     </div>
-    <div class="btn-wrapper text-right">
-      <a routerLink="/history" class="theme-btn-1 btn btn-effect-1">Back To List Bill</a>
-    </div>
     <div class="row">
       <div class="col-lg-12">
         <table class="table">
@@ -19,6 +16,7 @@
           <th class="cart-product-info">Check Out</th>
           <th class="cart-product-price">Price</th>
           <th class="cart-product-quantity">Amount Day</th>
+          <th class="cart-product-quantity">Status</th>
           </thead>
           <tbody *ngFor="let bd of billDetails|paginate: { itemsPerPage: 10, currentPage: p, totalItems: total }">
           <tr>
@@ -40,6 +38,9 @@
             </td>
             <td class="cart-product-info">
               <a href="product-details.html">{{bd.amountDay}}</a>
+            </td>
+            <td class="cart-product-info">
+              <p [ngClass]="{'active': bd.status, 'canceled': !bd.status}">{{bd.status ? 'active' : 'canceled'}}</p>
             </td>
           </tr>
           </tbody>

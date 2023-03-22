@@ -19,10 +19,12 @@
           <th class="cart-product-info">Check Out</th>
           <th class="cart-product-price">Price</th>
           <th class="cart-product-quantity">Amount Day</th>
+          <th class="cart-product-quantity">Status</th>
+          <th class="cart-product-quantity">Action</th>
           </thead>
           <tbody *ngFor="let bd of billDetails|paginate: { itemsPerPage: 10, currentPage: p, totalItems: total }">
           <tr>
-            <td class="cart-product-remove">{{bd.id}}</td>
+            <td class="cart-product-remove"  >{{bd.id}}</td>
             <td class="cart-product-info">
               <h4><a href="product-details.html">{{bd.room.name}}</a></h4>
             </td>
@@ -41,6 +43,13 @@
             <td class="cart-product-info">
               <a href="product-details.html">{{bd.amountDay}}</a>
             </td>
+            <td class="cart-product-info">
+              <p [ngClass]="{'active': bd.status, 'canceled': !bd.status}" >{{bd.status ? 'active' : 'canceled'}}</p>
+
+            </td>
+            <td class="cart-product-info">
+              <button *ngIf="bd.status && checkIfCancelAvailable(bd.checkIn)" style="color: #FF0F00"(click)="confirmCancel(bd)">Cancel</button>
+            </td>
           </tr>
           </tbody>
         </table>
@@ -53,3 +62,18 @@
 <!-- SHOPING CART AREA END -->
 
 
+<!--modal-->
+
+
+  <p-toast></p-toast>
+  <p-toast position="top-left" key="tl"></p-toast>
+  <p-toast position="top-center" key="ab"></p-toast>
+  <p-toast position="center" key="c"></p-toast>
+
+
+
+<p-confirmDialog [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
+  Content
+  <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+  <button pButton icon="pi pi-check" label="Confirm"></button>
+</p-confirmDialog>

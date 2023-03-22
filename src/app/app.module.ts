@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CrudHostComponent } from './crud-host/crud-host.component';
@@ -25,6 +24,8 @@ import {HomeDetailComponent} from './room-detail/home-detail/home-detail.compone
 import {HistoryBillComponent} from './history-bill/history-bill.component';
 import {FindBillByIdComponent} from './find-bill-by-id/find-bill-by-id.component';
 import {ShowScheduleComponent} from './show-schedule/show-schedule.component';
+import {NgFor} from "@angular/common";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,6 @@ import {ShowScheduleComponent} from './show-schedule/show-schedule.component';
     RegisterComponent,
     MyAccountComponent,
     ShowProfileComponent,
-    AppComponent,
     CrudHostComponent,
     TopRentComponent,
    ShowTotalBillComponent,
@@ -53,8 +53,7 @@ import {ShowScheduleComponent} from './show-schedule/show-schedule.component';
     HttpClientModule,
     ReactiveFormsModule,
     RouterOutlet,
-
-
+    NgFor,
     ReactiveFormsModule,
     AppRoutingModule,
     RouterModule,
@@ -69,6 +68,7 @@ import {ShowScheduleComponent} from './show-schedule/show-schedule.component';
     AccordionModule,
     ToastModule,
     BrowserAnimationsModule,
+    ConfirmDialogModule,
   ],
 
 

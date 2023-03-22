@@ -454,8 +454,8 @@
                                 </div>
                               </td>
                               <td>
-                                <div #circleDiv style="float: right; margin-right: 25px;"
-                                     class="circle {{r.status ? 'success' : 'danger'}}"></div>
+                                <div [ngClass]="{'circle': true, 'success': r.status, 'danger': !r.status}" style="float: right; margin-right: 25px;"></div>
+
                               </td>
                               <td>
                                 <button style="float: right; margin-right: 25px;" data-toggle="modal"
@@ -465,7 +465,7 @@
 
                               <td>
                                 <label class="switch">
-                                  <input type="checkbox" [checked]="!r.status" (click)="toggleRoomStatus(r)">
+                                  <input type="checkbox" [checked]="!r.status" (click)="confirmChangeToggle(r)">
                                   <span class="slider round"></span>
                                 </label>
 
@@ -618,7 +618,7 @@
                               <input type="number" name="ltn__name" placeholder="Price" formControlName="price" style="width: 700px;height: 65px">
                               <p
                                 *ngIf="formCreate?.get('price')?.hasError('required')&& formCreate?.get('price')?.touched"
-                                style="color: red">* Required</p>
+                                style="color: red">* Required and >= 0</p>
                             </div>
 <br>
 
@@ -1024,49 +1024,18 @@
 <!-- Body main wrapper end -->
 
 <!--modal xác nhận-->
-<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" (click)="close()">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h6>Room creation successful!</h6>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="close()">OK</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!--modal xác nhận-->
+<p-toast></p-toast>
+<p-toast position="top-left" key="tl"></p-toast>
+<p-toast position="top-center" key="ab"></p-toast>
+<p-toast position="center" key="c"></p-toast>
 
 
-<!--modal xác nhận trạng thái-->
-<div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" (click)="close2()">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h6 style="color: #dd4b39">your room is occupied. Are you sure to change status</h6>
-      </div>
-      <div modal-footer>
-        <button type="button" class="btn btn-primary" (click)="Yes(currentRoom)">Yes</button>
-        <button type="button" class="btn btn-primary" (click)="No()">No</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+<p-confirmDialog [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
+  Content
+  <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+  <button pButton icon="pi pi-check" label="Confirm"></button>
+</p-confirmDialog>
 <!--modal xác nhận-->
 <!-- All JS Plugins -->
 <script src="js/plugins.js"></script>
