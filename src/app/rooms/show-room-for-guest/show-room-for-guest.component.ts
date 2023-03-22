@@ -31,7 +31,6 @@ export class ShowRoomForGuestComponent implements OnInit {
               private addressService: AddressService) {
   }
 
-
   ngOnInit(): void {
     this.getRooms()
     this.formSearch = new FormGroup({
@@ -41,13 +40,11 @@ export class ShowRoomForGuestComponent implements OnInit {
       addressName: new FormGroup({
         name: new FormControl("", [Validators.required]),
       }),
-      price1: new FormControl("",[Validators.required]),
-      price2: new FormControl("",[Validators.required, ]),
-      checkin: new FormControl("",[Validators.required]),
-      checkout: new FormControl("",[Validators.required]),
+      price1: new FormControl("", [Validators.required]),
+      price2: new FormControl("", [Validators.required,]),
+      checkin: new FormControl("", [Validators.required]),
+      checkout: new FormControl("", [Validators.required]),
     })
-
-
     // Lấy danh sách categories từ server
     this.categoryService.getCategories().subscribe(data => {
       this.categories = data;
@@ -59,7 +56,6 @@ export class ShowRoomForGuestComponent implements OnInit {
     });
 
   }
-
 
   getRooms() {
     this.showRoomService.getAll().subscribe((response: any) => {
@@ -78,40 +74,43 @@ export class ShowRoomForGuestComponent implements OnInit {
     } else {
       this.getRooms();
     }
-
   }
-
 
 
   findRoomByGuest() {
     // @ts-ignore
     let categoryName = this.formSearch.get('categoryName')?.get('name').value
-
-
-    console.log(categoryName)
     // @ts-ignore
     let addressName = this.formSearch.get('addressName')?.get('name').value
     let price1
-    if (this.formSearch.get('price1')?.value != 0){
+    if (this.formSearch.get('price1')?.value != 0) {
       price1 = this.formSearch.get('price1')?.value
     } else {
-      price1 =1;
+      price1 = 1;
     }
     let price2
-    if (this.formSearch.get('price2')?.value != 0){
+    if (this.formSearch.get('price2')?.value != 0) {
       price2 = this.formSearch.get('price2')?.value
+
     } else {
       price2 = 1000;
     }
 
     let checkin = this.formSearch.get('checkin')?.value
+    this.showRoomService.checkinDate = checkin;
+
     let checkout = this.formSearch.get('checkout')?.value
+    this.showRoomService.checkoutDate = checkout;
     // @ts-ignore
-    this.showRoomService.findRoomByGuest(categoryName, addressName, price1, price2, checkin, checkout).subscribe((response: any) => {
-      this.rooms = response;
-      console.log(this.rooms.length);
-      this.total = this.rooms.length;
-    })
+
+    this.showRoomService.findRoomByGuest(categoryName, addressName, price1, price2, checkin, checkout).subscribe(
+      (response: any) => {
+        this.rooms = response;
+
+        this.total = this.rooms.length;
+
+      }
+    )
   }
 }
 
