@@ -21,6 +21,8 @@ import { HomeDetailComponent } from './room-detail/home-detail/home-detail.compo
 import { HistoryBillComponent } from './history-bill/history-bill.component';
 import { FindBillByIdComponent } from './find-bill-by-id/find-bill-by-id.component';
 import {NgFor} from "@angular/common";
+import {RentRoomComponent} from "./rent-room/rent-room.component";
+import {ShowRoomDetailService} from "../service/ShowRoomDetail";
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import {NgFor} from "@angular/common";
    ShowCommentComponent,
    HomeDetailComponent,
    HistoryBillComponent,
-   FindBillByIdComponent
+   FindBillByIdComponent,
+    RentRoomComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,7 @@ import {NgFor} from "@angular/common";
     AppRoutingModule,
     NgxPaginationModule,
   ],
-  providers: [],
+  providers: [ShowRoomDetailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

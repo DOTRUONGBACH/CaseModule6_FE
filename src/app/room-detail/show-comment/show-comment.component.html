@@ -1,26 +1,29 @@
-<div class="ltn__comment-reply-area ltn__form-box mb-30">
+
+
+
+<div class=" ltn__form-box mb-30 bg-white">
   <form action="#">
     <h4>Add a Review</h4>
-    <div class="mb-30">
-      <div class="add-a-review">
-        <h6>Your Ratings:</h6>
-        <div class="product-ratting">
-          <ul>
-            <li><a href="#"><i class="fas fa-star"></i></a></li>
-            <li><a href="#"><i class="fas fa-star"></i></a></li>
-            <li><a href="#"><i class="fas fa-star"></i></a></li>
-            <li><a href="#"><i class="fas fa-star"></i></a></li>
-            <li><a href="#"><i class="fas fa-star"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<!--    <div class="mb-30">-->
+<!--      <div class="add-a-review">-->
+<!--        <h6>Your Ratings:</h6>-->
+<!--        <div class="product-ratting">-->
+<!--          <ul>-->
+<!--            <li><a href="#"><i class="fas fa-star"></i></a></li>-->
+<!--            <li><a href="#"><i class="fas fa-star"></i></a></li>-->
+<!--            <li><a href="#"><i class="fas fa-star"></i></a></li>-->
+<!--            <li><a href="#"><i class="fas fa-star"></i></a></li>-->
+<!--            <li><a href="#"><i class="fas fa-star"></i></a></li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
     <form [formGroup]="formPost" (ngSubmit)="postComment()">
-      <div class="input-item input-item-textarea ltn__custom-icon">
+      <div >
         <textarea placeholder="Type your comments...." formControlName="content"></textarea>
       </div>
-      <label class="mb-0"><input type="checkbox" name="agree"> Save my name, email, and website in this
-        browser for the next time I comment.</label>
+<!--      <label class="mb-0"><input type="checkbox" name="agree"> Save my name, email, and website in this-->
+<!--        browser for the next time I comment.</label>-->
       <div class="btn-wrapper">
         <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Submit</button>
       </div>
@@ -48,7 +51,7 @@
               </ul>
             </div>
             <p>{{showComment.content}}</p>
-            <span class="ltn__comment-reply-btn">September 3, 2020</span>
+<!--            <span class="ltn__comment-reply-btn">September 3, 2020</span>-->
           </div>
         </div>
       </li>

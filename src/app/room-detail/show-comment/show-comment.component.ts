@@ -25,14 +25,6 @@ export class ShowCommentComponent implements OnInit{
   constructor(private accountService:AccountService,private route: ActivatedRoute,private postCommentService:PostCommentService,private showCommentService:ShowCommentService) {
   }
 
-  // ngOnInit(): void {
-  //   this.showCommentService.getShowComment().subscribe(data=>{
-  //     this.showComments = data;
-  //   });
-  // }
-
-
-
   ngOnInit(): void {
     this.accountService.findRoomById(this.route.snapshot.params['idRoom']).subscribe(res=> this.room=res)
     this.accountService.findByIdP(this.accountService.getAccountToken().id).subscribe(res=>this.account=res)

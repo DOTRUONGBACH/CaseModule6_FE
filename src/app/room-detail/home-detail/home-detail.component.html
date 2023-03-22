@@ -26,13 +26,13 @@
                 <div class="row">
                   <div class="col-lg-8">
                     <div class="neighbour-apartments-img">
-                      <img src="{{roomDetail.images.at(0)}}" alt="#">
+                      <img src="{{roomDetail.images.at(0)}}" width="800" height="400" alt="#">
                     </div>
                   </div>
                   <div class="col-lg-4">
                     <div class="ltn__search-by-place-item neighbour-apartments-item">
                       <div class="search-by-place-img">
-                        <a href="product-details.html"><img src="{{roomDetail.images.at(2)}}" alt="#"></a>
+                        <a href="product-details.html"><img src="{{roomDetail.images.at(2)}}"  alt="#"></a>
                         <div class="search-by-place-badge">
                           <ul>
                             <li>Properties</li>
@@ -59,7 +59,7 @@
                 <div class="row">
                   <div class="col-lg-8">
                     <div class="neighbour-apartments-img">
-                      <img src="{{roomDetail.images.at(1)}}" alt="#">
+                      <img src="{{roomDetail.images.at(1)}}" width="800" height="400" alt="#">
                     </div>
                   </div>
                   <div class="col-lg-4">
@@ -94,13 +94,13 @@
                 <div class="row">
                   <div class="col-lg-8">
                     <div class="neighbour-apartments-img">
-                      <img src="{{roomDetail.images.at(2)}}" alt="#">
+                      <img src="{{roomDetail.images.at(2)}}"  width="800" height="400" alt="#">
                     </div>
                   </div>
                   <div class="col-lg-4">
                     <div class="ltn__search-by-place-item neighbour-apartments-item">
                       <div class="search-by-place-img">
-                        <a href="product-details.html"><img src="/assets/img/product-3/4.jpg" alt="#"></a>
+                        <a href="product-details.html"><img src="{{roomDetail.images.at(2)}}" alt="#"></a>
                         <div class="search-by-place-badge">
                           <ul>
                             <li>9 Properties</li>
@@ -144,7 +144,7 @@
             <ul>
 
               <li class="ltn__blog-category">
-                <a class="bg-orange" routerLink="/rent/{{roomDetail.id}}">For Rent</a>
+                <button class="bg-orange" (click)="arr(roomDetail?.id)">For Rent</button>
               </li>
 
             </ul>
@@ -281,5 +281,8 @@
     </div>
   </div>
 </div>
+
+
+
 
 <!-- SHOP DETAILS AREA END -->

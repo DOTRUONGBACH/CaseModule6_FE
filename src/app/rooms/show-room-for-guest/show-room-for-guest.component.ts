@@ -82,6 +82,7 @@ export class ShowRoomForGuestComponent implements OnInit {
     let categoryName = this.formSearch.get('categoryName')?.get('name').value
     // @ts-ignore
     let addressName = this.formSearch.get('addressName')?.get('name').value
+    console.log(addressName)
     let price1
     if (this.formSearch.get('price1')?.value != 0) {
       price1 = this.formSearch.get('price1')?.value
@@ -108,6 +109,8 @@ export class ShowRoomForGuestComponent implements OnInit {
         this.rooms = response;
 
         this.total = this.rooms.length;
+
+        console.log(response)
 
       }
     )

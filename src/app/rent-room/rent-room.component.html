@@ -1,4 +1,4 @@
-
+<body>
 <!-- BREADCRUMB AREA START -->
 <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image "  data-bs-bg="img/bg/14.jpg">
   <div class="container">
@@ -27,26 +27,49 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <div class="shoping-cart-inner">
-          <div class="shoping-cart-table table-responsive">
-            <table class="table">
+<!--        <div class="shoping-cart-inner">-->
+<!--          <div class="shoping-cart-table table-responsive">-->
+        <tr class="cart-coupon-row">
+          <td colspan="6">
+            <div class="cart-coupon">
+
+              <button type="submit" class="btn theme-btn-2 btn-effect-2" ><a routerLink="/">Back Home</a></button>
+            </div>
+          </td>
+          <td>
+            <!--                  <button type="submit" class="btn theme-btn-2 btn-effect-2&#45;&#45; disabled">Update Cart</button>-->
+          </td>
+        </tr>
+            <table class="table" >
+              <thead>
+              <th class="cart-product-remove">#</th>
+              <th class="cart-product-remove">Room Photo</th>
+              <th class="cart-product-remove">Room Name</th>
+              <th class="cart-product-image">Check In</th>
+              <th class="cart-product-info">Check Out</th>
+              <th class="cart-product-price">Price</th>
+              <th class="cart-product-quantity">Amount Day</th>
+              <th class="cart-product-quantity">Total Money</th>
+              </thead>
               <tbody>
-              <tr>
-                <td class="cart-product-remove">x</td>
+              <tr *ngFor="let room of rooms; let i = index;" >
+                <td class="cart-product-remove" (click)="remove111(i)">x</td>
                 <td class="cart-product-image">
-                  <a href="product-details.html"><img src="{{roomDetail.images.at(0)}}" alt="#"></a>
+                  <a href="product-details.html"><img src="{{room.images.at(0)}}" alt="#"></a>
                 </td>
                 <td class="cart-product-info">
-                  <h4><a href="product-details.html">{{roomDetail.name}}</a></h4>
+                  <h4><a href="product-details.html">{{room.name}}</a></h4>
                 </td>
-                <td class="cart-product-price">${{roomDetail.price}}</td>
-                <td class="cart-product-quantity">
-                  <div class="cart-plus-minus">
-                    <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
-                  </div>
-                </td>
-                <td class="cart-product-subtotal">$298.00</td>
+                <td class="cart-product-price">{{room.checkinDate}}</td>
+                <td class="cart-product-price">{{room.checkoutDate}}</td>
+                <td class="cart-product-price">{{room.price}}$</td>
+                <td class="cart-product-price">{{room.amountDay}}</td>
+                <td class="cart-product-subtotal">{{room.amountDay*room.price}}$</td>
               </tr>
+
+
+
+
 <!--              <tr>-->
 <!--                <td class="cart-product-remove">x</td>-->
 <!--                <td class="cart-product-image">-->
@@ -79,49 +102,52 @@
 <!--                </td>-->
 <!--                <td class="cart-product-subtotal">$150.00</td>-->
 <!--              </tr>-->
-              <tr class="cart-coupon-row">
-                  <td colspan="6">
+<!--              <tr class="cart-coupon-row">-->
+<!--                  <td colspan="6">-->
 <!--                    <div class="cart-coupon">-->
-<!--                      <input type="text" name="cart-coupon" placeholder="Coupon code">-->
-<!--                      <button type="submit" class="btn theme-btn-2 btn-effect-2">Apply Coupon</button>-->
+
+<!--                      <button type="submit" class="btn theme-btn-2 btn-effect-2" ><a routerLink="/">Back Home</a></button>-->
 <!--                    </div>-->
-                  </td>
-                <td>
-                  <button type="submit" class="btn theme-btn-2 btn-effect-2-- disabled">Update Cart</button>
-                </td>
-              </tr>
+<!--                  </td>-->
+<!--                <td>-->
+<!--                  <button type="submit" class="btn theme-btn-2 btn-effect-2&#45;&#45; disabled">Update Cart</button>-->
+<!--                </td>-->
+<!--              </tr>-->
               </tbody>
             </table>
           </div>
           <div class="shoping-cart-total mt-50">
             <h4>Cart Totals</h4>
             <table class="table">
-              <tbody>
-              <tr>
-                <td>Cart Subtotal</td>
-                <td>$618.00</td>
+              <tbody >
+              <tr >
+                <td >Cart Subtotal</td>
+                <td >{{totalBill}}$</td>
               </tr>
               <tr>
                 <td>Shipping and Handing</td>
-                <td>$15.00</td>
+                <td>{{totalBill*0.05}}$</td>
               </tr>
               <tr>
                 <td>Vat</td>
-                <td>$00.00</td>
+                <td>{{totalBill*0.1}}$</td>
               </tr>
               <tr>
                 <td><strong>Order Total</strong></td>
-                <td><strong>$633.00</strong></td>
+                <td><strong>{{totalBill*1.15}}$</strong></td>
               </tr>
               </tbody>
             </table>
             <div class="btn-wrapper text-right">
-              <a href="checkout.html" class="theme-btn-1 btn btn-effect-1">Proceed to checkout</a>
+              <a  class="theme-btn-1 btn btn-effect-1" (click)="createBill()">Proceed to checkout</a>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+<!--      </div>-->
+<!--    </div>-->
   </div>
 </div>
+
+</body>
+
 <!-- SHOPING CART AREA END -->
