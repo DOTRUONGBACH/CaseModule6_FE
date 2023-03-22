@@ -16,6 +16,10 @@ export class ShowRoomDetailService {
 
   }
 
+  addRooms(room:RoomDetail){
+    this.rooms.push(room);
+    console.log("deatil service", this.rooms)
+  }
 
   getRoomDetailById(id: number): Observable<RoomDetail> {
     console.log(id)
@@ -32,7 +36,9 @@ export class ShowRoomDetailService {
 
   getLocalRoom(): RoomDetail[]{
     let carts = JSON.parse(<any>localStorage.getItem("carts"));
-
+    if (carts == undefined){
+      return [];
+    }
     return carts;
   }
 
