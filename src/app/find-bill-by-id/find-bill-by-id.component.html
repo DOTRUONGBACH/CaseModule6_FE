@@ -19,6 +19,7 @@
           <th class="cart-product-info">Check Out</th>
           <th class="cart-product-price">Price</th>
           <th class="cart-product-quantity">Amount Day</th>
+          <th class="cart-product-quantity">Total</th>
           </thead>
           <tbody *ngFor="let bd of billDetails|paginate: { itemsPerPage: 10, currentPage: p, totalItems: total }">
           <tr>
@@ -36,10 +37,13 @@
               <a href="product-details.html">{{bd.checkOut}}</a>
             </td>
             <td class="cart-product-price">
-              <a href="product-details.html">{{bd.room.price}}</a>
+              <a href="product-details.html">{{bd.room.price}}$</a>
             </td>
             <td class="cart-product-info">
               <a href="product-details.html">{{bd.amountDay}}</a>
+            </td>
+            <td class="cart-product-info">
+              <a href="product-details.html">{{bd.room.price * bd.amountDay}}$</a>
             </td>
           </tr>
           </tbody>

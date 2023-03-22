@@ -6,7 +6,7 @@ import {Account} from "./Account";
 
 export interface Room{
   name?: String ;
-  price?:number;
+  price?:any;
   description?: String;
   addressRoom?: String;
   account?: Account;

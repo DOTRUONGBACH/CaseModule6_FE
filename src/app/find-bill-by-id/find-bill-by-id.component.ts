@@ -13,14 +13,12 @@ export class FindBillByIdComponent implements OnInit {
   billDetails!: BillDetail[];
   p: number = 1;
   total: number = 0;
-
+subtotal: number =0
   constructor(private billdetailservice: FindBillByIdService,private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-
       this.getBillDetail()
-
   }
 
   getBillDetail() {
