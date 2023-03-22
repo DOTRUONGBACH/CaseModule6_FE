@@ -7,7 +7,7 @@ import {Account} from "./Account";
 export interface Room{
   id?: number;
   name?: String ;
-  price?:number;
+  price?:any;
   description?: String;
   addressRoom?: String;
   account?: Account;
