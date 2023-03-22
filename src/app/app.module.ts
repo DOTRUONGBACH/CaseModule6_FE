@@ -25,9 +25,9 @@ import {HistoryBillComponent} from './history-bill/history-bill.component';
 import {FindBillByIdComponent} from './find-bill-by-id/find-bill-by-id.component';
 import {ShowScheduleComponent} from './show-schedule/show-schedule.component';
 import { HeaderComponent } from './account/header/header.component';
+import {NgFor} from "@angular/common";
+import {RentRoomComponent} from "./rent-room/rent-room.component";
 
-
-// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,15 +46,18 @@ import { HeaderComponent } from './account/header/header.component';
     ShowScheduleComponent,
     ChangePasswordComponent,
     ForgotPasswordComponent,
-    HeaderComponent,
-
+    RentRoomComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     RouterOutlet,
+    NgFor,
     RouterModule,
+    FormsModule,
+    FormsModule,
     HttpClientModule,
     FormsModule,
     NgxPaginationModule,
