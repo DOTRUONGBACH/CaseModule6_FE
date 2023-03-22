@@ -13,88 +13,121 @@
           <h1 class="section-title">Featured Listings</h1>
         </div>
 
-        <div class="tab-content" style="height: 30px;width: 1000px; position: center; padding-bottom: 400px">
-          <div class="tab-pane fade active show" id="ltn__form_tab_1_1">
-            <div class="car-dealer-form-inner">
 
-              <form action="#" class="ltn__car-dealer-form-box row" (ngSubmit)="findRoomByGuest()"
-                    [formGroup]="formSearch">
+        <!-- Button HTML (to Trigger Modal) -->
+<!--        <a href="#myModal" class="btn btn-lg btn-primary" data-bs-toggle="modal">Launch Demo Modal</a>-->
 
-                <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-car col-lg-4 col-md-6"
-                     formGroupName="addressName">
-                  <a>Choice Address</a>
-                  <select class="nice-select" formControlName="name" *ngIf="addresses">
-<!--                    <option value="">All Location</option>-->
-                    <option *ngFor="let address of addresses"
-                            [value]="address.name">{{ address.name }}</option>
-                  </select>
-                  <p
-                    *ngIf="formSearch?.get('addressName')?.get('name')?.hasError('required') && formSearch?.get('addressName')?.touched"
-                    style="color: red">* Required</p>
-                </div>
-                <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-car col-lg-4 col-md-6">
-                  <div class="mb-3 mb-md-0">
-                    <div class="date" id="date1" data-target-input="nearest">
-                      <a>CheckIn</a>
-                      <input type="date" class="form-control p-4 datetimepicker-input" name="checkin"
-                             formControlName="checkin" placeholder="Depart Date" data-target="#date1"
-                             data-toggle="datetimepicker" (change)="checkCheckinDate(formSearch?.get('checkin')?.value,formSearch?.get('checkout')?.value)"/>
+        <!-- Modal HTML -->
+        <div id="myModal" class="modal fade">
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+              <div class="modal-header">
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body" >
+
+                <div class="tab-content" >
+                  <div class="tab-pane fade active show" id="ltn__form_tab_1_1">
+                    <div class="car-dealer-form-inner">
+
+                      <form id="popUpForm" action="#" class="ltn__car-dealer-form-box row" (ngSubmit)="findRoomByGuest()"
+                            [formGroup]="formSearch">
+
+                        <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-car col-lg-4 col-md-6"
+                             formGroupName="addressName">
+                          <a>Choice Address</a>
+                          <select class="nice-select" formControlName="name" *ngIf="addresses" >
+<!--                                                <option >All Location</option>-->
+                            <option *ngFor="let address of addresses"
+                                    [value]="address.name">{{ address.name }}</option>
+                          </select>
+                          <p
+                            *ngIf="formSearch?.get('addressName')?.get('name')?.hasError('required') && formSearch?.get('addressName')?.touched"
+                            style="color: red">* Required</p>
+                        </div>
+                        <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-car col-lg-4 col-md-6">
+                          <div class="mb-3 mb-md-0">
+                            <div class="date" id="date1" data-target-input="nearest">
+                              <a>CheckIn</a>
+                              <input type="date" class="form-control p-4 datetimepicker-input" name="checkin"
+                                     formControlName="checkin" placeholder="Depart Date" data-target="#date1"
+                                     data-toggle="datetimepicker" (change)="checkCheckinDate(formSearch?.get('checkin')?.value,formSearch?.get('checkout')?.value)"/>
+                            </div>
+                            <p
+                              *ngIf="formSearch?.get('checkin')?.hasError('required')&& formSearch?.get('checkin')?.touched"
+                              style="color: red">* Required</p>
+                          </div>
+                        </div>
+                        <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-car col-lg-4 col-md-6">
+                          <div class="mb-3 mb-md-0">
+                            <div class="date" id="date2" data-target-input="nearest">
+                              <a>CheckOut</a>
+                              <input type="date" class="form-control p-4 datetimepicker-input" name="checkout"
+                                     formControlName="checkout" placeholder="Return Date" data-target="#date2"
+                                     data-toggle="datetimepicker"
+                                     (change)="checkDate(formSearch?.get('checkout')?.value, formSearch?.get('checkin')?.value)"
+                              />
+                            </div>
+                            <p
+                              *ngIf="formSearch?.get('checkout')?.hasError('required') && formSearch?.get('checkout')?.touched"
+                              style="color: red">* Required</p>
+                          </div>
+                        </div>
+                        <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-4 col-md-6"
+                             formGroupName="categoryName">
+                          <a>Choice Category</a>
+                          <select class="nice-select" formControlName="name" *ngIf="categories">
+                            <option value="">All Category</option>
+                            <option *ngFor="let category of categories"
+                                    [value]="category.name">{{ category.name }}</option>
+                          </select>
+                        </div>
+                        <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-cog col-lg-4 col-md-6">
+                          <div class="input-item input-item-name ltn__custom-icon">
+                            <a>Choice Min Price</a>
+                            <input type="text" name="price1" placeholder="Min price " formControlName="price1">
+                          </div>
+                        </div>
+                        <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-cog col-lg-4 col-md-6">
+                          <div class="input-item input-item-name ltn__custom-icon">
+                            <a>Choice Max Price</a>
+                            <input  type="text" name="price2" placeholder="Max price " formControlName="price2">
+                          </div>
+                          <p *ngIf="formSearch?.get('price2')?.value < formSearch?.get('price1')?.value"
+                             style="color: red">* MaxPrice must be greater than MinPrice</p>
+                        </div>
+                        <div class="car-price-filter-range col-lg-12">
+                          <div class="btn-wrapper text-center">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" [disabled]="!check" type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">
+                              Search
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+
                     </div>
-                    <p
-                      *ngIf="formSearch?.get('checkin')?.hasError('required')&& formSearch?.get('checkin')?.touched"
-                      style="color: red">* Required</p>
                   </div>
                 </div>
-                <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-car col-lg-4 col-md-6">
-                  <div class="mb-3 mb-md-0">
-                    <div class="date" id="date2" data-target-input="nearest">
-                      <a>CheckOut</a>
-                      <input type="date" class="form-control p-4 datetimepicker-input" name="checkout"
-                             formControlName="checkout" placeholder="Return Date" data-target="#date2"
-                             data-toggle="datetimepicker"
-                             (change)="checkDate(formSearch?.get('checkout')?.value, formSearch?.get('checkin')?.value)"
-                      />
-                    </div>
-                    <p
-                      *ngIf="formSearch?.get('checkout')?.hasError('required') && formSearch?.get('checkout')?.touched"
-                      style="color: red">* Required</p>
-                  </div>
-                </div>
-                <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-4 col-md-6"
-                     formGroupName="categoryName">
-                  <a>Choice Category</a>
-                  <select class="nice-select" formControlName="name" *ngIf="categories">
-                                        <option value="">All Category</option>
-                    <option *ngFor="let category of categories"
-                            [value]="category.name">{{ category.name }}</option>
-                  </select>
-                </div>
-                <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-cog col-lg-4 col-md-6">
-                  <div class="input-item input-item-name ltn__custom-icon">
-                    <a>Choice Min Price</a>
-                    <input type="text" name="price1" placeholder="Min price " formControlName="price1">
-                  </div>
-                </div>
-                <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-cog col-lg-4 col-md-6">
-                  <div class="input-item input-item-name ltn__custom-icon">
-                    <a>Choice Max Price</a>
-                    <input  type="text" name="price2" placeholder="Max price " formControlName="price2">
-                  </div>
-                  <p *ngIf="formSearch?.get('price2')?.value < formSearch?.get('price1')?.value"
-                     style="color: red">* MaxPrice must be greater than MinPrice</p>
-                </div>
-                <div class="car-price-filter-range col-lg-12">
-                  <div class="btn-wrapper text-center">
-                    <button [disabled]="!check" type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">
-                      Search
-                    </button>
-                  </div>
-                </div>
-              </form>
 
+
+              </div>
+              <div class="modal-footer">
+<!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>-->
+<!--                <button type="button" class="btn btn-primary">Save changes</button>-->
+              </div>
             </div>
           </div>
         </div>
+
+
+
+
+
+
+
+
+
 
         <div class="tab-content">
           <div class="tab-pane fade active show" id="liton_product_grid">
@@ -158,5 +191,6 @@
 </div>
 
 <!-- PRODUCT DETAILS AREA END -->
+
 
 
