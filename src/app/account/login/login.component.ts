@@ -5,6 +5,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AccountToken} from "../../model/AccountToken";
 import {MessageService} from "primeng/api";
 import {AccountService} from "../../service/account/account.service";
+import {daLocale} from "ngx-bootstrap/chronos";
+
 
 @Component({
   selector: 'app-login',
@@ -37,12 +39,14 @@ export class LoginComponent implements OnInit {
       } else if (this.newAcc.name != null) {
         this.showSuccess2()
         setTimeout(() => {
-          this.router.navigate(["/account"])
+          this.router.navigate(["/showForGuest"])
         }, 2000, 10)
       } else {
+        debugger
         this.showError()
       }
     })
+
   }
   checkNameLogin(accountToken: AccountToken): void {
     this.accountService.findAll().subscribe((data) => {
