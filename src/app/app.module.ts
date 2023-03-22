@@ -24,6 +24,12 @@ import {HomeDetailComponent} from './room-detail/home-detail/home-detail.compone
 import {HistoryBillComponent} from './history-bill/history-bill.component';
 import {FindBillByIdComponent} from './find-bill-by-id/find-bill-by-id.component';
 import {ShowScheduleComponent} from './show-schedule/show-schedule.component';
+
+
+import {NgFor} from "@angular/common";
+import {RentRoomComponent} from "./rent-room/rent-room.component";
+import {ShowRoomDetailService} from "../service/ShowRoomDetail";
+
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {CommonModule} from "@angular/common";
 @NgModule({
@@ -45,6 +51,8 @@ import {CommonModule} from "@angular/common";
    FindBillByIdComponent,
    ShowScheduleComponent,
 
+   FindBillByIdComponent,
+    RentRoomComponent
   ],
   imports: [
     BrowserModule,
@@ -52,12 +60,15 @@ import {CommonModule} from "@angular/common";
     HttpClientModule,
     ReactiveFormsModule,
     RouterOutlet,
+    NgFor,
     ReactiveFormsModule,
     AppRoutingModule,
     RouterModule,
     FormsModule,
     HttpClientModule,
+    FormsModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     NgxPaginationModule,
@@ -69,7 +80,8 @@ import {CommonModule} from "@angular/common";
   ],
 
 
-  providers: [],
+
+  providers: [ShowRoomDetailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,6 +4,8 @@ import {Account} from "../../model/Account";
 import {Observable} from "rxjs";
 import {AccountToken} from "../../model/AccountToken";
 import {ChangePassword} from "../../model/ChangePassword";
+import {Room} from "../../model/Room";
+import {AccountP} from "../../model/AccountP";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +21,9 @@ export class AccountService {
 
   findById(id : number): Observable<Account> {
     return this.http.get<Account>('http://localhost:8080/account/account/' + id)
+  }
+  findByIdP(id : number): Observable<AccountP> {
+    return this.http.get<AccountP>(`http://localhost:8080/account/p/${id}`)
   }
 
   create(account : Account): Observable<Account> {
@@ -53,6 +58,9 @@ export class AccountService {
 
   forgotPassword(email: string):Observable<any>{
     return this.http.post<any>('http://localhost:8080/account/forgotPassword/', email);
+  }
+  findRoomById(id:number):Observable<Room>{
+    return this.http.get<Room>(`http://localhost:8080/rooms/p/findRoomById/${id}`)
   }
 }
 

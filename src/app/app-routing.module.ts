@@ -17,15 +17,19 @@ import {HomeDetailComponent} from "./room-detail/home-detail/home-detail.compone
 import {ShowScheduleComponent} from "./show-schedule/show-schedule.component";
 import {ChangePasswordComponent} from "./account/change-password/change-password.component";
 import {ForgotPasswordComponent} from "./account/forgot-password/forgot-password.component";
+import {RentRoomComponent} from "./rent-room/rent-room.component";
+
+
+
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path:'account',component:MyAccountComponent},
   {path:'host',component:CrudHostComponent},
-  {path:'',component:AppComponent},
+  // {path:'',component:AppComponent},
   {path:'topRent', component: TopRentComponent},
   {path:'showBill', component: ShowTotalBillComponent},
-  {path:'showForGuest', component: ShowRoomForGuestComponent},
+  {path:'', component: ShowRoomForGuestComponent},
   {path:'showComment', component: ShowCommentComponent},
   {path:'history', component: HistoryBillComponent},
   {path:'findbillbyid/:id', component: FindBillByIdComponent},
@@ -37,7 +41,10 @@ const routes: Routes = [
   {path: 'showBill', component: ShowTotalBillComponent},
   {path: 'showForGuest', component: ShowRoomForGuestComponent},
   {path: 'forgotPassword', component: ForgotPasswordComponent},
-  {path: 'changePassword', component: ChangePasswordComponent}
+  {path: 'changePassword', component: ChangePasswordComponent},
+  {path:'showRoomDetail/:idRoom', component: HomeDetailComponent},
+  {path:'rent/:idRoom', component: RentRoomComponent},
+
 ]
 
 @NgModule({
