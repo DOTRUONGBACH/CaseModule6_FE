@@ -12,7 +12,7 @@ export class LoginService {
   constructor(private http:HttpClient) { }
 
   login(account: any): Observable<AccountToken>{
-    debugger
+
     return this.http.post<AccountToken>("http://localhost:8080/login",account);
   }
   register(account: any): Observable<AccountToken>{
