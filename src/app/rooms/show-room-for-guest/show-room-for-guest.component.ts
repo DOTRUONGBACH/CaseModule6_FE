@@ -86,7 +86,11 @@ export class ShowRoomForGuestComponent implements OnInit {
 
 
   showWarn() {
-    this.mess.add({severity: 'warn', summary: 'Warn', detail: 'Wrong Date Information', key: 'bc'});
+    this.mess.add({severity: 'warn', summary: 'Warn', detail: 'Wrong  Information', key: 'tl'});
+  }
+
+  showSuccess() {
+    this.mess.add({severity: 'success', summary: 'Success', detail: 'See the results below'});
   }
 
   check: boolean = true
@@ -114,19 +118,26 @@ export class ShowRoomForGuestComponent implements OnInit {
     let checkout = this.formSearch.get('checkout')?.value
     this.showRoomService.checkoutDate = checkout;
 // @ts-ignore
-    if (checkin < this.getFormattedDate() && checkout > this.getFormattedDate()) {
+    if (checkin >= this.getFormattedDate() && checkout > this.getFormattedDate() && addressName != "") {
+      this.showRoomService.findRoomByGuest(categoryName, addressName, price1, price2, checkin, checkout).subscribe(
+        (response: any) => {
+          this.rooms = response;
+          this.total = this.rooms.length;
+          this.showSuccess()
+        }
+      )
+    } else  {
       checkin = "";
       checkout = "";
-      this.showWarn();
+      this.showRoomService.findRoomByGuest(categoryName, addressName, price1, price2, checkin, checkout).subscribe(
+        (response: any) => {
+          this.rooms = response;
+          this.total = this.rooms.length;
+          this.showWarn();
 
+        }
+      )
     }
-    // @ts-ignore
-    this.showRoomService.findRoomByGuest(categoryName, addressName, price1, price2, checkin, checkout).subscribe(
-      (response: any) => {
-        this.rooms = response;
-        this.total = this.rooms.length;
-      }
-    )
   }
 
   getFormattedDate() {
@@ -137,7 +148,7 @@ export class ShowRoomForGuestComponent implements OnInit {
 
   checkCheckinDate(checkin: any, checkout: any) {
     // @ts-ignore
-    if (checkin < this.getFormattedDate() || checkout < this.getFormattedDate()) {
+    if (checkin < this.getFormattedDate() || checkout <= this.getFormattedDate()) {
       this.check = false
     } else {
       this.check = true
@@ -146,7 +157,7 @@ export class ShowRoomForGuestComponent implements OnInit {
 
   checkDate(checkout: any, checkin: any) {
     // @ts-ignore
-    if (checkout <= checkin) {
+    if (checkout <= checkin || checkout< this.getFormattedDate()) {
       this.check = false
     } else {
       this.check = true
