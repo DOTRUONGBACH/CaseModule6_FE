@@ -1,7 +1,7 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Account} from "../../model/Account";
 import {AccountService} from "../../service/account/account.service";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MessageService} from "primeng/api";
@@ -17,7 +17,10 @@ export class ShowProfileComponent implements OnInit {
   account: Account | undefined;
   formEdit!: FormGroup;
 
-  constructor(private accountService: AccountService, private http: HttpClient, private route: ActivatedRoute, private router: Router,private messageService: MessageService) {
+  constructor(private accountService: AccountService,
+              private http: HttpClient, private route: ActivatedRoute,
+              private router: Router,
+              private messageService: MessageService) {
   }
   ngOnInit(): void {
     // @ts-ignore
@@ -25,10 +28,10 @@ export class ShowProfileComponent implements OnInit {
     this.id = this.account?.id
     this.formEdit = new FormGroup({
       id: new FormControl(""),
-      name: new FormControl(""),
-      phone: new FormControl(""),
+      name: new FormControl("",Validators.required),
+      phone: new FormControl("",[Validators.required,Validators.pattern("[0-9 ]{10}")]),
       email: new FormControl(""),
-      avatar: new FormControl(""),
+      avatar: new FormControl("",),
 
     })
     this.accountService.findById(this.id).subscribe(data => {

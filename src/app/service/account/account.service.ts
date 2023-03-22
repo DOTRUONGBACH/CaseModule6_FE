@@ -34,8 +34,8 @@ export class AccountService {
     localStorage.setItem("token",token);
   }
 
-  change(changePassword:ChangePassword): Observable<any> {
-    return this.http.post<any>('http://localhost:8080/account/changePassword/', changePassword)
+  change(changePassword:ChangePassword | undefined): Observable<ChangePassword> {
+    return this.http.post<ChangePassword>('http://localhost:8080/account/changePassword/', changePassword)
   }
 
   getToken(){

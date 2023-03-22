@@ -6,22 +6,29 @@
   <div class="row">
     <div class="col-md-6">
       <input type="text" formControlName="id" placeholder="id" readonly>
-
+      <p *ngIf="!formEdit.get('id')?.errors && formEdit.get('id')?.touched" style="color: red">
+        Not change !!!</p>
     </div>
     <div class="col-md-6">
       <input type="text" formControlName="name" placeholder="name">
+      <p *ngIf="!formEdit.get('name')?.valid && formEdit.get('name')?.touched" style="color: red">Name is required</p>
     </div>
     <div class="col-md-6">
       <input type="text" formControlName="phone" placeholder="phone">
+      <p *ngIf="!formEdit.get('phone')?.valid && formEdit.get('phone')?.touched" style="color: red">
+        Phone number is not in the correct format</p>
     </div>
     <div class="col-md-6">
-      <input type="email" formControlName="email" placeholder="Email" readonly>
+      <input type="email" formControlName="email" placeholder="Email" readonly>.
+      <p *ngIf="!formEdit.get('email')?.errors && formEdit.get('email')?.touched" style="color: red">
+        Not change !!!</p>
     </div>
     <div class="col-md-6">
-      <input type="file" formControlName="avatar" placeholder="Avatar" (change)="($event)">
+      <input type="file" formControlName="avatar" placeholder="Avatar" hidden>
     </div>
   </div>
-  <br>
   <button type="submit" class="btn btn-primary" style="background: #fd7e14">Submit</button>
+  <br>
+
 </form>
 

@@ -7,7 +7,7 @@ import {ShowRoomForGuestService} from "../../../service/show-room-for-guest.serv
 
 @Component({
   selector: 'app-home-detail',
-  templateUrl: './home-detail.component.html',
+  templateUrl:'./home-detail.component.html',
   styleUrls: ['./home-detail.component.css']
 })
 export class HomeDetailComponent implements OnInit {
