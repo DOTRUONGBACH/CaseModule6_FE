@@ -1,37 +1,10 @@
-<!--<div class="ltn__slider-area ltn__slider-4">-->
-<!--  <div-->
-<!--    class="ltn__slide-one-active-&#45;&#45;&#45;&#45; slick-slide-arrow-1-&#45;&#45;&#45;&#45; slick-slide-dots-1-&#45;&#45;&#45;&#45; arrow-white-&#45;&#45;&#45;&#45; ltn__slide-animation-active">-->
-<!--    &lt;!&ndash; ltn__slide-item &ndash;&gt;-->
-<!--    <div class="ltn__slide-item ltn__slide-item-2 ltn__slide-item-4 bg-image bg-overlay-theme-black-60"-->
-<!--         data-bs-bg="assets/img/slider/11.jpg">-->
-<!--      <div class="ltn__slide-item-inner text-left">-->
-<!--        <div class="container">-->
-<!--          <div class="row">-->
-<!--            <div class="col-lg-12 align-self-center">-->
-<!--              <div class="slide-item-car-dealer-form">-->
-<!--                <div class="ltn__car-dealer-form-tab">-->
-<!--                  <div class="ltn__tab-menu  text-uppercase">-->
-<!--                    <div class="nav">-->
-<!--                      <a class="active show" data-bs-toggle="tab" href="#ltn__form_tab_1_1"><i class="fas fa-home"></i>Rent-->
-<!--                        Home</a>-->
-<!--                      <a data-bs-toggle="tab" href="#ltn__form_tab_1_2" class=""><i class="fas fa-home"></i>Sale-->
-<!--                        Home</a>-->
-<!--                    </div>-->
-<!--                  </div>-->
-
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
 
 <!-- PRODUCT DETAILS AREA START -->
 <div class="ltn__product-area ltn__product-gutter mb-100">
+  <p-toast></p-toast>
+  <p-toast position="top-left" key="tl"></p-toast>
+  <p-toast position="top-center" key="tc"></p-toast>
+  <p-toast position="bottom-center" key="bc"></p-toast>
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -51,6 +24,7 @@
                      formGroupName="addressName">
                   <a>Choice Address</a>
                   <select class="nice-select" formControlName="name" *ngIf="addresses">
+<!--                    <option value="">All Location</option>-->
                     <option *ngFor="let address of addresses"
                             [value]="address.name">{{ address.name }}</option>
                   </select>
@@ -64,7 +38,7 @@
                       <a>CheckIn</a>
                       <input type="date" class="form-control p-4 datetimepicker-input" name="checkin"
                              formControlName="checkin" placeholder="Depart Date" data-target="#date1"
-                             data-toggle="datetimepicker"/>
+                             data-toggle="datetimepicker" (change)="checkCheckinDate(formSearch?.get('checkin')?.value,formSearch?.get('checkout')?.value)"/>
                     </div>
                     <p
                       *ngIf="formSearch?.get('checkin')?.hasError('required')&& formSearch?.get('checkin')?.touched"
@@ -77,7 +51,9 @@
                       <a>CheckOut</a>
                       <input type="date" class="form-control p-4 datetimepicker-input" name="checkout"
                              formControlName="checkout" placeholder="Return Date" data-target="#date2"
-                             data-toggle="datetimepicker"/>
+                             data-toggle="datetimepicker"
+                             (change)="checkDate(formSearch?.get('checkout')?.value, formSearch?.get('checkin')?.value)"
+                      />
                     </div>
                     <p
                       *ngIf="formSearch?.get('checkout')?.hasError('required') && formSearch?.get('checkout')?.touched"
@@ -88,7 +64,7 @@
                      formGroupName="categoryName">
                   <a>Choice Category</a>
                   <select class="nice-select" formControlName="name" *ngIf="categories">
-                    <!--                    <option value="">All Category</option>-->
+                                        <option value="">All Category</option>
                     <option *ngFor="let category of categories"
                             [value]="category.name">{{ category.name }}</option>
                   </select>
@@ -102,14 +78,14 @@
                 <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-cog col-lg-4 col-md-6">
                   <div class="input-item input-item-name ltn__custom-icon">
                     <a>Choice Max Price</a>
-                    <input type="text" name="price2" placeholder="Max price " formControlName="price2">
+                    <input  type="text" name="price2" placeholder="Max price " formControlName="price2">
                   </div>
                   <p *ngIf="formSearch?.get('price2')?.value < formSearch?.get('price1')?.value"
                      style="color: red">* MaxPrice must be greater than MinPrice</p>
                 </div>
                 <div class="car-price-filter-range col-lg-12">
                   <div class="btn-wrapper text-center">
-                    <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">
+                    <button [disabled]="!check" type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">
                       Search
                     </button>
                   </div>
@@ -126,11 +102,12 @@
               <div class="row">
                 <!-- ltn__product-item -->
                 <div class="col-lg-4 col-sm-6 col-12"
-                     *ngFor="let r of rooms| paginate: { itemsPerPage: 3, currentPage: p, totalItems: total }">
+                     *ngFor="let r of rooms| paginate: { itemsPerPage: 3, currentPage: p, totalItems: total}">
                   <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                     <div class="product-img">
                       <a href="product-details.html"><img src="{{r.img}} " width="350" height="200"></a>
                     </div>
+
                     <div class="product-info">
                       <div class="product-badge-price">
                         <div class="product-badge">

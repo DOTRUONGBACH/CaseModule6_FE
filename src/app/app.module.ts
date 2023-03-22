@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { CrudHostComponent } from './crud-host/crud-host.component';
+import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {CrudHostComponent} from './crud-host/crud-host.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {ShowRoomForGuestComponent} from "./rooms/show-room-for-guest/show-room-for-guest.component";
@@ -16,8 +16,10 @@ import {ShowTotalBillComponent} from "./show-total-bill/show-total-bill.componen
 import {RouterModule, RouterOutlet} from "@angular/router";
 import {NgxPaginationModule} from "ngx-pagination";
 
-import { ShowCommentComponent } from './room-detail/show-comment/show-comment.component';
-import { HomeDetailComponent } from './room-detail/home-detail/home-detail.component';
+import {ShowCommentComponent} from './room-detail/show-comment/show-comment.component';
+import {HomeDetailComponent} from './room-detail/home-detail/home-detail.component';
+import {Toast, ToastModule} from "primeng/toast";
+
 
 @NgModule({
   declarations: [
@@ -30,9 +32,9 @@ import { HomeDetailComponent } from './room-detail/home-detail/home-detail.compo
     AppComponent,
     CrudHostComponent,
     TopRentComponent,
-   ShowTotalBillComponent,
-   ShowCommentComponent,
-   HomeDetailComponent
+    ShowTotalBillComponent,
+    ShowCommentComponent,
+    HomeDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,7 @@ import { HomeDetailComponent } from './room-detail/home-detail/home-detail.compo
     HttpClientModule,
     ReactiveFormsModule,
     RouterOutlet,
-
+    ToastModule,
 
     ReactiveFormsModule,
     AppRoutingModule,
@@ -57,4 +59,5 @@ import { HomeDetailComponent } from './room-detail/home-detail/home-detail.compo
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
