@@ -1,24 +1,27 @@
 import {Component, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
-import {MatPaginator, PageEvent} from "@angular/material/paginator";
-import {MatTableDataSource} from "@angular/material/table";
+
 import {ShowRoomForGuestService} from "../../../service/show-room-for-guest.service";
-import {Room} from "../../model/Room";
+
 import {RoomForGuest} from "../../model/RoomForGuest";
 import {FormBuilder, FormControlName, FormGroup, FormControl, Validators} from "@angular/forms";
 import {Category} from "../../model/Category";
 import {Address} from "../../model/Address";
 import {CategoryServiceService} from "../../../service/category-service.service";
 import {AddressService} from "../../../service/address.service";
+import {MessageService} from "primeng/api";
+import {DatePipe} from '@angular/common';
 
 
 @Component({
   selector: 'app-show-room-for-guest',
   templateUrl: './show-room-for-guest.component.html',
-  styleUrls: ['./show-room-for-guest.component.css']
+  styleUrls: ['./show-room-for-guest.component.css'],
+  providers: [MessageService]
 })
 export class ShowRoomForGuestComponent implements OnInit {
   room: RoomForGuest | undefined;
   rooms: any;
+
   p: number = 1;
   total: number = 0;
 
@@ -26,12 +29,16 @@ export class ShowRoomForGuestComponent implements OnInit {
   addresses?: Address[];
   formSearch !: FormGroup;
   stringSearch!: string;
+  datePipe: DatePipe = new DatePipe('en-US');
+
 
   constructor(private showRoomService: ShowRoomForGuestService, private categoryService: CategoryServiceService,
-              private addressService: AddressService) {
+              private addressService: AddressService, private mess: MessageService) {
   }
 
   ngOnInit(): void {
+
+
     this.getRooms()
     this.formSearch = new FormGroup({
       categoryName: new FormGroup({
@@ -44,6 +51,7 @@ export class ShowRoomForGuestComponent implements OnInit {
       price2: new FormControl("", [Validators.required,]),
       checkin: new FormControl("", [Validators.required]),
       checkout: new FormControl("", [Validators.required]),
+
     })
     // Lấy danh sách categories từ server
     this.categoryService.getCategories().subscribe(data => {
@@ -54,8 +62,8 @@ export class ShowRoomForGuestComponent implements OnInit {
     this.addressService.getAddress().subscribe(data => {
       this.addresses = data;
     });
-
   }
+
 
   getRooms() {
     this.showRoomService.getAll().subscribe((response: any) => {
@@ -77,12 +85,21 @@ export class ShowRoomForGuestComponent implements OnInit {
   }
 
 
+  showWarn() {
+    this.mess.add({severity: 'warn', summary: 'Warn', detail: 'Wrong  Information', key: 'tl'});
+  }
+
+  showSuccess() {
+    this.mess.add({severity: 'success', summary: 'Success', detail: 'See the results below'});
+  }
+
+  check: boolean = true
+
   findRoomByGuest() {
     // @ts-ignore
     let categoryName = this.formSearch.get('categoryName')?.get('name').value
     // @ts-ignore
     let addressName = this.formSearch.get('addressName')?.get('name').value
-    console.log(addressName)
     let price1
     if (this.formSearch.get('price1')?.value != 0) {
       price1 = this.formSearch.get('price1')?.value
@@ -92,28 +109,59 @@ export class ShowRoomForGuestComponent implements OnInit {
     let price2
     if (this.formSearch.get('price2')?.value != 0) {
       price2 = this.formSearch.get('price2')?.value
-
     } else {
       price2 = 1000;
     }
 
     let checkin = this.formSearch.get('checkin')?.value
     this.showRoomService.checkinDate = checkin;
-
     let checkout = this.formSearch.get('checkout')?.value
     this.showRoomService.checkoutDate = checkout;
+// @ts-ignore
+    if (checkin >= this.getFormattedDate() && checkout > this.getFormattedDate() && addressName != "") {
+      this.showRoomService.findRoomByGuest(categoryName, addressName, price1, price2, checkin, checkout).subscribe(
+        (response: any) => {
+          this.rooms = response;
+          this.total = this.rooms.length;
+          this.showSuccess()
+        }
+      )
+    } else  {
+      checkin = "";
+      checkout = "";
+      this.showRoomService.findRoomByGuest(categoryName, addressName, price1, price2, checkin, checkout).subscribe(
+        (response: any) => {
+          this.rooms = response;
+          this.total = this.rooms.length;
+          this.showWarn();
+
+        }
+      )
+    }
+  }
+
+  getFormattedDate() {
+    var date = new Date();
+    var transformDate = this.datePipe.transform(date, 'yyyy-MM-dd');
+    return transformDate;
+  }
+
+  checkCheckinDate(checkin: any, checkout: any) {
     // @ts-ignore
+    if (checkin < this.getFormattedDate() || checkout <= this.getFormattedDate()) {
+      this.check = false
+    } else {
+      this.check = true
+    }
+  }
 
-    this.showRoomService.findRoomByGuest(categoryName, addressName, price1, price2, checkin, checkout).subscribe(
-      (response: any) => {
-        this.rooms = response;
-
-        this.total = this.rooms.length;
-
-        console.log(response)
-
-      }
-    )
+  checkDate(checkout: any, checkin: any) {
+    // @ts-ignore
+    if (checkout <= checkin || checkout< this.getFormattedDate()) {
+      this.check = false
+    } else {
+      this.check = true
+    }
   }
 }
 

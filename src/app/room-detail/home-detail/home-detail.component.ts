@@ -5,6 +5,8 @@ import {RoomDetail} from "../../model/RoomDetail";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ShowRoomForGuestService} from "../../../service/show-room-for-guest.service";
 
+
+// @ts-ignore
 @Component({
   selector: 'app-home-detail',
   templateUrl:'./home-detail.component.html',
@@ -46,7 +48,9 @@ export class HomeDetailComponent implements OnInit {
 
   arr(id: any) {
     this.showRoomDetailService.rooms=this.showRoomDetailService.getLocalRoom();
+
     this.showRoomDetailService.rooms.push(this.roomDetail)
+
     this.showRoomDetailService.setLocalRoom(this.showRoomDetailService.rooms)
     this.routerlink.navigate(["/rent/" + id])
   }

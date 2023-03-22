@@ -27,6 +27,7 @@ import {ShowScheduleComponent} from './show-schedule/show-schedule.component';
 import { HeaderComponent } from './account/header/header.component';
 import {NgFor} from "@angular/common";
 import {RentRoomComponent} from "./rent-room/rent-room.component";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
 
 @NgModule({
   declarations: [
@@ -52,20 +53,30 @@ import {RentRoomComponent} from "./rent-room/rent-room.component";
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     ReactiveFormsModule,
     RouterOutlet,
     NgFor,
+    ReactiveFormsModule,
+    AppRoutingModule,
     RouterModule,
-    FormsModule,
     FormsModule,
     HttpClientModule,
     FormsModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
     NgxPaginationModule,
     AccordionModule,
     ToastModule,
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
+    BrowserAnimationsModule,
+    ConfirmDialogModule,
   ],
+
+
+
   providers: [],
   bootstrap: [AppComponent]
 })
