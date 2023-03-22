@@ -86,7 +86,7 @@ export class ShowRoomForGuestComponent implements OnInit {
 
 
   showWarn() {
-    this.mess.add({severity: 'warn', summary: 'Warn', detail: 'Wrong Date Information', key: 'tc'});
+    this.mess.add({severity: 'warn', summary: 'Warn', detail: 'Wrong Date Information', key: 'bc'});
   }
 
   check: boolean = true
@@ -114,11 +114,11 @@ export class ShowRoomForGuestComponent implements OnInit {
     let checkout = this.formSearch.get('checkout')?.value
     this.showRoomService.checkoutDate = checkout;
 // @ts-ignore
-    if (checkin <= this.getFormattedDate() && checkout > this.getFormattedDate()) {
+    if (checkin < this.getFormattedDate() && checkout > this.getFormattedDate()) {
       checkin = "";
       checkout = "";
       this.showWarn();
-      alert("Wrong Date Information")
+
     }
     // @ts-ignore
     this.showRoomService.findRoomByGuest(categoryName, addressName, price1, price2, checkin, checkout).subscribe(
@@ -137,7 +137,7 @@ export class ShowRoomForGuestComponent implements OnInit {
 
   checkCheckinDate(checkin: any, checkout: any) {
     // @ts-ignore
-    if (checkin <= this.getFormattedDate() || checkout <= this.getFormattedDate()) {
+    if (checkin < this.getFormattedDate() || checkout < this.getFormattedDate()) {
       this.check = false
     } else {
       this.check = true

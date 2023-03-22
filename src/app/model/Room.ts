@@ -5,6 +5,7 @@ import {Category} from "./Category";
 import {Account} from "./Account";
 
 export interface Room{
+  id?: number;
   name?: String ;
   price?:number;
   description?: String;

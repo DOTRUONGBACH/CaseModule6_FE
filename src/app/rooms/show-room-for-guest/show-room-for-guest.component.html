@@ -102,7 +102,7 @@
               <div class="row">
                 <!-- ltn__product-item -->
                 <div class="col-lg-4 col-sm-6 col-12"
-                     *ngFor="let r of rooms| paginate: { itemsPerPage: 3, currentPage: p, totalItems: total}">
+                     *ngFor="let r of rooms| paginate: { itemsPerPage: 6, currentPage: p, totalItems: total}">
                   <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                     <div class="product-img">
                       <a href="product-details.html"><img src="{{r.img}} " width="350" height="200"></a>
@@ -116,7 +116,7 @@
                           </ul>
                         </div>
                       </div>
-                      <h2 class="product-title"><a href="product-details.html">{{r.name}}</a></h2>
+                      <h2 class="product-title"><a  routerLink="/showRoomDetail/{{r.id}}">{{r.name}}</a></h2>
                       <div class="product-img-location">
                         <ul>
                           <li>

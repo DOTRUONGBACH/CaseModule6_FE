@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {TopRent} from "../../model/TopRent";
-import {TopRentService} from "../../../service/TopRentService";
 import {ShowComment} from "../../model/Comment";
 import {ShowCommentService} from "../../../service/showComment";
+import {Observable} from "rxjs";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-show-comment',
@@ -11,15 +11,36 @@ import {ShowCommentService} from "../../../service/showComment";
 })
 export class ShowCommentComponent implements OnInit{
 
-  showComments: ShowComment[] = [];
-  constructor(private showCommentService:ShowCommentService) {
+  showComments!: ShowComment[];
+  id!: any;
+  constructor(private showCommentService:ShowCommentService,private route: ActivatedRoute) {
   }
+
+  // ngOnInit(): void {
+  //   this.showCommentService.getShowComment().subscribe(data=>{
+  //     this.showComments = data;
+  //   });
+  // }
+
+
 
   ngOnInit(): void {
-    this.showCommentService.getShowComment().subscribe(data=>{
-      this.showComments = data;
-    });
+
+
+    this.getShowComment(this.id)
+    this.id = this.route.snapshot.paramMap.get('idRoom')
+    this.showCommentService.getShowComment(this.id).subscribe(data => {
+      this.showComments = data
+
+    })
+
   }
 
+  // @ts-ignore
+  getShowComment(id: string | null){
+    this.showCommentService.getShowComment(this.id).subscribe((data) => {
+      this.showComments = data;
+    })
+  }
 
 }
