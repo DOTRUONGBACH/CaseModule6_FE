@@ -26,11 +26,14 @@ export class MyAccountComponent implements OnInit, OnChanges {
     })
     this.accountToken =  this.accountService.getAccountToken() ;
   }
+
+
   ngOnChanges(changes: SimpleChanges): void {
     this.accountService.getAll().subscribe((data)=>{
       this.account = data
     })
   }
+
 }
 
 

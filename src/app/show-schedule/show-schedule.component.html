@@ -1,0 +1,55 @@
+<!-- SHOPING CART AREA START -->
+<div class="liton__shoping-cart-area mb-120">
+  <div class="container">
+    <div class="section-title-area ltn__section-title-2--- text-center">
+      <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">Properties</h6>
+      <h1 class="section-title">Schedule</h1>
+    </div>
+    <div class="btn-wrapper text-right">
+      <a routerLink="/history" class="theme-btn-1 btn btn-effect-1">Back To List Bill</a>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <table class="table">
+          <thead>
+          <th class="cart-product-remove">#</th>
+          <th class="cart-product-remove">Room Name</th>
+          <th class="cart-product-remove">Room Address</th>
+          <th class="cart-product-image">Check In</th>
+          <th class="cart-product-info">Check Out</th>
+          <th class="cart-product-price">Price</th>
+          <th class="cart-product-quantity">Amount Day</th>
+          </thead>
+          <tbody *ngFor="let bd of billDetails|paginate: { itemsPerPage: 10, currentPage: p, totalItems: total }">
+          <tr>
+            <td class="cart-product-remove">{{bd.id}}</td>
+            <td class="cart-product-info">
+              <h4><a href="product-details.html">{{bd.room.name}}</a></h4>
+            </td>
+            <td class="cart-product-info">
+              <a class="cart-product-price">{{bd.room.addressRoom}}</a>
+            </td>
+            <td class="cart-product-info">
+              <a class="cart-product-price">{{bd.checkIn}}</a>
+            </td>
+            <td class="cart-product-info">
+              <a href="product-details.html">{{bd.checkOut}}</a>
+            </td>
+            <td class="cart-product-price">
+              <a href="product-details.html">{{bd.room.price}}</a>
+            </td>
+            <td class="cart-product-info">
+              <a href="product-details.html">{{bd.amountDay}}</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <pagination-controls (pageChange)="pageChangeEvent($event)"
+                             class="ltn__pagination-area text-center"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SHOPING CART AREA END -->
+
+
