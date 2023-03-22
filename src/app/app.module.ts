@@ -24,7 +24,8 @@ import {HomeDetailComponent} from './room-detail/home-detail/home-detail.compone
 import {HistoryBillComponent} from './history-bill/history-bill.component';
 import {FindBillByIdComponent} from './find-bill-by-id/find-bill-by-id.component';
 import {ShowScheduleComponent} from './show-schedule/show-schedule.component';
-
+import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {CommonModule} from "@angular/common";
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,15 +57,15 @@ import {ShowScheduleComponent} from './show-schedule/show-schedule.component';
     RouterModule,
     FormsModule,
     HttpClientModule,
-    FormsModule,
     HttpClientModule,
-    FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     NgxPaginationModule,
     AccordionModule,
     ToastModule,
     BrowserAnimationsModule,
+    ConfirmDialogModule,
+    CommonModule,
   ],
 
 
