@@ -22,7 +22,7 @@
               <div class="col-lg-4">
                 <div class="ltn__tab-menu-list mb-50">
                   <div class="nav">
-                    <a class="active show" data-bs-toggle="tab" href="#ltn_tab_1_1">Dashboard <i
+                    <a class="active show" data-bs-toggle="tab" href="#ltn_tab_1_1" >Dashboard <i
                       class="fas fa-home"></i></a>
                     <a data-bs-toggle="tab" href="#ltn_tab_1_2">Profiles <i class="fas fa-user"></i></a>
 
@@ -34,10 +34,10 @@
 
                     <a data-bs-toggle="tab" href="#ltn_tab_1_7">Add Property <i class="fa-solid fa-map-location-dot"></i></a>
 
-                    <a data-bs-toggle="tab" href="#ltn_tab_1_8">Payments <i class="fa-solid fa-money-check-dollar"></i></a>
+                    <a data-bs-toggle="tab" routerLink="/history">Payments <i class="fa-solid fa-money-check-dollar"></i></a>
 
                     <a data-bs-toggle="tab" href="#ltn_tab_1_9">Change Password <i class="fa-solid fa-lock"></i></a>
-                    <a routerLink="/login">Logout <i class="fas fa-sign-out-alt"></i></a>
+
                   </div>
                 </div>
               </div>
@@ -50,7 +50,7 @@
                       <div class="ltn-author-introducing clearfix">
                         <h3>{{accountToken.id}}</h3>
                         <div class="author-img">
-                          <img src="{{accountToken.avatar}}" alt="" width="200" height="100">
+                          <img src="{{accountToken.avatar}}" alt="" width="150" height="100">
                         </div>
                         <div class="author-info">
                           <h6>{{accountToken.name}} </h6>
@@ -81,7 +81,6 @@
                   </div>
                   <app-change-password></app-change-password>
                 </div>
-
               </div>
             </div>
           </div>

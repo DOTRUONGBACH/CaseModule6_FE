@@ -24,7 +24,10 @@ import {HomeDetailComponent} from './room-detail/home-detail/home-detail.compone
 import {HistoryBillComponent} from './history-bill/history-bill.component';
 import {FindBillByIdComponent} from './find-bill-by-id/find-bill-by-id.component';
 import {ShowScheduleComponent} from './show-schedule/show-schedule.component';
+import { HeaderComponent } from './account/header/header.component';
 
+
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +36,6 @@ import {ShowScheduleComponent} from './show-schedule/show-schedule.component';
     RegisterComponent,
     MyAccountComponent,
     ShowProfileComponent,
-    AppComponent,
     CrudHostComponent,
     TopRentComponent,
     ShowTotalBillComponent,
@@ -44,24 +46,17 @@ import {ShowScheduleComponent} from './show-schedule/show-schedule.component';
     ShowScheduleComponent,
     ChangePasswordComponent,
     ForgotPasswordComponent,
+    HeaderComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     ReactiveFormsModule,
     RouterOutlet,
-    ReactiveFormsModule,
-    AppRoutingModule,
     RouterModule,
-    FormsModule,
     HttpClientModule,
     FormsModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
     NgxPaginationModule,
     AccordionModule,
     ToastModule,
