@@ -20,7 +20,7 @@
 <!--    </div>-->
     <form [formGroup]="formPost" (ngSubmit)="postComment()">
       <div >
-        <textarea placeholder="Type your comments...." formControlName="content"></textarea>
+        <textarea placeholder="Type your comments...." formControlName="content"  [(ngModel)]="value"></textarea>
       </div>
 <!--      <label class="mb-0"><input type="checkbox" name="agree"> Save my name, email, and website in this-->
 <!--        browser for the next time I comment.</label>-->

@@ -50,7 +50,7 @@ export class CrudHostComponent implements OnInit {
     this.formCreate = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      price: ['', Validators.required,Validators.min(0)],
+      price: ['',Validators.min(1)],
       category: new FormGroup({
         id: new FormControl()
       }),
@@ -72,8 +72,6 @@ export class CrudHostComponent implements OnInit {
     });
     this.getRoom()
   }
-
-
 
   onSubmit() {
     // Nếu formCreate hợp lệ

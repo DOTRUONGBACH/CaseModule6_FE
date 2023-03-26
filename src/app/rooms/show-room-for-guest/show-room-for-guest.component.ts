@@ -68,6 +68,7 @@ export class ShowRoomForGuestComponent implements OnInit {
   getRooms() {
     this.showRoomService.getAll().subscribe((response: any) => {
       this.rooms = response;
+      console.log(this.rooms)
       this.total = this.rooms.length;
 
     })
@@ -123,7 +124,7 @@ export class ShowRoomForGuestComponent implements OnInit {
         (response: any) => {
           this.rooms = response;
           this.total = this.rooms.length;
-          this.showSuccess()
+
         }
       )
     } else  {
@@ -138,6 +139,12 @@ export class ShowRoomForGuestComponent implements OnInit {
         }
       )
     }
+    const myDiv = document.getElementById("anh");
+
+// Thiết lập giá trị scrollTop của phần tử cha
+// (hoặc document nếu không có phần tử cha)
+    if (myDiv!=null){document.documentElement.scrollTop = myDiv.offsetTop;}
+
   }
 
   getFormattedDate() {
@@ -163,5 +170,8 @@ export class ShowRoomForGuestComponent implements OnInit {
       this.check = true
     }
   }
+
+
+
 }
 

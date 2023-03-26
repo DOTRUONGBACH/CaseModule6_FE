@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RoomDetail} from "../model/RoomDetail";
 import {ShowRoomDetailService} from "../../service/ShowRoomDetail";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ShowRoomForGuestService} from "../../service/show-room-for-guest.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Account} from "../model/Account";
@@ -11,6 +11,7 @@ import {BillDTO} from "../model/BillDTO";
 import {BillService} from "../../service/bill.service";
 import {DataDTO} from "../model/DataDTO";
 import {DatePipe} from '@angular/common';
+import {BookroomService} from "../../service/bookroom.service";
 
 @Component({
   selector: 'app-rent-room',
@@ -32,8 +33,8 @@ export class RentRoomComponent implements OnInit {
   datePipe: DatePipe = new DatePipe('en-US')
 
   constructor(private showRoomDetailService: ShowRoomDetailService, private route: ActivatedRoute,
-              private showRoomForGuest: ShowRoomForGuestService, private billService: BillService,
-              private accountService: AccountService) {
+              private showRoomForGuest: ShowRoomForGuestService, private billService: BillService,private router: Router,
+              private accountService: AccountService,private bookRoomService: BookroomService) {
     this.rooms = this.showRoomDetailService.rooms;
 
   }
@@ -68,8 +69,16 @@ export class RentRoomComponent implements OnInit {
   }
 
   createBill() {
-    alert('ok')
-    this.billService.createBill(this.bill).subscribe(data => {
+    const accountId = this.accountService.getAccountToken().id;
+    this.billService.createBill( this.bill).subscribe(data => {
+
+      const id = data.id;
+      console.log(id);
+      this.router.navigateByUrl(`/findbillbyid/${id}`);
+      alert('successfully pay')
+      localStorage.removeItem("carts");
+      this.bookRoomService.sendEmailbooking(accountId, this.bill).subscribe(data=>{
+      })
 
     })
   }

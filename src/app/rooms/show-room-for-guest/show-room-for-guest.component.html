@@ -1,6 +1,11 @@
-
+<app-preloader></app-preloader>
 <!-- PRODUCT DETAILS AREA START -->
-<div class="ltn__product-area ltn__product-gutter mb-100">
+
+  <div>
+    <img class="backg" src="assets/img/slider/12.jpg">
+  </div>
+
+<div class="ltn__product-area ltn__product-gutter mb-100" style="margin-bottom: 2px">
   <p-toast></p-toast>
   <p-toast position="top-left" key="tl"></p-toast>
   <p-toast position="top-center" key="tc"></p-toast>
@@ -9,13 +14,28 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="section-title-area ltn__section-title-2--- text-center">
-          <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">Properties</h6>
-          <h1 class="section-title">Featured Listings</h1>
+
+
+<!--          <div class="header-search-wrap">-->
+<!--            <div class="header-search-1">-->
+<!--              <div class="search-icon" style="width: 500px"  >-->
+<!--                <i class="icon-search for-search-show"  href="#myModal" data-bs-toggle="modal"></i>-->
+<!--                &lt;!&ndash;                <i class="icon-cancel  for-search-close"></i>&ndash;&gt;-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--          </div>-->
+
+
+
+
+          <div style="margin-top: 20px"><img src="/assets/img/logo.png" ></div>
         </div>
 
 
         <!-- Button HTML (to Trigger Modal) -->
-<!--        <a href="#myModal" class="btn btn-lg btn-primary" data-bs-toggle="modal">Launch Demo Modal</a>-->
+        <a href="#myModal" class="btn btn-lg btn-primary" data-bs-toggle="modal">Search rooms </a>
+        <i class="fas fa-search"></i>
 
         <!-- Modal HTML -->
         <div id="myModal" class="modal fade">
@@ -50,7 +70,7 @@
                           <div class="mb-3 mb-md-0">
                             <div class="date" id="date1" data-target-input="nearest">
                               <a>CheckIn</a>
-                              <input type="date" class="form-control p-4 datetimepicker-input" name="checkin"
+                              <input type="date" [min]="getFormattedDate()" class="form-control p-4 datetimepicker-input" name="checkin"
                                      formControlName="checkin" placeholder="Depart Date" data-target="#date1"
                                      data-toggle="datetimepicker" (change)="checkCheckinDate(formSearch?.get('checkin')?.value,formSearch?.get('checkout')?.value)"/>
                             </div>
@@ -63,7 +83,7 @@
                           <div class="mb-3 mb-md-0">
                             <div class="date" id="date2" data-target-input="nearest">
                               <a>CheckOut</a>
-                              <input type="date" class="form-control p-4 datetimepicker-input" name="checkout"
+                              <input type="date" [min]="getFormattedDate()" class="form-control p-4 datetimepicker-input" name="checkout"
                                      formControlName="checkout" placeholder="Return Date" data-target="#date2"
                                      data-toggle="datetimepicker"
                                      (change)="checkDate(formSearch?.get('checkout')?.value, formSearch?.get('checkin')?.value)"
@@ -109,9 +129,10 @@
                     </div>
                   </div>
                 </div>
-
-
               </div>
+
+
+
               <div class="modal-footer">
 <!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>-->
 <!--                <button type="button" class="btn btn-primary">Save changes</button>-->
@@ -129,16 +150,16 @@
 
 
 
-        <div class="tab-content">
-          <div class="tab-pane fade active show" id="liton_product_grid">
+        <div class="tab-content" >
+          <div class="tab-pane fade active show" id="liton_product_grid" >
             <div class="ltn__product-tab-content-inner ltn__product-grid-view">
               <div class="row">
                 <!-- ltn__product-item -->
                 <div class="col-lg-4 col-sm-6 col-12"
-                     *ngFor="let r of rooms| paginate: { itemsPerPage: 6, currentPage: p, totalItems: total}">
+                     *ngFor="let r of rooms| paginate: { itemsPerPage: 9, currentPage: p, totalItems: total}">
                   <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                     <div class="product-img">
-                      <a href="product-details.html"><img src="{{r.img}} " width="350" height="200"></a>
+                      <a routerLink="/showRoomDetail/{{r.id}}"><img src="{{r.img}} " width="350" height="300"></a>
                     </div>
 
                     <div class="product-info">
@@ -148,6 +169,7 @@
                             <li class="sale-badg"><a>{{r.category}} </a></li>
                           </ul>
                         </div>
+
                       </div>
                       <h2 class="product-title"><a  routerLink="/showRoomDetail/{{r.id}}">{{r.name}}</a></h2>
                       <div class="product-img-location">
@@ -160,19 +182,10 @@
                       <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
                         <li>{{r.description}}</li>
                       </ul>
-                      <div class="product-hover-action">
-                        <ul>
-                          <li>
-                            <a href="#" title="Wishlist" data-bs-toggle="modal"
-                               data-bs-target="#liton_wishlist_modal">
-                              <i class="flaticon-heart-1"></i></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="product-info-bottom">
-                      <div class="product-price">
-                        <span>{{r.price}}$<label>/Day</label></span>
+                      <div id="anh"></div>
+                    <div class="product-info-bottom" >
+                      <div class="product-price" >
+                        <span >{{r.price}}$<label>/Day</label></span>
                       </div>
                     </div>
                   </div>
@@ -193,4 +206,91 @@
 <!-- PRODUCT DETAILS AREA END -->
 
 
+
+</div>
+
+<!-- TESTIMONIAL AREA START (testimonial-7) -->
+<div class="ltn__testimonial-area section-bg-1--- bg-image-top pt-115 pb-70" data-bs-bg="img/bg/20.jpg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-title-area ltn__section-title-2--- text-center">
+          <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">Our Testimonial</h6>
+          <h1 class="section-title">Clients Feedback</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row ltn__testimonial-slider-5-active slick-arrow-1">
+      <div class="col-lg-4">
+        <div class="ltn__testimonial-item ltn__testimonial-item-7">
+          <div class="ltn__testimoni-info">
+            <p><i class="flaticon-left-quote-1"></i>
+              Precious ipsum dolor sit amet
+              consectetur adipisicing elit, sed dos
+              mod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad min
+              veniam, quis nostrud Precious ips
+              um dolor sit amet, consecte</p>
+            <div class="ltn__testimoni-info-inner">
+              <div class="ltn__testimoni-img">
+                <img src="assets/img/testimonial/1.jpg" alt="#">
+              </div>
+              <div class="ltn__testimoni-name-designation">
+                <h5>Nguyễn Huy Hiệp</h5>
+                <label>Selling Agents</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="ltn__testimonial-item ltn__testimonial-item-7">
+          <div class="ltn__testimoni-info">
+            <p><i class="flaticon-left-quote-1"></i>
+              Precious ipsum dolor sit amet
+              consectetur adipisicing elit, sed dos
+              mod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad min
+              veniam, quis nostrud Precious ips
+              um dolor sit amet, consecte</p>
+            <div class="ltn__testimoni-info-inner">
+              <div class="ltn__testimoni-img">
+                <img src="assets/img/testimonial/2.jpg" alt="#">
+              </div>
+              <div class="ltn__testimoni-name-designation">
+                <h5>Nguyễn Văn Phương</h5>
+                <label>Selling Agents</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="ltn__testimonial-item ltn__testimonial-item-7">
+          <div class="ltn__testimoni-info">
+            <p><i class="flaticon-left-quote-1"></i>
+              Precious ipsum dolor sit amet
+              consectetur adipisicing elit, sed dos
+              mod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad min
+              veniam, quis nostrud Precious ips
+              um dolor sit amet, consecte</p>
+            <div class="ltn__testimoni-info-inner">
+              <div class="ltn__testimoni-img">
+                <img src="assets/img/testimonial/3.jpg" alt="#">
+              </div>
+              <div class="ltn__testimoni-name-designation">
+                <h5>Nguyễn Văn Tuấn</h5>
+                <label>Selling Agents</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--  -->
+    </div>
+  </div>
+</div>
+<!-- TESTIMONIAL AREA END -->
 

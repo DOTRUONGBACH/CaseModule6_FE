@@ -18,6 +18,7 @@ import {ShowScheduleComponent} from "./show-schedule/show-schedule.component";
 import {ChangePasswordComponent} from "./account/change-password/change-password.component";
 import {ForgotPasswordComponent} from "./account/forgot-password/forgot-password.component";
 import {RentRoomComponent} from "./rent-room/rent-room.component";
+import {AuthGuard, canActivate} from "@angular/fire/auth-guard";
 
 
 
@@ -44,6 +45,7 @@ const routes: Routes = [
   {path: 'changePassword', component: ChangePasswordComponent},
   {path:'showRoomDetail/:idRoom', component: HomeDetailComponent},
   {path:'rent/:idRoom', component: RentRoomComponent},
+  {path:'rent', component: RentRoomComponent},
 
 ]
 

@@ -23,12 +23,14 @@ export class FindBillByIdComponent implements OnInit {
               private confirmationService: ConfirmationService, private cancelService: CancelService, private datePipe: DatePipe) {
   }
 
-  checkIfCancelAvailable(checkin: Date): boolean {
+  checkIfCancelAvailable(checkin: Date,checkout: Date): boolean {
 checkin = new Date(checkin);
+checkout = new Date(checkout);
     checkin.setHours(0, 0, 0, 0);
+    checkout.setHours(0,0,0,0);
    this.now.setHours(0,0,0,0);
     console.log(checkin.getTime() <= this.now.getTime()-this.oneDay)
-    return checkin.getTime() <= this.now.getTime()-this.oneDay;
+    return this.now.getTime() <= checkin.getTime()-this.oneDay && checkout.getTime() > this.now.getTime() ;
   }
 
   ngOnInit(): void {

@@ -53,7 +53,7 @@
 
             </td>
             <td class="cart-product-info">
-              <button *ngIf="bd.status && checkIfCancelAvailable(bd.checkIn)" style="color: #FF0F00"(click)="confirmCancel(bd)">Cancel</button>
+              <button *ngIf="bd.status && checkIfCancelAvailable(bd.checkIn,bd.checkOut)" style="color: #FF0F00"(click)="confirmCancel(bd)">Cancel</button>
             </td>
 
           </tr>

@@ -28,6 +28,7 @@ import { HeaderComponent } from './account/header/header.component';
 import {NgFor} from "@angular/common";
 import {RentRoomComponent} from "./rent-room/rent-room.component";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
+import { PreloaderComponent } from './preloader/preloader.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
     ChangePasswordComponent,
     ForgotPasswordComponent,
     RentRoomComponent,
-    HeaderComponent
+    HeaderComponent,
+    PreloaderComponent
   ],
   imports: [
     BrowserModule,
