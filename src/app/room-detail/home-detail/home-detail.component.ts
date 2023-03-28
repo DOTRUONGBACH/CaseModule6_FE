@@ -32,7 +32,6 @@ export class HomeDetailComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('idRoom')
 
     this.showRoomDetailService.getRoomDetailById(this.id).subscribe(data => {
-      debugger
       this.roomDetail = data
       this.images = data.image.split(",");
       this.roomDetail.images = this.images;
@@ -56,7 +55,8 @@ export class HomeDetailComponent implements OnInit {
   }
 
   getRoomDetailById(id: number) {
-    this.showRoomDetailService.getRoomDetailById(this.id).subscribe((data) => {
+    this.showRoomDetailService.getRoomDetailById(id).subscribe((data) => {
+      console.log(data)
       this.roomDetail = data;
     })
   }

@@ -12,7 +12,7 @@ import {MyAccountComponent} from "./account/my-account/my-account.component";
 import {ShowProfileComponent} from "./account/show-profile/show-profile.component";
 import {TopRentComponent} from "./top-rent/top-rent.component";
 import {ShowTotalBillComponent} from "./show-total-bill/show-total-bill.component";
-import {RouterModule, RouterOutlet} from "@angular/router";
+import {RouterModule, RouterOutlet, RouterPreloader} from "@angular/router";
 import {NgxPaginationModule} from "ngx-pagination";
 import {AccordionModule} from 'primeng/accordion';
 import {ChangePasswordComponent} from './account/change-password/change-password.component';
@@ -49,7 +49,8 @@ import {Ng5SliderModule} from "ng5-slider";
     ChangePasswordComponent,
     ForgotPasswordComponent,
     RentRoomComponent,
-    HeaderComponent
+    HeaderComponent,
+
   ],
   imports: [
     BrowserModule,

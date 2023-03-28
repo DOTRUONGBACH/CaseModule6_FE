@@ -11,7 +11,7 @@ import {DataDTO} from "../app/model/DataDTO";
 export class BillService {
 
   constructor(private httpClient: HttpClient) { }
-  createBill(bill: BillDTO):Observable<any> {
+  createBill( bill: BillDTO):Observable<any> {
     return this.httpClient.post("http://localhost:8080/billdetails/post",bill)
   }
 

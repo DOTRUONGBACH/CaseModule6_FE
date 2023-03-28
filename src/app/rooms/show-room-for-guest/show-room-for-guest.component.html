@@ -9,13 +9,28 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="section-title-area ltn__section-title-2--- text-center">
-          <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">Properties</h6>
-          <h1 class="section-title">Featured Listings</h1>
+
+
+<!--          <div class="header-search-wrap">-->
+<!--            <div class="header-search-1">-->
+<!--              <div class="search-icon" style="width: 500px"  >-->
+<!--                <i class="icon-search for-search-show"  href="#myModal" data-bs-toggle="modal"></i>-->
+<!--                &lt;!&ndash;                <i class="icon-cancel  for-search-close"></i>&ndash;&gt;-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--          </div>-->
+
+
+
+
+          <div style="margin-top: 20px"><img src="/assets/img/logo.png" ></div>
         </div>
 
 
         <!-- Button HTML (to Trigger Modal) -->
-<!--        <a href="#myModal" class="btn btn-lg btn-primary" data-bs-toggle="modal">Launch Demo Modal</a>-->
+        <a href="#myModal" class="btn btn-lg btn-primary" data-bs-toggle="modal">Search rooms </a>
+        <i class="fas fa-search"></i>
 
         <!-- Modal HTML -->
         <div id="myModal" class="modal fade">
@@ -52,7 +67,7 @@
                               <a>CheckIn</a>
                               <input type="date" [min]="getFormattedDate()" class="form-control p-4 datetimepicker-input" name="checkin"
                                      formControlName="checkin" placeholder="Depart Date" data-target="#date1"
-                                     data-toggle="datetimepicker"  (change)="checkCheckinDate(formSearch?.get('checkin')?.value,formSearch?.get('checkout')?.value)"/>
+                                     data-toggle="datetimepicker" (change)="checkCheckinDate(formSearch?.get('checkin')?.value,formSearch?.get('checkout')?.value)"/>
                             </div>
                             <p
                               *ngIf="formSearch?.get('checkin')?.hasError('required')&& formSearch?.get('checkin')?.touched"
@@ -63,7 +78,7 @@
                           <div class="mb-3 mb-md-0">
                             <div class="date" id="date2" data-target-input="nearest">
                               <a>CheckOut</a>
-                              <input type="date" [min]="getFormattedDate()"  class="form-control p-4 datetimepicker-input" name="checkout"
+                              <input type="date" [min]="getFormattedDate()" class="form-control p-4 datetimepicker-input" name="checkout"
                                      formControlName="checkout" placeholder="Return Date" data-target="#date2"
                                      data-toggle="datetimepicker"
                                      (change)="checkDate(formSearch?.get('checkout')?.value, formSearch?.get('checkin')?.value)"
@@ -113,6 +128,9 @@
 
 
               </div>
+
+
+
               <div class="modal-footer">
 <!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>-->
 <!--                <button type="button" class="btn btn-primary">Save changes</button>-->

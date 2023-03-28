@@ -27,6 +27,7 @@ export class MyAccountComponent implements OnInit{
     this.accountService.findById(this.id).subscribe((data)=>{
       this.account = data
       data.avatar=this.accountToken.avatar
+      console.log(data.avatar)
       console.log(this.account)
     })
     this.accountToken =  this.accountService.getAccountToken() ;

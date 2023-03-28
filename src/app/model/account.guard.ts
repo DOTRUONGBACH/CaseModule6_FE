@@ -18,9 +18,9 @@ export class AccountGuard implements CanActivate {
       if (role.name == "ROLE_USER") {
         return true;
       }
-      this.router.navigate(["/login","/register"])
+
     }
+    this.router.navigate(["/login"])
     return false;
   }
-
 }

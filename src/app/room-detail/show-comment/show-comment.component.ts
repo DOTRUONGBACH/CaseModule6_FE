@@ -22,6 +22,8 @@ export class ShowCommentComponent implements OnInit{
   formPost!:any;
   account!:AccountP;
   room!:Room;
+
+  value!:string;
   constructor(private accountService:AccountService,private route: ActivatedRoute,private postCommentService:PostCommentService,private showCommentService:ShowCommentService) {
   }
 
@@ -30,10 +32,9 @@ export class ShowCommentComponent implements OnInit{
     this.accountService.findByIdP(this.accountService.getAccountToken().id).subscribe(res=>this.account=res)
     this.formPost= new FormGroup({
       content: new FormControl('')
+
     })
 
-
-    this.getShowComment(this.id)
     this.id = this.route.snapshot.paramMap.get('idRoom')
     this.showCommentService.getShowComment(this.id).subscribe(data => {
       this.showComments = data
@@ -44,18 +45,17 @@ export class ShowCommentComponent implements OnInit{
   postComment(){
 
     const postComment:PostComment= new PostComment(this.formPost.value.content,
-      1,this.account,
+      1,this.accountService.getAccountToken(),
       this.room,true)
     console.log(postComment)
-    this.postCommentService.postComment(postComment).subscribe();
-    this.getShowComment(this.route.snapshot.params['idRoom'])
+    this.postCommentService.postComment(postComment).subscribe(() => {
+      this.showCommentService.getShowComment(this.id).subscribe((data) => {
+        this.showComments = data;
+      });
+    });
+
+this.value=""
   }
 
-  // @ts-ignore
-  getShowComment(id: string | null){
-    this.showCommentService.getShowComment(this.id).subscribe((data) => {
-      this.showComments = data;
-    })
-  }
 
 }
