@@ -28,6 +28,7 @@ import { HeaderComponent } from './account/header/header.component';
 import {NgFor} from "@angular/common";
 import {RentRoomComponent} from "./rent-room/rent-room.component";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {Ng5SliderModule} from "ng5-slider";
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
     BrowserAnimationsModule,
     BrowserAnimationsModule,
     ConfirmDialogModule,
+    Ng5SliderModule
   ],
 
 

@@ -10,6 +10,8 @@ import {CategoryServiceService} from "../../../service/category-service.service"
 import {AddressService} from "../../../service/address.service";
 import {MessageService} from "primeng/api";
 import {DatePipe} from '@angular/common';
+import {Options, LabelType} from 'ng5-slider';
+import {get} from "@angular/fire/database";
 
 
 @Component({
@@ -21,6 +23,14 @@ import {DatePipe} from '@angular/common';
 export class ShowRoomForGuestComponent implements OnInit {
   room: RoomForGuest | undefined;
   rooms: any;
+
+  minValue:
+    number = 100;
+  maxValue:
+    number = 10000;
+
+
+
 
   p: number = 1;
   total: number = 0;
@@ -36,10 +46,10 @@ export class ShowRoomForGuestComponent implements OnInit {
               private addressService: AddressService, private mess: MessageService) {
   }
 
+
   ngOnInit(): void {
-
-
     this.getRooms()
+
     this.formSearch = new FormGroup({
       categoryName: new FormGroup({
         name: new FormControl(""),
@@ -47,10 +57,14 @@ export class ShowRoomForGuestComponent implements OnInit {
       addressName: new FormGroup({
         name: new FormControl("", [Validators.required]),
       }),
-      price1: new FormControl("", [Validators.required]),
-      price2: new FormControl("", [Validators.required,]),
+      // price1: new FormControl("", [Validators.required]),
+      // price2: new FormControl("", [Validators.required,]),
       checkin: new FormControl("", [Validators.required]),
       checkout: new FormControl("", [Validators.required]),
+      control: new FormGroup({
+        options: new FormControl(this.options),
+      }),
+
 
     })
     // Lấy danh sách categories từ server
@@ -63,6 +77,27 @@ export class ShowRoomForGuestComponent implements OnInit {
       this.addresses = data;
     });
   }
+
+
+  options: Options = {
+
+    floor: 0,
+    ceil: 10000,
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return '<b>Min price:</b> Rs. ' + value;
+          let price1 = value;
+        case LabelType.High:
+          return '<b>Max price:</b> Rs. ' + value;
+          console.log(value)
+          let price2 = value
+        default:
+          return 'Rs. ' + value;
+      }
+    }
+  }
+
 
 
   getRooms() {
@@ -100,18 +135,11 @@ export class ShowRoomForGuestComponent implements OnInit {
     let categoryName = this.formSearch.get('categoryName')?.get('name').value
     // @ts-ignore
     let addressName = this.formSearch.get('addressName')?.get('name').value
-    let price1
-    if (this.formSearch.get('price1')?.value != 0) {
-      price1 = this.formSearch.get('price1')?.value
-    } else {
-      price1 = 1;
-    }
-    let price2
-    if (this.formSearch.get('price2')?.value != 0) {
-      price2 = this.formSearch.get('price2')?.value
-    } else {
-      price2 = 1000;
-    }
+
+
+
+    console.log(this.minValue)
+    console.log(this.maxValue)
 
     let checkin = this.formSearch.get('checkin')?.value
     this.showRoomService.checkinDate = checkin;
@@ -119,17 +147,17 @@ export class ShowRoomForGuestComponent implements OnInit {
     this.showRoomService.checkoutDate = checkout;
 // @ts-ignore
     if (checkin >= this.getFormattedDate() && checkout > this.getFormattedDate() && addressName != "") {
-      this.showRoomService.findRoomByGuest(categoryName, addressName, price1, price2, checkin, checkout).subscribe(
+      this.showRoomService.findRoomByGuest(categoryName, addressName, this.minValue, this.maxValue, checkin, checkout).subscribe(
         (response: any) => {
           this.rooms = response;
           this.total = this.rooms.length;
           this.showSuccess()
         }
       )
-    } else  {
+    } else {
       checkin = "";
       checkout = "";
-      this.showRoomService.findRoomByGuest(categoryName, addressName, price1, price2, checkin, checkout).subscribe(
+      this.showRoomService.findRoomByGuest(categoryName, addressName,  this.minValue, this.maxValue, checkin, checkout).subscribe(
         (response: any) => {
           this.rooms = response;
           this.total = this.rooms.length;
@@ -146,6 +174,7 @@ export class ShowRoomForGuestComponent implements OnInit {
     return transformDate;
   }
 
+
   checkCheckinDate(checkin: any, checkout: any) {
     // @ts-ignore
     if (checkin < this.getFormattedDate() || checkout <= this.getFormattedDate()) {
@@ -157,7 +186,7 @@ export class ShowRoomForGuestComponent implements OnInit {
 
   checkDate(checkout: any, checkin: any) {
     // @ts-ignore
-    if (checkout <= checkin || checkout< this.getFormattedDate()) {
+    if (checkout <= checkin || checkout < this.getFormattedDate()) {
       this.check = false
     } else {
       this.check = true

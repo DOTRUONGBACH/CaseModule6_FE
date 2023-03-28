@@ -50,9 +50,9 @@
                           <div class="mb-3 mb-md-0">
                             <div class="date" id="date1" data-target-input="nearest">
                               <a>CheckIn</a>
-                              <input type="date" class="form-control p-4 datetimepicker-input" name="checkin"
+                              <input type="date" [min]="getFormattedDate()" class="form-control p-4 datetimepicker-input" name="checkin"
                                      formControlName="checkin" placeholder="Depart Date" data-target="#date1"
-                                     data-toggle="datetimepicker" (change)="checkCheckinDate(formSearch?.get('checkin')?.value,formSearch?.get('checkout')?.value)"/>
+                                     data-toggle="datetimepicker"  (change)="checkCheckinDate(formSearch?.get('checkin')?.value,formSearch?.get('checkout')?.value)"/>
                             </div>
                             <p
                               *ngIf="formSearch?.get('checkin')?.hasError('required')&& formSearch?.get('checkin')?.touched"
@@ -63,7 +63,7 @@
                           <div class="mb-3 mb-md-0">
                             <div class="date" id="date2" data-target-input="nearest">
                               <a>CheckOut</a>
-                              <input type="date" class="form-control p-4 datetimepicker-input" name="checkout"
+                              <input type="date" [min]="getFormattedDate()"  class="form-control p-4 datetimepicker-input" name="checkout"
                                      formControlName="checkout" placeholder="Return Date" data-target="#date2"
                                      data-toggle="datetimepicker"
                                      (change)="checkDate(formSearch?.get('checkout')?.value, formSearch?.get('checkin')?.value)"
@@ -83,21 +83,22 @@
                                     [value]="category.name">{{ category.name }}</option>
                           </select>
                         </div>
-                        <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-cog col-lg-4 col-md-6">
-                          <div class="input-item input-item-name ltn__custom-icon">
-                            <a>Choice Min Price</a>
-                            <input type="text" name="price1" placeholder="Min price " formControlName="price1">
-                          </div>
-                        </div>
-                        <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-cog col-lg-4 col-md-6">
-                          <div class="input-item input-item-name ltn__custom-icon">
-                            <a>Choice Max Price</a>
-                            <input  type="text" name="price2" placeholder="Max price " formControlName="price2">
-                          </div>
-                          <p *ngIf="formSearch?.get('price2')?.value < formSearch?.get('price1')?.value"
-                             style="color: red">* MaxPrice must be greater than MinPrice</p>
-                        </div>
+<!--                        <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-cog col-lg-4 col-md-6">-->
+<!--                          <div class="input-item input-item-name ltn__custom-icon">-->
+<!--                            <a>Choice Min Price</a>-->
+<!--                            <input type="text" name="price1" placeholder="Min price" formControlName="price1">-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                        <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-cog col-lg-4 col-md-6">-->
+<!--                          <div class="input-item input-item-name ltn__custom-icon">-->
+<!--                            <a>Choice Max Price</a>-->
+<!--                            <input  type="text" name="price2" placeholder="Max price" formControlName="price2">-->
+<!--                          </div>-->
+<!--                          <p *ngIf="formSearch?.get('price2')?.value < formSearch?.get('price1')?.value"-->
+<!--                             style="color: red">* MaxPrice must be greater than MinPrice</p>-->
+<!--                        </div>-->
                         <div class="car-price-filter-range col-lg-12">
+                          <ng5-slider  [(value)]="minValue" [(highValue)]="maxValue" [options]="options" formGroupName="control" ></ng5-slider>
                           <div class="btn-wrapper text-center">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" [disabled]="!check" type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">
                               Search
