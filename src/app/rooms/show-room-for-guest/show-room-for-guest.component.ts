@@ -25,7 +25,7 @@ export class ShowRoomForGuestComponent implements OnInit {
   rooms: any;
 
   minValue:
-    number = 100;
+    number = 0;
   maxValue:
     number = 10000;
 
