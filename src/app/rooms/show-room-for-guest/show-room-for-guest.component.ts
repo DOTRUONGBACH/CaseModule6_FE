@@ -1,4 +1,5 @@
 import {Component, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+// @ts-ignore
 import {ShowRoomForGuestService} from "../../service/show-room-for-guest.service";
 import {RoomForGuest} from "../../model/RoomForGuest";
 
