@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Account} from "../../model/Account";
 import {AccountService} from "../../service/account/account.service";
+// @ts-ignore
 import {MessageService} from "primeng/api";
 import {AccountToken} from "../../model/AccountToken";
 import {HttpClient} from "@angular/common/http";

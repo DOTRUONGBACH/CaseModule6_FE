@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 // @ts-ignore
 import {ShowRoomForGuestService} from "../../service/show-room-for-guest.service";
 import {RoomForGuest} from "../../model/RoomForGuest";
@@ -45,7 +45,7 @@ export class ShowRoomForGuestComponent implements OnInit {
   }
 
   findRoomByGuest() {
-    this.showRoomService.findRoomByGuest(this.categoryName, this.addressName, this.price1, this.price2, this.checkin, this.checkout).subscribe(data => {
+    this.showRoomService.findRoomByGuest(this.categoryName, this.addressName, this.price1, this.price2, this.checkin, this.checkout).subscribe((data: any) => {
       alert("vào đây")
       this.rooms = data
       console.log(data)
