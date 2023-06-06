@@ -9,6 +9,7 @@ import {SaveRoomInfoService} from "../../service/save-room-info.service";
 import {SaveRoomImagesService} from "../../service/save-room-images.service";
 import {ShowRoomForGuestService} from "../../service/show-room-for-guest.service";
 import {LoginService} from "../service/login/login.service";
+// @ts-ignore
 import {ConfirmationService, MessageService} from "primeng/api";
 
 
@@ -78,6 +79,7 @@ export class CrudHostComponent implements OnInit {
 
     if (this.formCreate.valid) {
       const accountId = this.getAccountId.getAccountToken().id;
+      // @ts-ignore
       this.saveRoomInfoService.saveRoom(this.formCreate.value, accountId).subscribe(
         data => {
           const formData = new FormData();
