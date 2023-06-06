@@ -3,6 +3,9 @@ import {HttpClient} from "@angular/common/http";
 import {Account} from "../../model/Account";
 import {Observable} from "rxjs";
 import {AccountToken} from "../../model/AccountToken";
+import {ChangePassword} from "../../model/ChangePassword";
+import {Room} from "../../model/Room";
+import {AccountP} from "../../model/AccountP";
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +20,22 @@ export class AccountService {
   }
 
   findById(id : number): Observable<Account> {
-    return this.http.get<Account>('http://localhost:8080/account/' + id)
+    return this.http.get<Account>('http://localhost:8080/account/account/' + id)
+  }
+  findByIdP(id : number): Observable<AccountP> {
+    return this.http.get<AccountP>(`http://localhost:8080/account/p/${id}`)
   }
 
   create(account : Account): Observable<Account> {
-      return this.http.post<Account>('http://localhost:8080/login/profile/', account)
+      return this.http.put<Account>('http://localhost:8080/account/',account)
   }
+
   setToken(token: string){
     localStorage.setItem("token",token);
+  }
+
+  change(changePassword:ChangePassword | undefined): Observable<ChangePassword> {
+    return this.http.post<ChangePassword>('http://localhost:8080/account/changePassword/', changePassword)
   }
 
   getToken(){
@@ -39,6 +50,17 @@ export class AccountService {
   }
   findAll(): Observable<Account[]> {
     return this.http.get<Account[]>('http://localhost:8080/account');
+  }
+  findByEmail(email: string):Observable<Account[]>{
+    return this.http.get<Account[]>('http://localhost:8080/account/'+ email);
+  }
+
+
+  forgotPassword(email: string):Observable<any>{
+    return this.http.post<any>('http://localhost:8080/account/forgotPassword/', email);
+  }
+  findRoomById(id:number):Observable<Room>{
+    return this.http.get<Room>(`http://localhost:8080/rooms/p/findRoomById/${id}`)
   }
 }
 

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 import {CategoryServiceService} from "../../service/category-service.service";
 import {Category} from "../model/Category";
@@ -9,17 +9,19 @@ import {SaveRoomInfoService} from "../../service/save-room-info.service";
 import {SaveRoomImagesService} from "../../service/save-room-images.service";
 import {ShowRoomForGuestService} from "../../service/show-room-for-guest.service";
 import {LoginService} from "../service/login/login.service";
-import {SheduleServiceService} from "../../service/shedule-service.service";
+import {ConfirmationService, MessageService} from "primeng/api";
 
 
 
 @Component({
   selector: 'app-crud-host',
   templateUrl: './crud-host.component.html',
-  styleUrls: ['./crud-host.component.css']
+  styleUrls: ['./crud-host.component.css'],
+  providers: [MessageService,ConfirmationService]
+
 })
 export class CrudHostComponent implements OnInit {
-  @ViewChild('circleDiv') circleDiv?: ElementRef;
+
   categories?: Category[];
   addresses?: Address[];
   formCreate!: FormGroup;
@@ -27,8 +29,6 @@ export class CrudHostComponent implements OnInit {
   rooms: any;
   p: number = 1;
   total: number = 0;
-  currentRoom: any;
-  previousStatus?: boolean;
 
   constructor(
     private crudService: CrudHostService,
@@ -39,7 +39,8 @@ export class CrudHostComponent implements OnInit {
     private saveRoomImagesService: SaveRoomImagesService,
     private showRoomService: ShowRoomForGuestService,
     private getAccountId: LoginService,
-
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService,
   ) {
   }
 
@@ -49,7 +50,7 @@ export class CrudHostComponent implements OnInit {
     this.formCreate = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      price: ['', Validators.required],
+      price: ['',Validators.min(1)],
       category: new FormGroup({
         id: new FormControl()
       }),
@@ -72,14 +73,6 @@ export class CrudHostComponent implements OnInit {
     this.getRoom()
   }
 
-  close() {
-    document.getElementById('successModal')?.classList.remove('show');
-  }
-
-  close2() {
-    document.getElementById('statusModal')?.classList.remove('show');
-  }
-
   onSubmit() {
     // Nếu formCreate hợp lệ
 
@@ -94,18 +87,16 @@ export class CrudHostComponent implements OnInit {
           // Lưu ảnh bằng API thứ hai
           this.saveRoomImagesService.saveImg(formData, data).subscribe(
             response => {
-              document.getElementById('successModal')?.classList.add('show');
-
-              console.log('Room and images saved successfully');
+           this.showSuccess()
             },
             error => {
-              console.log('Error saving images:', error);
+              this.showError()
             }
           )
         },
         error => {
           console.log('Error saving room:', error);
-          alert("tạo thất bại")
+          this.showError()
         }
       )
     }
@@ -149,53 +140,57 @@ export class CrudHostComponent implements OnInit {
     this.getRoom();
   }
 
-
+//chưa làm do backlog không yêu cầu.
   edit() {
 
   }
 
-  toggleRoomStatus(room: any) {
+  // toggleRoomStatus(room: any) {
+  //
+  //   if (room.status == true) {
+  //     this.updateStt(room)
+  //   } else {
+  //
+  //   }
+  // }
 
-    this.currentRoom = room
-    if (room.status == true) {
-      this.updateStt(room)
-    } else {
-      this.previousStatus = room.status;
-      document.getElementById('statusModal')?.classList.add('show');
+
+confirmChangeToggle(r:any){
+    if (!r.status){
+  this.confirmationService.confirm({
+    message: 'This room is occupied,do you want to change the status?',
+    accept: () => {
+      this.crudService.updateStt(r.id, !r.status).subscribe((rs: any) => {
+        r.status = true
+        this.showSuccess()
+      },error => {
+        this.showError()
+
+      });
+    },reject:()=>{
+      location.reload()
+  }})}
+
+    else {
+      this.crudService.updateStt(r.id, !r.status).subscribe((rs: any) => {
+        r.status = false
+        this.showSuccess()
+      },error => {
+        this.showError()
+      });
     }
+}
+
+
+
+//alert
+  showSuccess() {
+    this.messageService.add({severity: 'success', summary: 'Success', detail: 'Success!', key: 'c'});
   }
 
-
-  No() {
-    this.currentRoom.status = this.previousStatus;
-    this.circleDiv?.nativeElement.classList.remove('success');
-    this.circleDiv?.nativeElement.classList.add('danger');
-    this.close2()
-    location.reload()
+  showError() {
+    this.messageService.add({severity: 'fail', summary: 'Fail', detail: 'Something wrong', key: 'c'})
   }
-
-  Yes(room: any) {
-    this.close2()
-    this.updateStt(room)
-  }
-
-  updateStt(room: any) {
-    this.crudService.updateStt(room.id, !room.status).subscribe((rs: any) => {
-      room.status = !room.status;
-      if (room.status) {
-        this.circleDiv?.nativeElement.classList.remove('danger');
-        this.circleDiv?.nativeElement.classList.add('success');
-      } else {
-        this.circleDiv?.nativeElement.classList.remove('success');
-        this.circleDiv?.nativeElement.classList.add('danger');
-      }
-      alert("ok")
-    });
-  }
-
-
-
-
 
 
 }

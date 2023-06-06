@@ -11,9 +11,9 @@ import {AccountToken} from "../../model/AccountToken";
   templateUrl: './my-account.component.html',
   styleUrls: ['./my-account.component.css']
 })
-export class MyAccountComponent implements OnInit, OnChanges {
+export class MyAccountComponent implements OnInit{
   id: any
-  account: any;
+  account!: Account;
   accountToken !:AccountToken;
 
   constructor(private accountService: AccountService, private http: HttpClient, private route: ActivatedRoute, private router: Router) {
@@ -21,16 +21,25 @@ export class MyAccountComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.accountService.getAll().subscribe((data)=>{
+    // @ts-ignore
+    this.account = JSON.parse(localStorage.getItem("accountToken"))
+    this.id = this.account?.id
+    this.accountService.findById(this.id).subscribe((data)=>{
       this.account = data
+      data.avatar=this.accountToken.avatar
+      console.log(data.avatar)
+      console.log(this.account)
     })
     this.accountToken =  this.accountService.getAccountToken() ;
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    this.accountService.getAll().subscribe((data)=>{
-      this.account = data
-    })
-  }
+
+
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   this.accountService.getAll().subscribe((data)=>{
+  //     this.account = data
+  //   })
+  // }
+
 }
 
 

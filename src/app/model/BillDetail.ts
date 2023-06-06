@@ -8,5 +8,5 @@ export class BillDetail {
   room!: Room;
   bill!: Bill;
   status!: boolean;
-  amountDay!: number;
+  amountDay!: any;
 }
